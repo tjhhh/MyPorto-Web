@@ -1,26 +1,69 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f9faf6;
+  --foreground: #1a1c1a;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f3f4f0;
+  --surface-container: #edeeea;
+  --surface-container-highest: #e2e3df;
+  --surface-variant: #e2e3df;
+  --outline: #717972;
+  --outline-variant: #c1c9c1;
+  --primary: #002514;
+  --primary-container: #0d3c26;
+  --on-primary: #ffffff;
+  --on-surface: #1a1c1a;
+  --on-surface-variant: #414943;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-surface-variant: var(--surface-variant);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+  --color-primary: var(--primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary: var(--on-primary);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --font-sans: var(--font-inter);
+  --font-space: var(--font-space-grotesk);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.ronin-polkadot {
+  background-color: var(--background);
+  background-image: radial-gradient(var(--outline-variant) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.reveal-card {
+  animation: card-reveal 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes card-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
