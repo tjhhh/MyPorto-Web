@@ -50,8 +50,7 @@ export const allProjects: Project[] = [
     title: "Bank Sampah",
     description:
       "Website informatif dan operasional bank sampah untuk digitalisasi proses pengelolaan sederhana.",
-    image:
-      "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=1200&q=80",
+    image: "/bankSampah-display.png",
     tags: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     type: "Website - Frontend",
     role: "Frontend",

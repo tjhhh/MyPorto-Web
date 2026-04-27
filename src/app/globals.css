@@ -56,6 +56,34 @@ html {
   animation: card-reveal 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
+.tech-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0, black 6%, black 94%, transparent 100%);
+}
+
+.tech-marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: tech-marquee 24s linear infinite;
+}
+
+.tech-marquee-content {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.tech-marquee-track-left {
+  animation-direction: normal;
+}
+
+.tech-marquee-track-right {
+  animation-direction: reverse;
+}
+
 @keyframes card-reveal {
   from {
     opacity: 0;
@@ -65,5 +93,21 @@ html {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes tech-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-marquee-track {
+    animation: none;
   }
 }
