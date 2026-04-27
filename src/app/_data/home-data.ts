@@ -55,7 +55,7 @@ export const allProjects: Project[] = [
     type: "Website - Frontend",
     role: "Frontend",
     team: "Group",
-    repoUrl: "https://github.com/SIMPLIX07/BankSampah",
+    repoUrl: "https://github.com/SIMPLIX07/bankSampah1.2",
     liveUrl: "https://simplix07.github.io/bankSampah1.2/",
   },
   {
