@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { TechStackCategory } from "@/app/_types/home";
 
 type TechStackSectionProps = {
@@ -52,8 +53,8 @@ export function TechStackSection({ categories }: Readonly<TechStackSectionProps>
                       <div key={`${category.label}-copy-${copyIndex}`} className="tech-marquee-content" aria-hidden={copyIndex === 1}>
                         {category.items.map((tech) => (
                           <div key={`${category.label}-${tech.name}-${copyIndex}`} className="group flex shrink-0 items-center gap-2">
-                            <div className="flex h-10 w-10 items-center justify-center rounded-md border border-surface-variant bg-surface-container p-2 transition-transform duration-300 ease-out group-hover:scale-110">
-                              <img src={tech.logo} alt={`${tech.name} logo`} className="h-full w-full object-contain" />
+                            <div className="flex h-10 w-10 items-center justify-center rounded-md border border-surface-variant bg-surface-container transition-transform duration-300 ease-out group-hover:scale-110">
+                              <Image src={tech.logo} alt={`${tech.name} logo`} width={24} height={24} className="object-contain" />
                             </div>
                             <span className="text-[13px] text-on-surface-variant">{tech.name}</span>
                           </div>

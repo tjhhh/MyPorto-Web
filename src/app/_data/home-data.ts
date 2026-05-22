@@ -9,6 +9,7 @@ import type {
 export const allProjects: Project[] = [
   {
     title: "FutsalPro",
+    slug: "futsalpro",
     description:
       "Website full-stack untuk manajemen futsal dengan booking, notifikasi email, dan alur pembayaran online.",
     image:
@@ -19,9 +20,11 @@ export const allProjects: Project[] = [
     team: "Solo",
     repoUrl: "https://github.com/tjhhh/FutsalPro",
     liveUrl: "https://futsalpro.my.id",
+    detailHref: "/projects/futsalpro",
   },
   {
     title: "RideAssist",
+    slug: "rideassist",
     description:
       "Aplikasi mobile asistensi berkendara dengan arsitektur ringan untuk pengalaman real-time dan stabil.",
     image:
@@ -32,60 +35,11 @@ export const allProjects: Project[] = [
     team: "Solo",
     repoUrl: "https://github.com/tjhhh/ServiceLog-RideAssisst",
     liveUrl: null,
-  },
-  {
-    title: "Antitheft",
-    description:
-      "Aplikasi keamanan mobile untuk monitoring anti pencurian dengan dukungan backend NextJS.",
-    image:
-      "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=1200&q=80",
-    tags: ["Flutter", "NextJS (Server)"],
-    type: "Mobile - App Development",
-    role: "Backend",
-    team: "Solo",
-    repoUrl: "https://github.com/tjhhh/ji_antitheft",
-    liveUrl: null,
-  },
-  {
-    title: "Bank Sampah",
-    description:
-      "Website informatif dan operasional bank sampah untuk digitalisasi proses pengelolaan sederhana.",
-    image: "/bankSampah-display.png",
-    tags: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-    type: "Website - Frontend",
-    role: "Frontend",
-    team: "Group",
-    repoUrl: "https://github.com/SIMPLIX07/bankSampah1.2",
-    liveUrl: "https://simplix07.github.io/bankSampah1.2/",
-  },
-  {
-    title: "HikePass Mobile",
-    description:
-      "Aplikasi mobile untuk kebutuhan pendakian dengan autentikasi, manajemen data, dan notifikasi email.",
-    image:
-      "https://images.unsplash.com/photo-1464822759844-d150ad6d1dce?auto=format&fit=crop&w=1200&q=80",
-    tags: ["Flutter", "Supabase", "GetX", "Resend"],
-    type: "Mobile - App Development",
-    role: "App Development",
-    team: "Group",
-    repoUrl: "https://github.com/hikepassapp/hikepassApp",
-    liveUrl: null,
-  },
-  {
-    title: "HikePass Website",
-    description:
-      "Website full-stack pendukung ekosistem HikePass untuk pengelolaan data dan operasional pengguna.",
-    image:
-      "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1200&q=80",
-    tags: ["Vue", "Laravel", "NodeJS"],
-    type: "Website - Full Stack",
-    role: "Fullstack",
-    team: "Group",
-    repoUrl: "https://github.com/orgs/hikepassapp/repositories",
-    liveUrl: null,
+    detailHref: "/projects/rideassist",
   },
   {
     title: "IDAMAN-TSL",
+    slug: "idaman-tsl",
     description:
       "Website full-stack untuk kebutuhan internal tim dengan antarmuka cepat dan struktur komponen terukur.",
     image:
@@ -96,6 +50,66 @@ export const allProjects: Project[] = [
     team: "Group",
     repoUrl: "https://github.com/IDAMAN-TSL/idamantsl-webapp",
     liveUrl: "https://idaman-tsl.github.io/idamantsl-webapp/",
+    detailHref: "/projects/idaman-tsl",
+  },
+  {
+    title: "HikePass Mobile",
+    slug: "hikepass-mobile",
+    description:
+      "Aplikasi mobile untuk kebutuhan pendakian dengan autentikasi, manajemen data, dan notifikasi email.",
+    image:
+      "https://images.unsplash.com/photo-1464822759844-d150ad6d1dce?auto=format&fit=crop&w=1200&q=80",
+    tags: ["Flutter", "Supabase", "GetX", "Resend"],
+    type: "Mobile - App Development",
+    role: "App Development",
+    team: "Group",
+    repoUrl: "https://github.com/hikepassapp/hikepassApp",
+    liveUrl: null,
+    detailHref: "/projects/hikepass-mobile",
+  },
+  {
+    title: "HikePass Website",
+    slug: "hikepass-website",
+    description:
+      "Website full-stack pendukung ekosistem HikePass untuk pengelolaan data dan operasional pengguna.",
+    image:
+      "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1200&q=80",
+    tags: ["Vue", "Laravel", "NodeJS"],
+    type: "Website - Full Stack",
+    role: "Fullstack",
+    team: "Group",
+    repoUrl: "https://github.com/orgs/hikepassapp/repositories",
+    liveUrl: null,
+    detailHref: "/projects/hikepass-website",
+  },
+  {
+    title: "Bank Sampah",
+    slug: "bank-sampah",
+    description:
+      "Website informatif dan operasional bank sampah untuk digitalisasi proses pengelolaan sederhana.",
+    image: "/bankSampah-display.png",
+    tags: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+    type: "Website - Frontend",
+    role: "Frontend",
+    team: "Group",
+    repoUrl: "https://github.com/SIMPLIX07/bankSampah1.2",
+    liveUrl: "https://simplix07.github.io/bankSampah1.2/",
+    detailHref: "/projects/bank-sampah",
+  },
+  {
+    title: "Antitheft",
+    slug: "antitheft",
+    description:
+      "Aplikasi keamanan mobile untuk monitoring anti pencurian dengan dukungan backend NextJS.",
+    image:
+      "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=1200&q=80",
+    tags: ["Flutter", "NextJS (Server)"],
+    type: "Mobile - App Development",
+    role: "Backend",
+    team: "Solo",
+    repoUrl: "https://github.com/tjhhh/ji_antitheft",
+    liveUrl: null,
+    detailHref: "/projects/antitheft",
   },
 ];
 

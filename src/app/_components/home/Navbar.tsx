@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 import type { NavLink } from "@/app/_types/home";
 
 type NavbarProps = {
@@ -71,7 +72,7 @@ export function Navbar({ links }: Readonly<NavbarProps>) {
     <nav className="sticky top-0 z-50 w-full border-b border-outline-variant bg-surface-container-lowest/95 backdrop-blur-sm">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 md:px-8 md:py-5">
         <a href="#about" className="inline-flex items-center" aria-label="Go to About section">
-          <img src="/logov1.png" alt="Website logo" className="h-9 w-auto object-contain md:h-10" />
+          <Image src="/logov1.png" alt="Website logo" width={40} height={40} className="h-9 w-auto object-contain md:h-10" />
         </a>
 
         <div className="hidden items-center gap-7 text-[11px] font-medium tracking-[0.12em] uppercase md:flex">

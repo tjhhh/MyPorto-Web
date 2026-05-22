@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function HeroSection() {
   return (
     <section id="about" className="ronin-polkadot scroll-mt-24 border-b border-surface-variant">
@@ -20,11 +22,14 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="self-center border border-surface-variant bg-surface-container-lowest">
-          <img
+        <div className="relative self-center border border-surface-variant bg-surface-container-lowest h-105 w-full md:h-125">
+          <Image
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRgdsbPjAfgn-9XJqCacfc7dCWCNB0CZ_CGYGAs-GLfbfAsTo4KsMfOtkUy0HetDuRhkDCRYhoZR9OA9JrROLFNzy-o7LzlsvrAmzU_hDTXI85OuN7OZP1wBqRAHqfn5Q0r8WGtcbYtDogbpbBkAjCMrxl4cAHwv1O59gaZ4TcFFHqEA8iUGrBJHto4NHIqo6AXjIw7hoDYI7_nu-m-12hJcre_3m2D6crBbLpK4oBJuG0WMi4HRWHVhra66-5aAftLmyKn6V05Jgf"
             alt="Interface preview"
-            className="h-105 w-full object-cover md:h-125"
+            className="object-cover"
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>
       </div>

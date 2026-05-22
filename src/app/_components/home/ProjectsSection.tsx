@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Project, ProjectTechIconMap } from "@/app/_types/home";
 
 type ProjectsSectionProps = {
@@ -36,19 +37,18 @@ function ProjectCard({ project, techIcons }: Readonly<ProjectCardProps>) {
 
   return (
     <article key={project.title} className="group flex h-full flex-col border border-outline-variant bg-surface-container-lowest">
-      <div className="aspect-4/3 overflow-hidden border-b border-surface-variant bg-surface-container-highest">
-        <img
+      <div className="relative w-full overflow-hidden border-b border-surface-variant bg-surface-container-highest" style={{ paddingBottom: '75%' }}>
+        <Image
           src={project.image}
           alt={project.title}
-          className="h-full w-full object-cover transition-transform duration-400 ease-in-out group-hover:scale-[1.05]"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.08]"
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
         />
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <div className="flex items-start justify-between gap-3">
-          <h3 className="max-w-[85%] text-[30px] leading-[1.15] font-bold tracking-[-0.01em] text-on-surface sm:text-[34px] md:text-[36px]">{project.title}</h3>
-          <span className="mt-1 text-on-surface-variant" aria-hidden="true">[ ]</span>
-        </div>
+        <h3 className="max-w-[85%] text-[30px] leading-[1.15] font-bold tracking-[-0.01em] text-on-surface sm:text-[34px] md:text-[36px]">{project.title}</h3>
         <div className="mt-2 flex flex-wrap gap-2">
           <span
             className={`inline-flex items-center border px-2.5 py-1 font-space text-[10px] tracking-[0.14em] uppercase transition-colors duration-300 ease-out ${typeBadgeClassName}`}
@@ -75,9 +75,11 @@ function ProjectCard({ project, techIcons }: Readonly<ProjectCardProps>) {
               className="inline-flex items-center gap-2 rounded-full border border-outline-variant/70 bg-surface-container-high px-3 py-1.5 font-space text-[10px] tracking-[0.11em] text-on-surface uppercase shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-primary/50 hover:bg-surface-container hover:text-primary"
             >
               <span className="flex h-4.5 w-4.5 items-center justify-center rounded-full bg-surface-container-lowest">
-                <img
+                <Image
                   src={techIcons[tag] ?? "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/code.svg"}
                   alt={`${tag} icon`}
+                  width={14}
+                  height={14}
                   className="h-3.5 w-3.5 object-contain"
                 />
               </span>
@@ -86,26 +88,36 @@ function ProjectCard({ project, techIcons }: Readonly<ProjectCardProps>) {
           ))}
         </div>
 
-        <div className="mt-auto flex flex-wrap gap-3 pt-6">
-          {isWebsiteProject && project.liveUrl && (
+        <div className="mt-auto flex items-end justify-between gap-4 pt-6">
+          <div className="flex flex-wrap gap-3">
+            {isWebsiteProject && project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center border border-primary bg-primary px-4 py-2 font-space text-[10px] tracking-[0.12em] text-on-primary uppercase transition-colors duration-300 ease-out hover:bg-primary-container"
+              >
+                Live Website
+              </a>
+            )}
+
             <a
-              href={project.liveUrl}
+              href={project.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center border border-primary bg-primary px-4 py-2 font-space text-[10px] tracking-[0.12em] text-on-primary uppercase transition-colors duration-300 ease-out hover:bg-primary-container"
+              className="inline-flex items-center border border-outline-variant bg-surface-container px-4 py-2 font-space text-[10px] tracking-[0.12em] text-on-surface uppercase transition-colors duration-300 ease-out hover:border-primary hover:text-primary"
             >
-              Live Website
+              GitHub Repo
             </a>
-          )}
+          </div>
 
-          <a
-            href={project.repoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center border border-outline-variant bg-surface-container px-4 py-2 font-space text-[10px] tracking-[0.12em] text-on-surface uppercase transition-colors duration-300 ease-out hover:border-primary hover:text-primary"
+          <Link
+            href={project.detailHref}
+            aria-label={`Lihat detail project ${project.title}`}
+            className="inline-flex h-9 items-center justify-center self-end border border-outline-variant bg-surface-container px-3 font-space text-[10px] tracking-[0.12em] text-on-surface uppercase transition-colors duration-300 ease-out hover:border-primary hover:text-primary"
           >
-            GitHub Repo
-          </a>
+            {'{Detail}'}
+          </Link>
         </div>
       </div>
     </article>

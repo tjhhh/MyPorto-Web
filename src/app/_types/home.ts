@@ -1,5 +1,6 @@
 export type Project = {
   title: string;
+  slug: string;
   description: string;
   image: string;
   tags: string[];
@@ -8,6 +9,11 @@ export type Project = {
   team: "Solo" | "Group";
   repoUrl: string;
   liveUrl: string | null;
+  detailHref: string;
+  coreCapabilities?: string[];
+  appStoreUrl?: string;
+  playStoreUrl?: string;
+  appPreviewImages?: string[];
 };
 
 export type ProjectTechIconMap = Record<string, string>;
