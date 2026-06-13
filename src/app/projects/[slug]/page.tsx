@@ -71,7 +71,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
               </p>
 
               <div className="flex flex-wrap gap-3 pt-2">
-                {projectData.hero.primaryAction.href && (
+                {projectData.hero.primaryAction.href && !projectData.hero.primaryAction.href.includes("github.com") && (
                   projectData.hero.primaryAction.href.startsWith("http") ? (
                     <a
                       href={projectData.hero.primaryAction.href}
@@ -81,7 +81,9 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                     >
                       {projectData.hero.primaryAction.label}
                       {' '}
-                      <span aria-hidden="true" className="material-symbols-outlined text-[18px]">arrow_outward</span>
+                      <span aria-hidden="true" className="material-symbols-outlined text-[18px]">
+                        {projectData.hero.primaryAction.icon || "arrow_outward"}
+                      </span>
                     </a>
                   ) : (
                     <Link
@@ -90,27 +92,41 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                     >
                       {projectData.hero.primaryAction.label}
                       {' '}
-                      <span aria-hidden="true" className="material-symbols-outlined text-[18px]">arrow_downward</span>
+                      <span aria-hidden="true" className="material-symbols-outlined text-[18px]">
+                        {projectData.hero.primaryAction.icon || "arrow_downward"}
+                      </span>
                     </Link>
                   )
                 )}
 
-                {projectData.hero.secondaryAction.href && (
+                {projectData.hero.secondaryAction.href && !projectData.hero.secondaryAction.href.includes("github.com") && (
                   projectData.hero.secondaryAction.href.startsWith("http") ? (
                     <a
                       href={projectData.hero.secondaryAction.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center border border-outline-variant bg-surface-container-lowest px-5 py-3 font-space text-[10px] uppercase tracking-[0.12em] text-on-surface transition-colors duration-300 ease-out hover:border-primary hover:text-primary"
+                      className="inline-flex items-center gap-2 border border-outline-variant bg-surface-container-lowest px-5 py-3 font-space text-[10px] uppercase tracking-[0.12em] text-on-surface transition-colors duration-300 ease-out hover:border-primary hover:text-primary"
                     >
                       {projectData.hero.secondaryAction.label}
+                      {projectData.hero.secondaryAction.icon && (
+                        <>
+                          {' '}
+                          <span aria-hidden="true" className="material-symbols-outlined text-[18px]">{projectData.hero.secondaryAction.icon}</span>
+                        </>
+                      )}
                     </a>
                   ) : (
                     <Link
                       href={projectData.hero.secondaryAction.href}
-                      className="inline-flex items-center border border-outline-variant bg-surface-container-lowest px-5 py-3 font-space text-[10px] uppercase tracking-[0.12em] text-on-surface transition-colors duration-300 ease-out hover:border-primary hover:text-primary"
+                      className="inline-flex items-center gap-2 border border-outline-variant bg-surface-container-lowest px-5 py-3 font-space text-[10px] uppercase tracking-[0.12em] text-on-surface transition-colors duration-300 ease-out hover:border-primary hover:text-primary"
                     >
                       {projectData.hero.secondaryAction.label}
+                      {projectData.hero.secondaryAction.icon && (
+                        <>
+                          {' '}
+                          <span aria-hidden="true" className="material-symbols-outlined text-[18px]">{projectData.hero.secondaryAction.icon}</span>
+                        </>
+                      )}
                     </Link>
                   )
                 )}
@@ -127,17 +143,16 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
             </div>
 
             <div className="lg:col-span-7">
-              <div className="group relative aspect-4/3 overflow-hidden border border-outline-variant bg-surface-container-lowest">
+              <div className="group relative aspect-video overflow-hidden border border-outline-variant bg-white">
                 <Image
                   alt={`${projectData.projectName} mockup`}
-                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                  className="object-contain transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                   src={projectData.hero.image.src}
                   fill
                   sizes="(max-width: 1024px) 100vw, 58vw"
                   priority
                 />
                 <div className="pointer-events-none absolute inset-0 bg-linear-to-tr from-primary/10 via-transparent to-transparent" />
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-background/35 to-transparent" />
               </div>
             </div>
           </div>
@@ -273,139 +288,6 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
               </div>
             </article>
 
-            <article id="showcase" className="scroll-mt-24">
-              <h3 className="border-b border-outline-variant pb-4 text-[30px] leading-[1.12] font-bold tracking-[-0.02em] text-primary sm:text-[36px]">
-                {projectData.showcase.title || "Showcase"}
-              </h3>
-              
-              {projectData.showcase.features && projectData.showcase.features.length > 0 ? (
-                <div className="mt-6 flex flex-col gap-8">
-                  <FeatureShowcase
-                    features={projectData.showcase.features}
-                    fallbackImage={projectData.hero.image.src}
-                    projectName={projectData.projectName}
-                    visualTitle={projectData.showcase.visualTitle}
-                  />
-                  
-                  <div className="flex flex-wrap gap-3 pt-6 border-t border-outline-variant/35">
-                    {projectData.hero.primaryAction.href && (
-                      projectData.hero.primaryAction.href.startsWith("http") ? (
-                        <a
-                          href={projectData.hero.primaryAction.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 border border-primary bg-primary px-5 py-3 font-space text-[10px] uppercase tracking-[0.12em] text-on-primary transition-colors duration-300 ease-out hover:bg-primary-container"
-                        >
-                          {projectData.showcase.primaryActionLabel || "View Live"}
-                          {' '}
-                          <span aria-hidden="true" className="material-symbols-outlined text-[18px]">open_in_new</span>
-                        </a>
-                      ) : (
-                        <Link
-                          href={projectData.hero.primaryAction.href}
-                          className="inline-flex items-center gap-2 border border-primary bg-primary px-5 py-3 font-space text-[10px] uppercase tracking-[0.12em] text-on-primary transition-colors duration-300 ease-out hover:bg-primary-container"
-                        >
-                          {projectData.showcase.primaryActionLabel || "Launch Application"}
-                          {' '}
-                          <span aria-hidden="true" className="material-symbols-outlined text-[18px]">arrow_downward</span>
-                        </Link>
-                      )
-                    )}
-
-                    {projectData.hero.secondaryAction.href && (
-                      projectData.hero.secondaryAction.href.startsWith("http") ? (
-                        <a
-                          href={projectData.hero.secondaryAction.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 border border-outline-variant bg-surface-container-lowest px-5 py-3 font-space text-[10px] uppercase tracking-[0.12em] text-on-surface transition-colors duration-300 ease-out hover:border-primary hover:text-primary"
-                        >
-                          {projectData.showcase.secondaryActionLabel || "Repository"}
-                          {' '}
-                          <span aria-hidden="true" className="material-symbols-outlined text-[18px]">code</span>
-                        </a>
-                      ) : (
-                        <Link
-                          href={projectData.hero.secondaryAction.href}
-                          className="inline-flex items-center gap-2 border border-outline-variant bg-surface-container-lowest px-5 py-3 font-space text-[10px] uppercase tracking-[0.12em] text-on-surface transition-colors duration-300 ease-out hover:border-primary hover:text-primary"
-                        >
-                          {projectData.showcase.secondaryActionLabel || "Repository"}
-                          {' '}
-                          <span aria-hidden="true" className="material-symbols-outlined text-[18px]">code</span>
-                        </Link>
-                      )
-                    )}
-                  </div>
-                </div>
-              ) : (
-                <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
-                  <div className="group relative aspect-4/3 overflow-hidden border border-outline-variant bg-surface-container-lowest">
-                    <Image
-                      alt={`${projectData.projectName} showcase preview`}
-                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-                      src={projectData.hero.image.src}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <div className="bg-surface-container-lowest/95 backdrop-blur-xs px-4 py-2 border border-primary text-primary font-space text-[10px] uppercase tracking-[0.12em] shadow-sm">
-                        {projectData.showcase.visualTitle || "Interface Preview"}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col justify-center gap-4">
-                    {projectData.hero.primaryAction.href && (
-                      projectData.hero.primaryAction.href.startsWith("http") ? (
-                        <a
-                          href={projectData.hero.primaryAction.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex w-full items-center justify-between border border-primary bg-primary px-5 py-4 font-space text-[10px] uppercase tracking-[0.12em] text-on-primary transition-colors duration-300 ease-out hover:bg-primary-container"
-                        >
-                          {projectData.showcase.primaryActionLabel || "View Live"}
-                          {' '}
-                          <span aria-hidden="true" className="material-symbols-outlined text-[18px]">open_in_new</span>
-                        </a>
-                      ) : (
-                        <Link
-                          href={projectData.hero.primaryAction.href}
-                          className="inline-flex w-full items-center justify-between border border-primary bg-primary px-5 py-4 font-space text-[10px] uppercase tracking-[0.12em] text-on-primary transition-colors duration-300 ease-out hover:bg-primary-container"
-                        >
-                          {projectData.showcase.primaryActionLabel || "Launch Application"}
-                          {' '}
-                          <span aria-hidden="true" className="material-symbols-outlined text-[18px]">arrow_downward</span>
-                        </Link>
-                      )
-                    )}
-
-                    {projectData.hero.secondaryAction.href && (
-                      projectData.hero.secondaryAction.href.startsWith("http") ? (
-                        <a
-                          href={projectData.hero.secondaryAction.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex w-full items-center justify-between border border-outline-variant bg-surface-container-lowest px-5 py-4 font-space text-[10px] uppercase tracking-[0.12em] text-on-surface transition-colors duration-300 ease-out hover:border-primary hover:text-primary"
-                        >
-                          {projectData.showcase.secondaryActionLabel || "Repository"}
-                          {' '}
-                          <span aria-hidden="true" className="material-symbols-outlined text-[18px]">code</span>
-                        </a>
-                      ) : (
-                        <Link
-                          href={projectData.hero.secondaryAction.href}
-                          className="inline-flex w-full items-center justify-between border border-outline-variant bg-surface-container-lowest px-5 py-4 font-space text-[10px] uppercase tracking-[0.12em] text-on-surface transition-colors duration-300 ease-out hover:border-primary hover:text-primary"
-                        >
-                          {projectData.showcase.secondaryActionLabel || "Repository"}
-                          {' '}
-                          <span aria-hidden="true" className="material-symbols-outlined text-[18px]">code</span>
-                        </Link>
-                      )
-                    )}
-                  </div>
-                </div>
-              )}
-            </article>
           </div>
 
           <aside className="flex flex-col gap-8 lg:col-span-4 lg:sticky lg:top-24 lg:self-start">
@@ -460,7 +342,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
             <section className="border border-outline-variant bg-surface-container p-6">
               <h4 className="font-space text-[10px] uppercase tracking-[0.12em] text-primary">Quick Actions</h4>
               <div className="mt-5 flex flex-col gap-3">
-                {projectData.hero.primaryAction.href && projectData.hero.primaryAction.href.startsWith("http") && (
+                {projectData.hero.primaryAction.href && projectData.hero.primaryAction.href.startsWith("http") && !projectData.hero.primaryAction.href.includes("github.com") && (
                   <a
                     href={projectData.hero.primaryAction.href}
                     target="_blank"
@@ -472,7 +354,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                     <span aria-hidden="true" className="material-symbols-outlined text-[18px]">launch</span>
                   </a>
                 )}
-                {projectData.hero.secondaryAction.href && projectData.hero.secondaryAction.href.startsWith("http") && (
+                {projectData.hero.secondaryAction.href && projectData.hero.secondaryAction.href.startsWith("http") && !projectData.hero.secondaryAction.href.includes("github.com") && (
                   <a
                     href={projectData.hero.secondaryAction.href}
                     target="_blank"
@@ -494,6 +376,160 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
             </section>
           </aside>
         </section>
+
+        {projectData.showcase && (
+          <section id="showcase" className="mx-auto w-full max-w-7xl px-4 py-12 md:px-8 md:py-16 lg:py-20 border-t border-outline-variant/35 mt-8 md:mt-16 scroll-mt-24">
+            <h2 className="border-b border-outline-variant pb-4 text-[30px] leading-[1.12] font-bold tracking-[-0.02em] text-primary sm:text-[36px] mb-8">
+              {projectData.showcase.title || "Showcase"}
+            </h2>
+
+            {projectData.showcase.features && projectData.showcase.features.length > 0 ? (
+              <div className="flex flex-col gap-8">
+                <FeatureShowcase
+                  features={projectData.showcase.features}
+                  fallbackImage={projectData.hero.image.src}
+                  projectName={projectData.projectName}
+                  visualTitle={projectData.showcase.visualTitle}
+                />
+                
+                {(projectData.hero.primaryAction.href || projectData.hero.secondaryAction.href) && (
+                  <div className="flex flex-wrap gap-3 pt-6 border-t border-outline-variant/35">
+                    {projectData.hero.primaryAction.href && !projectData.hero.primaryAction.href.includes("github.com") && (
+                      projectData.hero.primaryAction.href.startsWith("http") ? (
+                        <a
+                          href={projectData.hero.primaryAction.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 border border-primary bg-primary px-5 py-3 font-space text-[10px] uppercase tracking-[0.12em] text-on-primary transition-colors duration-300 ease-out hover:bg-primary-container"
+                        >
+                          {projectData.showcase.primaryActionLabel || "View Live"}
+                          {' '}
+                          <span aria-hidden="true" className="material-symbols-outlined text-[18px]">
+                            {projectData.showcase.primaryActionIcon || "open_in_new"}
+                          </span>
+                        </a>
+                      ) : (
+                        <Link
+                          href={projectData.hero.primaryAction.href}
+                          className="inline-flex items-center gap-2 border border-primary bg-primary px-5 py-3 font-space text-[10px] uppercase tracking-[0.12em] text-on-primary transition-colors duration-300 ease-out hover:bg-primary-container"
+                        >
+                          {projectData.showcase.primaryActionLabel || "Launch Application"}
+                          {' '}
+                          <span aria-hidden="true" className="material-symbols-outlined text-[18px]">
+                            {projectData.showcase.primaryActionIcon || "arrow_downward"}
+                          </span>
+                        </Link>
+                      )
+                    )}
+
+                    {projectData.hero.secondaryAction.href && !projectData.hero.secondaryAction.href.includes("github.com") && (
+                      projectData.hero.secondaryAction.href.startsWith("http") ? (
+                        <a
+                          href={projectData.hero.secondaryAction.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 border border-outline-variant bg-surface-container-lowest px-5 py-3 font-space text-[10px] uppercase tracking-[0.12em] text-on-surface transition-colors duration-300 ease-out hover:border-primary hover:text-primary"
+                        >
+                          {projectData.showcase.secondaryActionLabel || "Repository"}
+                          {' '}
+                          <span aria-hidden="true" className="material-symbols-outlined text-[18px]">
+                            {projectData.showcase.secondaryActionIcon || "code"}
+                          </span>
+                        </a>
+                      ) : (
+                        <Link
+                          href={projectData.hero.secondaryAction.href}
+                          className="inline-flex items-center gap-2 border border-outline-variant bg-surface-container-lowest px-5 py-3 font-space text-[10px] uppercase tracking-[0.12em] text-on-surface transition-colors duration-300 ease-out hover:border-primary hover:text-primary"
+                        >
+                          {projectData.showcase.secondaryActionLabel || "Repository"}
+                          {' '}
+                          <span aria-hidden="true" className="material-symbols-outlined text-[18px]">
+                            {projectData.showcase.secondaryActionIcon || "code"}
+                          </span>
+                        </Link>
+                      )
+                    )}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div className="group relative aspect-video overflow-hidden border border-outline-variant bg-white">
+                  <Image
+                    alt={`${projectData.projectName} showcase preview`}
+                    className="object-contain transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                    src={projectData.hero.image.src}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="bg-surface-container-lowest/95 backdrop-blur-xs px-4 py-2 border border-primary text-primary font-space text-[10px] uppercase tracking-[0.12em] shadow-sm">
+                      {projectData.showcase.visualTitle || "Interface Preview"}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col justify-center gap-4">
+                  {projectData.hero.primaryAction.href && !projectData.hero.primaryAction.href.includes("github.com") && (
+                    projectData.hero.primaryAction.href.startsWith("http") ? (
+                      <a
+                        href={projectData.hero.primaryAction.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex w-full items-center justify-between border border-primary bg-primary px-5 py-4 font-space text-[10px] uppercase tracking-[0.12em] text-on-primary transition-colors duration-300 ease-out hover:bg-primary-container"
+                      >
+                        {projectData.showcase.primaryActionLabel || "View Live"}
+                        {' '}
+                        <span aria-hidden="true" className="material-symbols-outlined text-[18px]">
+                          {projectData.showcase.primaryActionIcon || "open_in_new"}
+                        </span>
+                      </a>
+                    ) : (
+                      <Link
+                        href={projectData.hero.primaryAction.href}
+                        className="inline-flex w-full items-center justify-between border border-primary bg-primary px-5 py-4 font-space text-[10px] uppercase tracking-[0.12em] text-on-primary transition-colors duration-300 ease-out hover:bg-primary-container"
+                      >
+                        {projectData.showcase.primaryActionLabel || "Launch Application"}
+                        {' '}
+                        <span aria-hidden="true" className="material-symbols-outlined text-[18px]">
+                          {projectData.showcase.primaryActionIcon || "arrow_downward"}
+                        </span>
+                      </Link>
+                    )
+                  )}
+
+                  {projectData.hero.secondaryAction.href && !projectData.hero.secondaryAction.href.includes("github.com") && (
+                    projectData.hero.secondaryAction.href.startsWith("http") ? (
+                      <a
+                        href={projectData.hero.secondaryAction.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex w-full items-center justify-between border border-outline-variant bg-surface-container-lowest px-5 py-4 font-space text-[10px] uppercase tracking-[0.12em] text-on-surface transition-colors duration-300 ease-out hover:border-primary hover:text-primary"
+                      >
+                        {projectData.showcase.secondaryActionLabel || "Repository"}
+                        {' '}
+                        <span aria-hidden="true" className="material-symbols-outlined text-[18px]">
+                          {projectData.showcase.secondaryActionIcon || "code"}
+                        </span>
+                      </a>
+                    ) : (
+                      <Link
+                        href={projectData.hero.secondaryAction.href}
+                        className="inline-flex w-full items-center justify-between border border-outline-variant bg-surface-container-lowest px-5 py-4 font-space text-[10px] uppercase tracking-[0.12em] text-on-surface transition-colors duration-300 ease-out hover:border-primary hover:text-primary"
+                      >
+                        {projectData.showcase.secondaryActionLabel || "Repository"}
+                        {' '}
+                        <span aria-hidden="true" className="material-symbols-outlined text-[18px]">
+                          {projectData.showcase.secondaryActionIcon || "code"}
+                        </span>
+                      </Link>
+                    )
+                  )}
+                </div>
+              </div>
+            )}
+          </section>
+        )}
       </main>
 
       <ProjectDetailFooter

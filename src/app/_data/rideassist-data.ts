@@ -18,7 +18,7 @@ export const rideAssistProjectData: ProjectDetailPageData = {
     description:
       "A sleek, privacy-focused mobile application built with Flutter & Riverpod. It utilizes intelligent GPS noise-filtering to track real-time odometer metrics and dynamically compute engine health status, 100% offline.",
     image: {
-      src: "/rideassist-hero.png",
+      src: "/rideassist/RideAssists_TN.jpg",
       alt: "RideAssist Mobile Application Dashboard",
     },
     metrics: [
@@ -27,8 +27,8 @@ export const rideAssistProjectData: ProjectDetailPageData = {
       { label: "Dynamic Oil Interval", value: "2,000 KM" },
       { label: "Offline Privacy", value: "100% Local" },
     ],
-    primaryAction: { label: "Download APK", href: "/downloads/ride_assist.apk" },
-    secondaryAction: { label: "View GitHub Repo", href: "https://github.com/tjhhh/ServiceLog-RideAssisst" },
+    primaryAction: { label: "Download APK", href: "https://drive.google.com/drive/folders/136Uzuj8OTN-IjGRPsclrkIpc9cNp20zj?usp=sharing", icon: "download" },
+    secondaryAction: { label: "", href: "" },
   },
   overview: {
     title: "Latar Belakang & Solusi Proyek",
@@ -49,40 +49,41 @@ export const rideAssistProjectData: ProjectDetailPageData = {
     result: "Result: Tingkat akurasi kalkulasi odometer meningkat hingga 98.4% dibandingkan dengan rute Google Maps fisik, dan konsumsi baterai berkurang signifikan karena pemrosesan berjalan sepenuhnya di sisi klien."
   },
   techStack: [
-    "Framework & Language: Flutter 3 (Material 3), Dart SDK",
-    "State Management: Flutter Riverpod & StateNotifier",
-    "Local Database: SQLite via Sqflite & path_provider",
-    "Hardware API: Geolocator (GPS Tracking Services)",
-    "Asset Management: flutter_launcher_icons, flutter_dotenv",
+    "Framework & Language: Flutter 3 (Material 3 & Glassmorphism UI), Dart SDK",
+    "State Management: Riverpod (flutter_riverpod & state_notifier)",
+    "Local Database & Storage: SQLite (sqflite) & Shared Preferences (shared_preferences)",
+    "Cloud Services & Auth: Firebase Authentication & Cloud Firestore (Cloud Sync)",
+    "Device API & Location: Geolocator (Background GPS Stream) & Permission Handler",
+    "Media & Image Processing: Image Picker & Image Cropper (Nota Servis Scan)",
   ],
   capabilities: [
     {
-      icon: "speed",
-      label: "Odometer",
-      title: "Auto-Track GPS Odometer",
+      icon: "map",
+      label: "Tracking",
+      title: "GPS Odometer",
       description:
-        "Menghitung jarak perjalanan real-time menggunakan GPS stream dengan filter akurasi tinggi untuk menghindari deviasi data.",
+        "Kalkulasi jarak perjalanan real-time menggunakan GPS latar belakang dengan filter drift akurasi tinggi.",
     },
     {
-      icon: "health_and_safety",
-      label: "Health",
-      title: "Dynamic Vehicle Health",
+      icon: "build",
+      label: "Diagnostics",
+      title: "Masa Pakai Part",
       description:
-        "Kalkulasi otomatis kesehatan oli dan mesin berbasis interval 2000 KM dengan notifikasi visual saat servis diperlukan.",
+        "Monitoring sisa masa pakai suku cadang (oli, busi, ban) secara dinamis berdasarkan akumulasi kilometer tempuh.",
     },
     {
       icon: "garage",
       label: "Garage",
-      title: "Garage Management",
+      title: "Manajemen Garasi",
       description:
-        "Kelola garasi berisi beberapa kendaraan sekaligus dalam tampilan kartu modern berbasis Glassmorphism.",
+        "Kelola beberapa sepeda motor dalam satu aplikasi terintegrasi dengan data riwayat servis yang terpisah.",
     },
     {
       icon: "database",
-      label: "Offline",
-      title: "100% SQLite Storage",
+      label: "Privacy",
+      title: "Penyimpanan Lokal",
       description:
-        "Seluruh data riwayat servis, trip log, dan nota servis disimpan aman di penyimpanan lokal tanpa koneksi internet.",
+        "Seluruh data riwayat servis, trip log, dan nota disimpan 100% offline di database SQLite lokal demi privasi.",
     },
   ],
   showcase: {
@@ -91,35 +92,43 @@ export const rideAssistProjectData: ProjectDetailPageData = {
     visualDescription:
       "Tampilan aplikasi mobile RideAssist dengan dashboard modern, kartu informasi kesehatan motor, dan visual timeline riwayat servis.",
     primaryActionLabel: "Download APK",
-    secondaryActionLabel: "Read GPS Guide",
+    primaryActionIcon: "download",
+    secondaryActionLabel: "",
     features: [
       {
-        id: "dynamic-health",
-        title: "Dynamic Vehicle Health Dashboard",
-        description: "Kalkulasi otomatis persentase kesehatan mesin berdasarkan jarak odometer saat ini dari interval servis terakhir (batas 2.000 km) untuk memberi peringatan dini.",
-        image: "/rideassist-hero.png",
-        icon: "health_and_safety"
+        id: "autotrack",
+        title: "Pelacakan Perjalanan GPS",
+        description: "Merekam trip perjalanan dan kecepatan rata-rata menggunakan background GPS tracking dengan filtering koordinat presisi.",
+        image: "/rideassist/AutoTrack.jpeg",
+        icon: "map"
       },
       {
-        id: "gps-tracking",
-        title: "Auto-Track GPS & Trip Logging",
-        description: "Pelacakan trip perjalanan dengan filter noise geolocator, mengukur jarak riil serta kecepatan rata-rata untuk disimpan sebagai TripRecord.",
-        image: "/rideassist-hero.png",
-        icon: "speed"
-      },
-      {
-        id: "local-sqlite",
-        title: "100% Offline SQLite Database",
-        description: "Seluruh data transaksi servis, status motor, dan riwayat perjalanan disimpan langsung ke dalam tabel relasional lokal Sqflite demi privasi data mutlak.",
-        image: "/rideassist-hero.png",
-        icon: "database"
-      },
-      {
-        id: "glassmorphic-garage",
-        title: "Glassmorphism Garage Management",
-        description: "Tampilan garasi modern dengan filter visual glassmorphism, memungkinkan pengguna melacak dan beralih di antara beberapa motor dengan mudah.",
-        image: "/rideassist-hero.png",
+        id: "garage",
+        title: "Manajemen Garasi Motor",
+        description: "Kelola data beberapa sepeda motor Anda sekaligus dalam garasi virtual, lengkap dengan visualisasi status masing-masing kendaraan.",
+        image: "/rideassist/ShowroomMotor.jpeg",
         icon: "garage"
+      },
+      {
+        id: "usage",
+        title: "Status Suku Cadang & Oli",
+        description: "Pantau persentase masa pakai suku cadang penting seperti oli mesin, filter, busi, dan ban secara dinamis berdasarkan kilometer tempuh.",
+        image: "/rideassist/InformasiPenggunaanPart.jpeg",
+        icon: "build"
+      },
+      {
+        id: "history",
+        title: "Log & Riwayat Perawatan",
+        description: "Simpan riwayat penggantian komponen, catatan biaya perawatan, dan riwayat servis berkala secara teratur dan offline.",
+        image: "/rideassist/HistoryService.jpeg",
+        icon: "history"
+      },
+      {
+        id: "notif",
+        title: "Pengingat & Notifikasi Servis",
+        description: "Kustomisasi interval batas pemakaian suku cadang dan terima notifikasi peringatan saat komponen sudah mendekati batas pemakaian.",
+        image: "/rideassist/NotifService.jpeg",
+        icon: "notifications_active"
       }
     ]
   },
@@ -133,23 +142,23 @@ export const rideAssistProjectData: ProjectDetailPageData = {
     steps: [
       {
         title: "Stream Initialization",
-        body: "User mengaktifkan tracking; aplikasi memeriksa izin lokasi dan membuat LocationSettings (AndroidSettings/AppleSettings) dengan filter minimal 5m.",
+        body: "User mengaktifkan tracking; aplikasi memeriksa izin lokasi (Permission Handler) dan menginisialisasi GPS stream latar belakang.",
         highlighted: false,
       },
       {
         title: "Intelligent GPS Filtering",
-        body: "Dart stream memproses koordinat real-time, mendeteksi dan membuang lonjakan aneh (drift) berdasarkan akurasi horizontal dan batas kecepatan idle.",
+        body: "Dart stream memproses koordinat secara real-time, menyaring pergeseran (drift) menggunakan Geolocator berdasarkan horizontal accuracy (toleransi < 15 meter) dan idle threshold (kecepatan < 3 km/jam atau pergerakan < 5 meter).",
         highlighted: true,
       },
       {
-        title: "Trip Consolidation",
-        body: "Jarak terakumulasi disimpan sebagai model TripRecord (latitude, longitude, duration, speed) saat user menonaktifkan tracking.",
+        title: "Trip Consolidation & Local Commit",
+        body: "Data perjalanan yang telah difilter dikonsolidasikan dan disimpan ke database SQLite lokal (Sqflite). State Riverpod diperbarui untuk memicu kalkulasi ulang persentase kesehatan suku cadang (part health) dan memperbarui tampilan UI dashboard.",
+        highlighted: true,
+      },
+      {
+        title: "Firebase Auth & Firestore Cloud Sync",
+        body: "Jika perangkat terhubung dengan internet, data lokal yang baru disimpan akan disinkronisasikan secara asinkron (di latar belakang) ke Cloud Firestore menggunakan kredensial dari Firebase Authentication.",
         highlighted: false,
-      },
-      {
-        title: "SQLite Local Commit",
-        body: "Sqflite menyimpan record secara lokal; Riverpod melakukan trigger update state, menghitung ulang kesehatan motor, dan merender UI.",
-        highlighted: true,
       },
     ],
   },

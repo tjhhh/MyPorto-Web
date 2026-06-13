@@ -60,10 +60,12 @@ export type ProjectDetailPageData = {
     primaryAction: {
       label: string;
       href: string;
+      icon?: string;
     };
     secondaryAction: {
       label: string;
       href: string;
+      icon?: string;
     };
   };
   overview: {
@@ -79,6 +81,8 @@ export type ProjectDetailPageData = {
     visualDescription: string;
     primaryActionLabel: string;
     secondaryActionLabel: string;
+    primaryActionIcon?: string;
+    secondaryActionIcon?: string;
     features?: ProjectDetailFeature[];
   };
   metadata: {
@@ -88,6 +92,7 @@ export type ProjectDetailPageData = {
   };
   architecture: {
     title: string;
+    image?: string;
     steps: ProjectDetailArchitectureStep[];
   };
   footer: {

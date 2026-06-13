@@ -14,11 +14,11 @@ export const idamanTslProjectData: ProjectDetailPageData = {
   ],
   hero: {
     tags: ["Web Portal", "Internal Operations", "Next.js", "Tailwind CSS"],
-    title: "IDAMAN-TSL: High-Performance Internal Team Collaboration Hub",
+    title: "IDAMAN-TSL: Sistem Informasi Data Pemanfaatan Tumbuhan & Satwa Liar",
     description:
-      "A fast, modern full-stack web application designed for internal operations and team management. Built with Next.js and Tailwind CSS, it offers smooth component architecture, role-based workflows, and automated reporting systems.",
+      "Portal manajemen dan pengolahan data pemanfaatan flora dan fauna liar terintegrasi untuk Balai Besar Konservasi Sumber Daya Alam (BBKSDA) Jawa Barat. Dilengkapi fitur statistik interaktif, manajemen izin penangkar, serta database referensi taksonomi.",
     image: {
-      src: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1200&q=80",
+      src: "/idamantsl/IDAMANTSL_TN.jpg",
       alt: "IDAMAN-TSL homepage preview",
     },
     metrics: [
@@ -27,8 +27,8 @@ export const idamanTslProjectData: ProjectDetailPageData = {
       { label: "Accessibility Score", value: "100/100" },
       { label: "Component Coverage", value: "95% Reusable" },
     ],
-    primaryAction: { label: "Visit Live Site", href: "https://idaman-tsl.github.io/idamantsl-webapp/" },
-    secondaryAction: { label: "GitHub Repo", href: "https://github.com/IDAMAN-TSL/idamantsl-webapp" },
+    primaryAction: { label: "Visit Live Site", href: "" },
+    secondaryAction: { label: "GitHub Repo", href: "" },
   },
   overview: {
     title: "Latar Belakang & Solusi Proyek",
@@ -38,120 +38,120 @@ export const idamanTslProjectData: ProjectDetailPageData = {
     ],
   },
   challenge: {
-    title: "Optimizing Remote Offline Synchronization & Image Compression",
+    title: "Optimizing Multi-Criteria Taxonomy Search & Verification Workflows",
     problem:
-      "Petugas lapangan yang mendokumentasikan flora & fauna dilindungi (TSL) di hutan terpencil sering kehilangan sinyal internet. Aplikasi harus dapat menyimpan log keanekaragaman hayati dan foto beresolusi tinggi secara lokal di perangkat tanpa membuat browser crash akibat konsumsi memori berlebih.",
+      "Admin BBKSDA Jabar harus mengelola ribuan data izin penangkar TSL dengan berbagai kriteria penyaringan (IUCN, CITES, status perlindungan) dan memproses verifikasi izin yang masuk. Melakukan query langsung ke database untuk setiap interaksi filter menyebabkan beban server tinggi dan antarmuka melambat.",
     solution:
-      "Mengembangkan antrian offline menggunakan IndexedDB untuk menyimpan data JSON terstruktur. Sebelum disimpan, foto beresolusi tinggi dikompresi di sisi client menggunakan HTML5 Canvas API secara dinamis hingga di bawah 500KB. Antrian sinkronisasi latar belakang kemudian akan mengirimkan data secara sekuensial saat koneksi terdeteksi kembali.",
+      "Mengimplementasikan pencarian client-side terindeks menggunakan Fuse.js untuk data referensi taksonomi statis dan optimasi state React untuk dynamic filtering tabel Penangkar. Untuk alur verifikasi berkas, ditambahkan optimisasi cache di sisi klien menggunakan React Server Components guna mempercepat transisi status data permohonan tanpa merender ulang seluruh halaman.",
     bullets: [
-      "Image Compression: Melakukan resize dan kompresi kualitas gambar pada canvas secara on-device sebelum disimpan.",
-      "IndexedDB Queue: Mengelola antrean sinkronisasi data log menggunakan schema IndexedDB lokal.",
-      "Sequential Sync: Menjadwalkan pengiriman payload antrean secara bertahap saat koneksi internet pulih guna menghindari timeout.",
+      "Taxonomy Indexing: Membuat indeks taksonomi hierarkis (Kingdom -> Spesies) di sisi klien untuk pencarian instan.",
+      "Dynamic Filtering: Mengoptimalkan performa rendering baris tabel Penangkar menggunakan React memoization.",
+      "State Verification: Memperbarui status verifikasi secara optimistik di UI sebelum respons API selesai guna menghindari jeda visual.",
     ],
     result:
-      "Result: Ukuran payload unggahan berkurang hingga 85%, sehingga sinkronisasi data tetap berhasil diselesaikan meskipun menggunakan sinyal 2G yang sangat lemah.",
+      "Result: Kecepatan filter data tabel meningkat hingga 90% (di bawah 50ms) dan mengurangi beban request API verifikasi ke server.",
   },
   techStack: [
-    "Framework & Language: Next.js 15 (App Router), TypeScript 5, React 19",
-    "Styling & UI Engine: Tailwind CSS v4, Material Symbols",
-    "Quality Tooling: ESLint, Prettier",
-    "Deployment: GitHub Pages (Static Site Generation)",
+    "Framework & Language: Next.js, Express.js, TypeScript, React",
+    "Styling & UI Engine: Tailwind CSS, Material Symbols",
+    "Quality Tooling: ESLint, Prettier, Jest, PlayWright",
+    "Deployment: Azure Hosting",
   ],
   capabilities: [
     {
       icon: "dashboard",
-      label: "Portal",
-      title: "Interactive Operations Hub",
+      label: "Dashboard",
+      title: "Visualisasi Statistik TSL",
       description:
-        "Dashboard pusat untuk memetakan tugas internal tim, jadwal operasional, serta direktori kontak anggota tim.",
+        "Dashboard interaktif dengan grafik statistik tahunan penangkar, pengedar DN/LN, dan lembaga konservasi secara real-time.",
     },
     {
-      icon: "widgets",
-      label: "Architecture",
-      title: "Highly Reusable Components",
+      icon: "inventory",
+      label: "Penangkaran",
+      title: "Manajemen Penangkar TSL",
       description:
-        "Dirancang dengan prinsip atomic design, memastikan elemen navigasi, card, dan tombol dapat digunakan kembali secara konsisten.",
+        "Sistem pencarian dan pengelolaan data izin unit penangkaran flora/fauna liar, lengkap dengan status perlindungan spesies.",
     },
     {
-      icon: "speed",
-      label: "Performance",
-      title: "Server-Side Prerendering",
+      icon: "menu_book",
+      label: "Taksonomi",
+      title: "Database Referensi TSL",
       description:
-        "Melakukan pre-compile rute menjadi static HTML saat proses build untuk menjamin kecepatan load instan bagi pengguna.",
+        "Database taksonomi TSL lengkap dengan filter kingdom, genus, spesies, serta status kelangkaan standar nasional dan IUCN.",
     },
     {
-      icon: "dark_mode",
-      label: "Themes",
-      title: "Modern Dark/Light System",
+      icon: "verified_user",
+      label: "Verifikasi",
+      title: "Verifikasi Berkas Digital",
       description:
-        "Dukungan mode gelap bawaan Tailwind dengan kontras warna standar WCAG yang menyesuaikan preferensi sistem operasi user secara otomatis.",
+        "Modul pemrosesan berkas permohonan masuk dari penangkar secara transparan, akuntabel, dan terintegrasi cepat.",
     },
   ],
   showcase: {
-    title: "Streamlining Internal Workflows",
+    title: "Sistem Informasi Terintegrasi",
     visualTitle: "Portal Interface",
     visualDescription:
-      "Tampilan dashboard web aplikasi modern dengan tabel operasional yang responsif.",
+      "Tampilan antarmuka sistem informasi data pemanfaatan tumbuhan dan satwa liar Jawa Barat yang responsif dan modern.",
     primaryActionLabel: "Visit Live Hub",
     secondaryActionLabel: "View GitHub Repo",
     features: [
       {
-        id: "operations-hub",
-        title: "Interactive Operations Hub",
-        description: "Dashboard pusat untuk memetakan tugas internal tim, jadwal operasional, serta direktori kontak anggota tim secara terpusat.",
-        image: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1200&q=80",
+        id: "portal-utama",
+        title: "Portal Utama & Landing Page",
+        description: "Gerbang utama sistem informasi terintegrasi untuk publik dan petugas Balai Besar Konservasi Sumber Daya Alam (BBKSDA) Jawa Barat.",
+        image: "/idamantsl/landing-page.png",
+        icon: "home"
+      },
+      {
+        id: "dashboard-statistik",
+        title: "Dashboard & Visualisasi Statistik",
+        description: "Dashboard interaktif dengan grafik perkembangan tahunan, indikator jumlah penangkar, pengedar, dan lembaga konservasi secara real-time.",
+        image: "/idamantsl/dashboard.png",
         icon: "dashboard"
       },
       {
-        id: "offline-sync",
-        title: "IndexedDB Offline Sync",
-        description: "Penyimpanan log keanekaragaman hayati TSL secara lokal menggunakan IndexedDB saat bertugas di hutan terpencil tanpa sinyal.",
-        image: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1200&q=80",
-        icon: "sync"
+        id: "manajemen-penangkar",
+        title: "Manajemen Penangkar TSL",
+        description: "Modul pengelolaan informasi unit penangkar TSL lengkap dengan filter wilayah seksi, masa berlaku SK, komoditas spesies, dan status perlindungan.",
+        image: "/idamantsl/penangkar-tsl.png",
+        icon: "inventory"
       },
       {
-        id: "image-compression",
-        title: "Client-Side Canvas Compression",
-        description: "Kompresi dinamis foto flora/fauna hingga di bawah 500KB via HTML5 Canvas API guna menghemat kuota dan memori.",
-        image: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1200&q=80",
-        icon: "compress"
-      },
-      {
-        id: "dark-mode",
-        title: "Modern Dark/Light Themes",
-        description: "Sistem tema otomatis dengan rasio kontras tinggi bersertifikasi WCAG untuk kenyamanan pandangan mata petugas di lapangan.",
-        image: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1200&q=80",
-        icon: "dark_mode"
+        id: "katalog-taksonomi",
+        title: "Katalog Referensi Taksonomi TSL",
+        description: "Database taksonomi lengkap flora/fauna liar berdasarkan kingdom, kelas, genus, spesies, serta status kelangkaan CITES dan IUCN.",
+        image: "/idamantsl/referensi-tsl.png",
+        icon: "menu_book"
       }
     ]
   },
   metadata: {
-    role: "Lead Fullstack Developer & Designer",
-    timeline: "3 Weeks (April 2026)",
+    role: "Frontend Developer",
+    timeline: "4 Months (March - June 2026)",
     category: "Internal Operations / Collaboration Platform",
   },
   architecture: {
-    title: "Workflow Architecture",
+    title: "System Architecture",
     steps: [
       {
-        title: "Static Compilation",
-        body: "Next.js melakukan kompilasi direktori operasional menjadi file statis yang dioptimalkan saat proses build.",
-        highlighted: false,
-      },
-      {
-        title: "Atomic Loading",
-        body: "Proses hidrasi JavaScript mengikat event handler ke komponen HTML kurang dari 150ms di perangkat berspesifikasi rendah.",
+        title: "Role-Based JWT Auth",
+        body: "Pengguna (Admin Pusat, Bidang, atau Seksi Wilayah) melakukan autentikasi via Next.js; Express.js memvalidasi kredensial dan menerbitkan token JWT terenkripsi.",
         highlighted: true,
       },
       {
-        title: "Interactive Operations",
-        body: "User menggunakan fitur filter tugas; React state management memproses data secara lokal tanpa perlu request ke server.",
+        title: "Client-Side State Hydration",
+        body: "Next.js memuat data dari REST API; data Penangkar & Referensi TSL diolah secara lokal menggunakan React State untuk pencarian instan tanpa overhead query.",
         highlighted: false,
       },
       {
-        title: "Audit Cache Commit",
-        body: "Log aktivitas disimpan ke local session storage untuk menjamin data filter tetap bertahan saat halaman dimuat ulang.",
+        title: "PostgreSQL Database Transaction",
+        body: "Saat data diperbarui, Express.js memproses request, memvalidasi skema data, dan melakukan query transaksi aman ke database PostgreSQL di Azure.",
         highlighted: true,
+      },
+      {
+        title: "Hierarchical Verification",
+        body: "Berkas permohonan TSL mengalir sekuensial: diinput di Seksi Wilayah, diverifikasi oleh Bidang Wilayah, dan disetujui di tingkat Admin Pusat.",
+        highlighted: false,
       },
     ],
   },

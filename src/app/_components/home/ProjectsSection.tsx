@@ -100,15 +100,6 @@ function ProjectCard({ project, techIcons }: Readonly<ProjectCardProps>) {
                 Live Website
               </a>
             )}
-
-            <a
-              href={project.repoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center border border-outline-variant bg-surface-container px-4 py-2 font-space text-[10px] tracking-[0.12em] text-on-surface uppercase transition-colors duration-300 ease-out hover:border-primary hover:text-primary"
-            >
-              GitHub Repo
-            </a>
           </div>
 
           <Link

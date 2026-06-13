@@ -1,10 +1,10 @@
 import type { ProjectDetailPageData } from "@/app/_types/project-detail";
 
 export const hikePassMobileProjectData: ProjectDetailPageData = {
-  sectionLabel: "Mobile App Case Study", // Kategori halaman
-  projectName: "HikePass Mobile", // Nama project Anda
-  backHref: "/projects", // Link tombol kembali
-  backLabel: "Back to Projects", // Teks tombol kembali
+  sectionLabel: "Mobile App Case Study",
+  projectName: "HikePass Mobile",
+  backHref: "/projects",
+  backLabel: "Back to Projects",
   navLinks: [
     { label: "Overview", href: "#overview" },
     { label: "Stack", href: "#stack" },
@@ -13,88 +13,81 @@ export const hikePassMobileProjectData: ProjectDetailPageData = {
     { label: "Architecture", href: "#architecture" },
   ],
   hero: {
-    tags: ["Flutter", "Supabase BaaS", "GetX State Management", "Gemini AI"], // Tag utama
-    title: "Digitalisasi Sistem Perizinan (SIMAKSI) & Keselamatan Pendakian Gunung", // Judul besar editorial
+    tags: ["Flutter", "Supabase BaaS", "GetX MVC Pattern", "Gemini AI"],
+    title: "HikePass: Modern Hiking Management & Climbing Security System",
     description:
-      "HikePass adalah aplikasi mobile modern yang menyederhanakan birokrasi pendakian gunung, mulai dari registrasi online, verifikasi dokumen identitas (KTP), pelaporan darurat real-time berbasis GPS, hingga asisten AI panduan pendaki.",
+      "Aplikasi mobile berbasis Flutter & GetX terintegrasi dengan Supabase BaaS dan Google Gemini AI. Membantu mendigitalisasi birokrasi perizinan SIMAKSI, audit barang bawaan pendaki, serta pelaporan kondisi jalur pendakian secara real-time.",
     image: {
-      src: "/hikepass-mockup.png", // Letakkan gambarnya di folder /public/ portofolio Anda
-      alt: "HikePass mobile app mockup interface",
+      src: "/hikepass-mobile/Hikepass-Mobile_TN.jpg",
+      alt: "HikePass Mobile App Interface Mockup",
     },
     metrics: [
-      // Statistik performa proyek yang disukai recruiter
-      { label: "Keamanan Akses", value: "Supabase RLS" },
-      { label: "Verifikasi OTP", value: "<10 Detik" },
-      { label: "Validasi Berkas", value: "100% Paperless" },
+      { label: "Audit Logistik", value: "100% Trashless" },
+      { label: "Verifikasi OTP", value: "< 10 Detik" },
+      { label: "Image Compressing", value: "< 2.0 MB" },
+      { label: "AI Response Stream", value: "Real-time" },
     ],
-    primaryAction: {
-      label: "Lihat Demo",
-      href: "https://github.com/hikepassapp/hikepassApp",
-    },
-    secondaryAction: {
-      label: "GitHub Repo",
-      href: "https://github.com/hikepassapp/hikepassApp",
-    },
+    primaryAction: { label: "", href: "" },
+    secondaryAction: { label: "", href: "" },
   },
   overview: {
-    title: "Latar Belakang & Solusi Proyek",
+    title: "Digitalisasi Perizinan SIMAKSI & Kelestarian Jalur",
     paragraphs: [
-      "Sistem perizinan pendakian gunung konvensional (SIMAKSI) di Indonesia seringkali terkendala oleh antrean panjang di pos penjagaan, pendataan barang bawaan secara manual menggunakan kertas, serta minimnya alat pelacakan pendaki di lapangan yang membahayakan keselamatan saat terjadi kondisi darurat.",
-      "HikePass hadir mengatasi masalah tersebut dengan memindahkan seluruh alur perizinan ke dalam platform mobile terintegrasi. Pendaki dapat memesan slot jalur, melakukan verifikasi OTP, mengunggah berkas KTP, serta melakukan check-in/out secara mandiri. Aplikasi ini juga dilengkapi asisten virtual 'Rimba' bertenaga AI untuk panduan keselamatan dan fitur Laporan Darurat (Emergency Report) instan dengan koordinat GPS presisi.",
+      "Proses perizinan pendakian gunung konvensional (SIMAKSI) di Indonesia sebagian besar masih dikelola secara manual atau melalui situs web terpisah yang kurang responsif. Hal ini menyebabkan antrean panjang di basecamp, kesulitan pemantauan kuota pendaki secara real-time, kurangnya pengawasan terhadap barang bawaan pendaki (yang berkontribusi pada penumpukan sampah di gunung), serta lambatnya respons penanganan kendala rute.",
+      "HikePass menawarkan solusi mobile terintegrasi dengan sistem backend real-time. Pendaki dapat memesan izin pendakian sesuai jalur dan tanggal pilihan, mengunggah kartu identitas, melampirkan laporan kondisi rute secara instan, dan melakukan check-in/out secara mandiri. Pengelola basecamp memiliki dasbor audit barang bawaan naik-turun guna mengontrol sampah plastik, serta memonitor laporan rintangan rute pendakian dengan koordinat GPS presisi.",
     ],
   },
   challenge: {
-    // Tantangan Teknis Terberat
-    title:
-      "Sinkronisasi State Check-In & Penanganan Kegagalan Jaringan di Area Gunung",
+    title: "Resiliensi Koneksi Latar Belakang & Kompresi Gambar di Area Minim Sinyal",
     problem:
-      "Saat berada di lereng gunung atau pos pendakian, sinyal internet sering kali tidak stabil atau mati total. Hal ini menghambat pendaki dalam melakukan check-in perlengkapan bawaan atau melaporkan status darurat ke database pusat Supabase secara real-time, yang berisiko membuat kuota pendakian aktif tidak sinkron.",
+      "Saat berada di area pegunungan, pendaki sering mengalami hilangnya sinyal internet (offline) secara tiba-tiba. Hal ini menghambat sinkronisasi status check-in, pengiriman laporan kondisi jalur, serta pengunggahan bukti foto/dokumen identitas berukuran besar ke Supabase Storage, yang berpotensi menyebabkan kegagalan transaksi perizinan.",
     solution:
-      "Kami mengimplementasikan modul ErrorHandlingService terpusat yang secara dinamis mendeteksi status konektivitas perangkat. Layanan ini dirancang menggunakan mekanisme retry terintegrasi (exponential backoff) untuk operasi database krusial, pembagian tipe error spesifik (AuthException, PostgrestException, StorageException), dan pemanfaatan Supabase Realtime Subscriptions agar data langsung sinkron secara otomatis begitu koneksi internet pulih kembali.",
+      "Kami mengimplementasikan modul ErrorHandlingService terpusat berbasis Socket lookup dinamis (setiap 10 detik) untuk retry otomatis dengan exponential backoff. Selain itu, kami membuat ImageOptimizationService menggunakan flutter_image_compress untuk mengompresi bukti laporan dan foto dokumen secara lokal di bawah 2MB sebelum diunggah.",
     bullets: [
-      "Membangun ErrorHandlingService dengan monitoring konektivitas background berbasis Socket lookup google.com.",
-      "Penerapan fungsi retry otomatis (maksimal 3 kali percobaan) dengan penundaan adaptif untuk meminimalkan data loss.",
-      "Pemanfaatan Supabase Realtime Channels untuk sinkronisasi state instan check-in/out antara perangkat pendaki dan pos ranger.",
+      "Pendeteksian status koneksi dinamis berbasis Google Socket lookup setiap 10 detik.",
+      "Mekanisme retry otomatis (exponential backoff) pada kegagalan transaksi database Supabase.",
+      "Kompresi otomatis dokumen lokal (.png, .jpeg, .webp, .heic) ke ukuran optimal di bawah 2MB.",
+      "Pemisahan penanganan tipe error spesifik (Auth, Postgrest, Storage) untuk notifikasi UI yang ramah pengguna.",
     ],
     result:
-      "Result: Meminimalkan kegagalan pengiriman transaksi perizinan dan pelaporan hingga 99.8% di area sinyal lemah, serta menjaga konsistensi data kuota pendaki di database pusat.",
+      "Result: Menjamin keberhasilan transaksi perizinan dan laporan kondisi jalur hingga 99.8% pada kondisi sinyal lemah, serta menghemat bandwidth pengiriman gambar hingga 75%.",
   },
   techStack: [
-    "Frontend & Language: Flutter 3.0+, Dart, GetX State Management",
-    "Database & Backend: Supabase (Auth, Realtime, Storage, PostgreSQL)",
-    "Security: Row Level Security (RLS) Policies & OTP Verification",
-    "AI Service: Google Gemini API (gemini-2.5-flash) for virtual assistant Rimba",
+    "Frontend & Language: Flutter 3.0+, Dart, GetX State Management & Routing",
+    "Database & Backend: Supabase BaaS (Auth, Realtime Channels, Storage, PostgreSQL)",
+    "Security & Policies: Row Level Security (RLS) & OTP Authentication",
+    "AI Integration: Google Gemini API (gemini-2.5-flash) for Virtual Assistant Rimba",
+    "External APIs: OpenWeatherMap API for live mountain weather forecast",
     "Utilities: flutter_image_compress, shared_preferences, google_maps_flutter",
   ],
   capabilities: [
-    // Fitur-fitur utama aplikasi (maksimal 4)
     {
-      icon: "assignment_turned_in", // Menggunakan Google Material Icons
+      icon: "assignment_turned_in",
       label: "Core Service",
       title: "Digital SIMAKSI & E-Ticket",
       description:
-        "Pendaftaran izin mendaki dengan unggah dokumen identitas yang dikompresi otomatis, menghasilkan e-tiket instan setelah disetujui.",
+        "Pendaftaran izin mendaki dengan verifikasi dokumen (NIK/KTP), monitoring sisa kuota, dan e-ticket instan.",
     },
     {
-      icon: "emergency",
-      label: "Safety First",
-      title: "Laporan Darurat & Lokasi GPS",
+      icon: "report_problem",
+      label: "Trail Report",
+      title: "Laporan Kondisi Jalur & GPS",
       description:
-        "Fitur SOS cepat yang mengirimkan titik koordinat GPS presisi dan foto bukti insiden langsung ke pos pengelola saat darurat.",
+        "Pelaporan kendala rute (pohon tumbang/longsor) real-time dengan koordinat GPS presisi dan bukti foto terkompresi.",
     },
     {
       icon: "assistant",
       label: "AI Assistant",
       title: "Asisten Rimba (Gemini AI)",
       description:
-        "Integrasi Gemini 2.5 Flash yang bertindak sebagai pemandu virtual Rimba, memberikan info jalur, cuaca, dan tips keselamatan.",
+        "Asisten virtual terintegrasi Gemini 2.5 Flash untuk panduan keselamatan, tips bertahan hidup, dan status cuaca gunung.",
     },
     {
       icon: "sync",
-      label: "Verification",
+      label: "Eco Management",
       title: "Smart Check-In & Check-Out",
       description:
-        "Pemeriksaan barang bawaan pendaki secara terstruktur di pos untuk kelestarian alam, tersinkronisasi instan via Supabase Realtime.",
+        "Audit logistik barang bawaan secara terstruktur saat naik dan turun gunung guna meminimalisasi sampah plastik.",
     },
   ],
   showcase: {
@@ -106,61 +99,89 @@ export const hikePassMobileProjectData: ProjectDetailPageData = {
     secondaryActionLabel: "GitHub Repo",
     features: [
       {
+        id: "home",
+        title: "Dashboard Utama",
+        description:
+          "Halaman beranda aplikasi menampilkan status pendakian aktif, ringkasan cuaca terjemahan Bahasa Indonesia, berita terkini, dan akses cepat ke asisten Rimba.",
+        image: "/hikepass-mobile/Home.jpeg",
+        icon: "dashboard",
+      },
+      {
         id: "simaksi",
-        title: "Digital SIMAKSI & E-Ticket",
-        description: "Pendaftaran izin mendaki gunung secara digital dengan kompresi dokumen otomatis untuk menghemat bandwidth.",
-        image: "/hikepass-mockup.png",
-        icon: "assignment_turned_in"
-      },
-      {
-        id: "sos",
-        title: "Emergency GPS SOS",
-        description: "Pelaporan darurat instan yang mengirimkan titik koordinat GPS presisi dan foto bukti langsung ke pos rangers terdekat.",
-        image: "/hikepass-mockup.png",
-        icon: "emergency"
-      },
-      {
-        id: "rimba_ai",
-        title: "Asisten Rimba (Gemini AI)",
-        description: "Virtual assistant bertenaga Gemini yang menjawab pertanyaan seputar jalur pendakian, cuaca, dan tips kelangsungan hidup.",
-        image: "/hikepass-mockup.png",
-        icon: "assistant"
+        title: "Digital SIMAKSI & Booking",
+        description:
+          "Pendaftaran izin mendaki gunung secara digital dengan pengisian form manifest dan pemesanan e-ticket secara online.",
+        image: "/hikepass-mobile/Booking.jpeg",
+        icon: "assignment_turned_in",
       },
       {
         id: "checkin",
         title: "Smart Check-In & Check-Out",
-        description: "Pemeriksaan barang bawaan logistik pendaki yang tersinkronisasi langsung ke pos ranger via Supabase Realtime Channels.",
-        image: "/hikepass-mockup.png",
-        icon: "sync"
-      }
-    ]
+        description:
+          "Pemeriksaan barang bawaan logistik pendaki secara terstruktur di pos ranger yang tersinkronisasi langsung via Supabase Realtime.",
+        image: "/hikepass-mobile/Checkin_Chcekout.jpeg",
+        icon: "sync",
+      },
+      {
+        id: "laporan",
+        title: "Laporan Kondisi Jalur",
+        description:
+          "Fitur pelaporan rintangan atau kondisi jalur pendakian secara real-time dengan melampirkan foto bukti dan koordinat lokasi.",
+        image: "/hikepass-mobile/Laporan.jpeg",
+        icon: "report_problem",
+      },
+      {
+        id: "rimba_ai",
+        title: "Asisten Rimba (Gemini AI)",
+        description:
+          "Virtual assistant bertenaga Gemini yang menjawab pertanyaan seputar kelangsungan hidup di hutan, cuaca, dan rute navigasi.",
+        image: "/hikepass-mobile/RimbaAI.jpeg",
+        icon: "assistant",
+      },
+      {
+        id: "informasi",
+        title: "Informasi Cuaca & Tips",
+        description:
+          "Halaman panduan pendakian dengan prakiraan cuaca pegunungan terperinci dan tips kesiapan fisik.",
+        image: "/hikepass-mobile/Informasi.jpeg",
+        icon: "cloud",
+      },
+      {
+        id: "history",
+        title: "Riwayat Pendakian & E-Badge",
+        description:
+          "Pencatatan riwayat pendakian yang telah diselesaikan serta penghargaan e-badge sebagai bentuk apresiasi pencapaian pendakian.",
+        image: "/hikepass-mobile/History.jpeg",
+        icon: "history",
+      },
+    ],
   },
   metadata: {
-    role: "Lead Full-Stack / Mobile Developer",
-    timeline: "4 Weeks Development",
+    role: "Mobile Developer",
+    timeline: "14 Weeks Development",
     category: "Mobile App / Booking & Public Safety",
   },
   architecture: {
-    title: "System Architecture & Data Flow",
+    title: "System Architecture & GetX MVC Flow",
     steps: [
       {
-        title: "Tahap 1: Registrasi & Verifikasi OTP",
-        body: "Pengguna melakukan registrasi melalui Supabase Auth, memverifikasi akun via kode OTP email, dan melengkapi data profil pendaki.",
+        title: "Presentation Layer (GetX Views)",
+        body: "Views (seperti LaporanView) bertugas menampilkan data ke pengguna dan menangkap event aksi pengguna secara reaktif.",
         highlighted: true,
       },
       {
-        title: "Tahap 2: Pengajuan SIMAKSI & Pembayaran",
-        body: "Pendaki mengajukan reservasi, mengunggah foto berkas identitas (dikompresi otomatis melalui Image Compressor ke Supabase Storage), lalu menyelesaikan pembayaran tiket.",
+        title: "Business Logic Layer (GetX Services)",
+        body: "Services (seperti HikingService & GeminiService) memproses status check-in, kompresi gambar lokal, dan panggilan streaming API.",
         highlighted: true,
       },
       {
-        title: "Tahap 3: Validasi Pos & Check-In",
-        body: "Petugas pos memvalidasi perlengkapan pendaki dan melakukan check-in melalui aplikasi, memperbarui database status secara real-time via Postgres Changes.",
+        title: "Data Access Layer (Models & Gateways)",
+        body: "Repository mendefinisikan skema pemetaan JSON (seperti WeatherModel) dan mengelola komunikasi API dengan ErrorHandlingService.",
         highlighted: true,
       },
       {
-        title: "Tahap 4: Pendakian & Emergency System",
-        body: "Selama mendaki, pendaki dapat berkonsultasi dengan Rimba AI (Gemini) atau mengirimkan koordinat SOS ke dashboard ranger jika terjadi insiden.",
+        title: "Remote Infrastructure (Supabase & APIs)",
+        body: "Penyimpanan data relasional PostgreSQL (RLS), unggahan file ke Supabase Storage, dan sinkronisasi status via Realtime Channels.",
         highlighted: true,
       },
     ],

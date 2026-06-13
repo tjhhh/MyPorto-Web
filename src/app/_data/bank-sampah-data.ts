@@ -2,7 +2,7 @@ import type { ProjectDetailPageData } from "@/app/_types/project-detail";
 
 export const bankSampahProjectData: ProjectDetailPageData = {
   sectionLabel: "Case Study",
-  projectName: "Bank Sampah",
+  projectName: "HijauKu",
   backHref: "/projects",
   backLabel: "Back to Projects",
   navLinks: [
@@ -14,12 +14,12 @@ export const bankSampahProjectData: ProjectDetailPageData = {
   ],
   hero: {
     tags: ["Web Portal", "Digitalization", "Frontend Only", "Bootstrap"],
-    title: "Bank Sampah: Waste Management & Recycling Rewards Portal",
+    title: "HijauKu: Waste Management & Recycling Rewards Portal",
     description:
-      "A lightweight, highly responsive front-end portal built to digitalize community waste management. It assists users in calculating recycling points, cataloging scrap categories, and requesting pickups entirely via intuitive interfaces.",
+      "Portal front-end responsif dan ringan yang dirancang untuk mendigitalisasi pengelolaan sampah lingkungan. Membantu warga menghitung nilai konversi sampah daur ulang, katalog kategori sampah, serta pengiriman form pengambilan sampah.",
     image: {
-      src: "/bankSampah-display.png",
-      alt: "Bank Sampah home preview",
+      src: "/hijauku/HijauKu_TN.jpg",
+      alt: "HijauKu homepage preview",
     },
     metrics: [
       { label: "Page Load Time", value: "< 250ms" },
@@ -28,61 +28,61 @@ export const bankSampahProjectData: ProjectDetailPageData = {
       { label: "SEO Score", value: "98/100" },
     ],
     primaryAction: { label: "Visit Website", href: "https://simplix07.github.io/bankSampah1.2/" },
-    secondaryAction: { label: "GitHub Repo", href: "https://github.com/SIMPLIX07/bankSampah1.2" },
+    secondaryAction: { label: "", href: "" },
   },
   overview: {
-    title: "The Problem & Solution",
+    title: "Tantangan & Solusi Proyek",
     paragraphs: [
-      "THE CHALLENGE: Local communities lacked structured systems to track recyclable waste, resulting in poor waste separation and low participation. Existing portals were over-engineered, slow to load, and had confusing navigation for non-technical users.",
-      "THE SOLUTION: Bank Sampah simplifies waste accounting. Using semantic HTML5 and Bootstrap grid containers, the portal delivers a responsive, fast-loading interface. It incorporates local JS utilities to help users calculate financial rewards for plastic/paper deposits, encouraging environmental awareness.",
+      "TANTANGAN: Masyarakat sering kali mengalami kesulitan dalam memonitor nilai tukar sampah daur ulang karena pendataan pos sampah yang masih manual dan kurang transparan. Situs web informasi yang ada sebelumnya lambat diakses dari ponsel berspesifikasi rendah serta memiliki navigasi yang rumit.",
+      "SOLUSI: HijauKu menyederhanakan perhitungan insentif daur ulang sampah. Menggunakan HTML5 semantik dan sistem grid Bootstrap, portal ini menyajikan antarmuka yang sangat ringan dan cepat dimuat. Dilengkapi utilitas JavaScript lokal untuk menghitung estimasi rupiah dari setoran plastik/kertas guna meningkatkan partisipasi pelestarian lingkungan warga.",
     ],
   },
   challenge: {
-    title: "Developing Lightweight Client-Side Offline Calculators",
-    problem: "The community portal was designed for users with budget devices and unstable internet connections. Heavy frameworks would degrade page performance and result in incomplete form loads.",
-    solution: "Designed the waste reward calculators entirely using raw, vanilla client-side JavaScript. Used optimized custom CSS transitions instead of heavy animation libraries to maintain smooth animations even on low-end smartphones.",
+    title: "Membangun Kalkulator Klien yang Ringan & Offline-Ready",
+    problem: "Aplikasi harus berjalan optimal pada perangkat berspesifikasi rendah dengan koneksi internet tidak stabil di lokasi pengumpulan sampah tanpa membebani memori ponsel.",
+    solution: "Merancang kalkulator konversi sampah daur ulang sepenuhnya di sisi klien menggunakan vanilla JavaScript murni dan animasi transisi CSS3 kustom untuk menghindari overhead library visual tambahan.",
     bullets: [
-      "Vanilla JS execution: Operates with 0ms framework overhead, running purely on the browser's main thread.",
-      "Pure CSS animations: Minimizes layout thrashing and keeps rendering calculations highly efficient.",
-      "Local Session caching: Holds user transactions temporarily in local storage to prevent data loss."
+      "Eksekusi kalkulasi berbasis vanilla JS: Berjalan instan tanpa dependensi framework berat.",
+      "Optimasi transisi CSS murni: Menjaga rendering visual tetap mulus di smartphone kelas menengah ke bawah.",
+      "Mekanisme cache lokal: Menyimpan sesi entri data sementara untuk menghindari data hilang saat koneksi terputus.",
     ],
-    result: "Result: Page load times dropped below 250ms with 100% functionality preserved during completely offline states."
+    result: "Result: Waktu pemuatan halaman di bawah 250ms dan fungsionalitas kalkulator berjalan 100% lancar dalam kondisi offline."
   },
   techStack: [
     "HTML5 (Semantic Markup)",
-    "CSS3 (Custom Styling)",
+    "CSS3 (Custom Grid & Transitions)",
     "Bootstrap (UI Grid System)",
     "JavaScript (Client-Side Calculators)",
-    "Git Pages (Deployment)",
+    "GitHub Pages (Static Deployment)",
   ],
   capabilities: [
     {
       icon: "calculate",
       label: "Reward System",
-      title: "Recycling Value Calculator",
+      title: "Kalkulator Daur Ulang",
       description:
-        "Client-side calculator that instantly estimates points and rupiah earnings based on waste category and weight (kg).",
+        "Kalkulator client-side yang secara instan mengonversi bobot sampah plastik/kertas (kg) menjadi estimasi poin rupiah.",
     },
     {
       icon: "local_shipping",
       label: "Logistics",
-      title: "Waste Pickup Request",
+      title: "Form Pengajuan Setor",
       description:
-        "Simple, validation-secured forms enabling users to request scrap collection by local waste collectors.",
+        "Formulir pengajuan pengambilan sampah tervalidasi untuk memudahkan penjadwalan dengan petugas pengumpul sampah.",
     },
     {
       icon: "list_alt",
       label: "Database",
-      title: "Category Database",
+      title: "Katalog Jenis Sampah",
       description:
-        "Comprehensive catalogs explaining plastic types, paper recycling guidelines, and dynamic pricing metrics.",
+        "Panduan klasifikasi jenis sampah plastik (PET, HDPE, dll) beserta ketentuan harga konversi per kilogram.",
     },
     {
       icon: "smartphone",
       label: "Design",
-      title: "Mobile-First Design",
+      title: "Mobile-First Interface",
       description:
-        "Responsive Bootstrap layout optimized to run smoothly on budget smartphones used by local collectors in the field.",
+        "Tata letak responsif berbasis Bootstrap yang disesuaikan untuk kenyamanan akses petugas lapangan di luar ruangan.",
     },
   ],
   showcase: {
@@ -91,6 +91,43 @@ export const bankSampahProjectData: ProjectDetailPageData = {
     visualDescription: "Interactive client-side calculator running entirely on vanilla JavaScript.",
     primaryActionLabel: "Visit Live Site",
     secondaryActionLabel: "View GitHub Repo",
+    features: [
+      {
+        id: "landing",
+        title: "Halaman Utama & Edukasi",
+        description: "Tampilan beranda edukatif dengan pengenalan program daur ulang sampah dan ajakan menjaga kelestarian lingkungan.",
+        image: "/hijauku/LandingPage.png",
+        icon: "home"
+      },
+      {
+        id: "dashboard",
+        title: "Dasbor Operasional",
+        description: "Halaman manajemen utama untuk memantau ringkasan aktivitas, panduan setor, dan status operasional bank sampah.",
+        image: "/hijauku/Dashboard.png",
+        icon: "dashboard"
+      },
+      {
+        id: "kalkulasi",
+        title: "Kalkulator Nilai Sampah",
+        description: "Kalkulator interaktif berbasis JavaScript untuk menghitung secara instan rupiah yang didapat berdasarkan berat sampah.",
+        image: "/hijauku/Kalkulasi.png",
+        icon: "calculate"
+      },
+      {
+        id: "komunitas",
+        title: "Portal Komunitas",
+        description: "Halaman interaksi sosial pendukung untuk menggalang aksi peduli kebersihan antar warga lingkungan sekitar.",
+        image: "/hijauku/Komunitas.png",
+        icon: "people"
+      },
+      {
+        id: "berita",
+        title: "Portal Berita & Tips",
+        description: "Artikel informatif seputar pengolahan limbah organik dan non-organik secara mandiri di rumah.",
+        image: "/hijauku/Berita.png",
+        icon: "article"
+      }
+    ]
   },
   metadata: {
     role: "Lead Frontend Developer & UI Designer",
@@ -123,7 +160,7 @@ export const bankSampahProjectData: ProjectDetailPageData = {
     ],
   },
   footer: {
-    copyrightLabel: "© 2026 Bank Sampah Case Study. Clean neighborhoods start here.",
+    copyrightLabel: "© 2026 HijauKu. Clean neighborhoods start here.",
     links: [
       { label: "Home", href: "/" },
       { label: "Projects", href: "/projects" },

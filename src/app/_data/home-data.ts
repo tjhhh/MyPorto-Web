@@ -12,8 +12,7 @@ export const allProjects: Project[] = [
     slug: "futsalpro",
     description:
       "Website full-stack untuk manajemen futsal dengan booking, notifikasi email, dan alur pembayaran online.",
-    image:
-      "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80",
+    image: "/futsalpro/FutsalPro_TN.jpg",
     tags: ["NextJS", "Tailwind", "Supabase", "Resend", "Midtrans", "Vercel", "PostgreSQL"],
     type: "Website - Full Stack",
     role: "Fullstack",
@@ -27,8 +26,7 @@ export const allProjects: Project[] = [
     slug: "rideassist",
     description:
       "Aplikasi mobile asistensi berkendara dengan arsitektur ringan untuk pengalaman real-time dan stabil.",
-    image:
-      "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80",
+    image: "/rideassist/RideAssists_TN.jpg",
     tags: ["Flutter", "Firebase"],
     type: "Mobile - App Development",
     role: "App Development",
@@ -41,15 +39,15 @@ export const allProjects: Project[] = [
     title: "IDAMAN-TSL",
     slug: "idaman-tsl",
     description:
-      "Website full-stack untuk kebutuhan internal tim dengan antarmuka cepat dan struktur komponen terukur.",
+      "Sistem informasi data pemanfaatan tumbuhan dan satwa liar untuk Balai Besar Konservasi Sumber Daya Alam (BBKSDA) Jawa Barat.",
     image:
-      "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1200&q=80",
+      "/idamantsl/IDAMANTSL_TN.jpg",
     tags: ["NextJS", "Tailwind"],
     type: "Website - Full Stack",
     role: "Fullstack",
     team: "Group",
-    repoUrl: "https://github.com/IDAMAN-TSL/idamantsl-webapp",
-    liveUrl: "https://idaman-tsl.github.io/idamantsl-webapp/",
+    repoUrl: null,
+    liveUrl: null,
     detailHref: "/projects/idaman-tsl",
   },
   {
@@ -57,8 +55,7 @@ export const allProjects: Project[] = [
     slug: "hikepass-mobile",
     description:
       "Aplikasi mobile untuk kebutuhan pendakian dengan autentikasi, manajemen data, dan notifikasi email.",
-    image:
-      "https://images.unsplash.com/photo-1464822759844-d150ad6d1dce?auto=format&fit=crop&w=1200&q=80",
+    image: "/hikepass-mobile/Hikepass-Mobile_TN.jpg",
     tags: ["Flutter", "Supabase", "GetX", "Resend"],
     type: "Mobile - App Development",
     role: "App Development",
@@ -83,33 +80,18 @@ export const allProjects: Project[] = [
     detailHref: "/projects/hikepass-website",
   },
   {
-    title: "Bank Sampah",
+    title: "HijauKu",
     slug: "bank-sampah",
     description:
-      "Website informatif dan operasional bank sampah untuk digitalisasi proses pengelolaan sederhana.",
-    image: "/bankSampah-display.png",
+      "Website informatif dan kalkulator daur ulang digital HijauKu untuk menyederhanakan pengelolaan sampah warga.",
+    image: "/hijauku/HijauKu_TN.jpg",
     tags: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     type: "Website - Frontend",
     role: "Frontend",
     team: "Group",
-    repoUrl: "https://github.com/SIMPLIX07/bankSampah1.2",
+    repoUrl: null,
     liveUrl: "https://simplix07.github.io/bankSampah1.2/",
     detailHref: "/projects/bank-sampah",
-  },
-  {
-    title: "Antitheft",
-    slug: "antitheft",
-    description:
-      "Aplikasi keamanan mobile untuk monitoring anti pencurian dengan dukungan backend NextJS.",
-    image:
-      "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=1200&q=80",
-    tags: ["Flutter", "NextJS (Server)"],
-    type: "Mobile - App Development",
-    role: "Backend",
-    team: "Solo",
-    repoUrl: "https://github.com/tjhhh/ji_antitheft",
-    liveUrl: null,
-    detailHref: "/projects/antitheft",
   },
 ];
 

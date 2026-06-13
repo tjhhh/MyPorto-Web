@@ -93,7 +93,7 @@ export const hikePassWebsiteProjectData: ProjectDetailPageData = {
     secondaryActionLabel: "View Repository",
   },
   metadata: {
-    role: "Lead Fullstack Developer & Architect",
+    role: "Frontend",
     timeline: "4 Weeks (May 2026)",
     category: "E-Commerce / Operations / Safety Management Platform",
   },

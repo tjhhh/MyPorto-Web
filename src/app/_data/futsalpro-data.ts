@@ -18,7 +18,7 @@ export const futsalProProjectData: ProjectDetailPageData = {
     description:
       "Platform digital end-to-end yang mempermudah pemain futsal melakukan booking lapangan secara instan dengan integrasi pembayaran Midtrans, serta membantu pemilik venue mengelola jadwal, pendapatan, dan turnamen futsal secara efisien.",
     image: {
-      src: "/futsalpro-dashboard.png",
+      src: "/futsalpro/FutsalPro_TN.jpg",
       alt: "FutsalPro hero mockup",
     },
     metrics: [
@@ -27,8 +27,8 @@ export const futsalProProjectData: ProjectDetailPageData = {
       { label: "API Response Time", value: "<100ms" },
       { label: "Tournaments Managed", value: "85+" },
     ],
-    primaryAction: { label: "Coba Aplikasi", href: "/" },
-    secondaryAction: { label: "Cari Lapangan", href: "/explore" },
+    primaryAction: { label: "Cari Lapangan", href: "https://futsalpro.my.id", icon: "explore" },
+    secondaryAction: { label: "", href: "" },
   },
   overview: {
     title: "Modernisasi Ekosistem Futsal Amatir",
@@ -56,68 +56,76 @@ export const futsalProProjectData: ProjectDetailPageData = {
   ],
   capabilities: [
     {
+      icon: "explore",
+      label: "Discovery",
+      title: "Eksplorasi Venue",
+      description:
+        "Temukan lapangan futsal terbaik dengan filter lengkap seperti lokasi, jenis lantai, fasilitas, harga, dan rating.",
+    },
+    {
       icon: "calendar_today",
       label: "Core",
-      title: "Real-Time Booking",
+      title: "Booking Interaktif",
       description:
-        "Pemesanan lapangan instan dengan slot jam presisi, validasi konflik server-side, dan penguncian transaksi aman.",
+        "Pilih slot jam secara langsung melalui jadwal interaktif yang terjamin anti-bentrok menggunakan transaction lock.",
     },
     {
       icon: "payments",
-      label: "Payment",
-      title: "Gateway Integrasi",
+      label: "Fintech",
+      title: "Integrasi Pembayaran",
       description:
-        "Integrasi Midtrans Snap untuk pembayaran uang muka (DP) atau lunas secara langsung menggunakan e-wallet, virtual account, atau kartu kredit.",
+        "Penyelesaian pembayaran DP atau lunas secara instan menggunakan Midtrans Snap (E-Wallet, Transfer Bank, QRIS).",
     },
     {
       icon: "emoji_events",
-      label: "Competition",
-      title: "Tournament Bracket",
+      label: "Community",
+      title: "Turnamen & Bracket",
       description:
-        "Penyusunan bagan tanding otomatis, pendaftaran tim dengan biaya registrasi aman, serta panel pembaruan skor langsung oleh organizer.",
-    },
-    {
-      icon: "verified_user",
-      label: "Security",
-      title: "KYC & Verification",
-      description:
-        "Proses verifikasi dokumen legal (KTP, NPWP, SIUP) pemilik venue untuk menjamin kepercayaan pengguna.",
+        "Daftarkan tim futsal Anda dalam turnamen lokal, pantau jadwal tanding, dan lihat bagan bracket pertandingan dinamis.",
     },
   ],
   showcase: {
     title: "Desain Premium Berbasis Glassmorphic",
     visualTitle: "Preview",
     visualDescription: "Desain antarmuka premium dengan pendekatan glassmorphism untuk fokus visual pada konten penting.",
-    primaryActionLabel: "Coba Aplikasi",
-    secondaryActionLabel: "Cari Lapangan",
+    primaryActionLabel: "Cari Lapangan",
+    primaryActionIcon: "explore",
+    secondaryActionLabel: "",
     features: [
       {
-        id: "booking",
-        title: "Real-Time Court Booking",
-        description: "Pemesanan lapangan instan dengan verifikasi ketersediaan jadwal langsung dari server database untuk mencegah double booking.",
-        image: "/futsalpro-dashboard.png",
+        id: "explore",
+        title: "Explore & Filter Venues",
+        description: "Temukan lapangan futsal terdekat berdasarkan lokasi, harga, fasilitas, dan jenis lantai secara real-time.",
+        image: "/futsalpro/Explore.png",
+        icon: "explore"
+      },
+      {
+        id: "schedule",
+        title: "Dynamic Interactive Calendar",
+        description: "Lihat dan pilih slot waktu sewa lapangan langsung dari kalender jadwal harian yang diperbarui secara real-time.",
+        image: "/futsalpro/Schedule.png",
         icon: "calendar_today"
       },
       {
+        id: "booking",
+        title: "Instant Court Booking",
+        description: "Lakukan booking instan dengan opsi sewa perlengkapan tambahan (sepatu/bola) dan ringkasan pemesanan lengkap.",
+        image: "/futsalpro/Booking.png",
+        icon: "book_online"
+      },
+      {
         id: "payment",
-        title: "Midtrans Payment Gateway",
-        description: "Alur pembayaran aman terintegrasi dengan Midtrans Snap, otomatis merilis slot jika pembayaran tidak diselesaikan dalam 10 menit.",
-        image: "/futsalpro-dashboard.png",
-        icon: "payments"
+        title: "Secure Midtrans Payment & History",
+        description: "Pantau status pembayaran booking dan riwayat transaksi secara transparan dengan integrasi Midtrans Snap.",
+        image: "/futsalpro/History.png",
+        icon: "history"
       },
       {
         id: "brackets",
-        title: "Auto Tournament Brackets",
-        description: "Pembuatan bagan pertandingan sistem gugur otomatis beserta pembaruan papan skor dinamis oleh admin turnamen.",
-        image: "/futsalpro-dashboard.png",
+        title: "Tournament Bracket & Standings",
+        description: "Ikuti turnamen futsal, daftarkan tim Anda, dan pantau bagan bracket sistem gugur langsung di dalam platform.",
+        image: "/futsalpro/Tournament.png",
         icon: "emoji_events"
-      },
-      {
-        id: "kyc",
-        title: "Legal KYC Verification",
-        description: "Sistem verifikasi identitas (KTP) pemilik venue untuk menjamin keaslian data lapangan sebelum dipublikasikan.",
-        image: "/futsalpro-dashboard.png",
-        icon: "verified_user"
       }
     ]
   },

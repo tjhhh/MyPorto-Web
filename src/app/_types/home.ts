@@ -7,7 +7,7 @@ export type Project = {
   type: string;
   role: "Fullstack" | "Backend" | "Frontend" | "App Development";
   team: "Solo" | "Group";
-  repoUrl: string;
+  repoUrl: string | null;
   liveUrl: string | null;
   detailHref: string;
   coreCapabilities?: string[];
