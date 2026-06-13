@@ -24,7 +24,7 @@ export function HeroSection() {
 
         <div className="relative self-center border border-surface-variant bg-surface-container-lowest h-105 w-full md:h-125">
           <Image
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRgdsbPjAfgn-9XJqCacfc7dCWCNB0CZ_CGYGAs-GLfbfAsTo4KsMfOtkUy0HetDuRhkDCRYhoZR9OA9JrROLFNzy-o7LzlsvrAmzU_hDTXI85OuN7OZP1wBqRAHqfn5Q0r8WGtcbYtDogbpbBkAjCMrxl4cAHwv1O59gaZ4TcFFHqEA8iUGrBJHto4NHIqo6AXjIw7hoDYI7_nu-m-12hJcre_3m2D6crBbLpK4oBJuG0WMi4HRWHVhra66-5aAftLmyKn6V05Jgf"
+            src="/hero_anime.png"
             alt="Interface preview"
             className="object-cover"
             fill
