@@ -43,8 +43,8 @@ export const allProjects: Project[] = [
     image:
       "/idamantsl/IDAMANTSL_TN.jpg",
     tags: ["NextJS", "Tailwind"],
-    type: "Website - Full Stack",
-    role: "Fullstack",
+    type: "Website - Frontend",
+    role: "Frontend",
     team: "Group",
     repoUrl: null,
     liveUrl: null,
