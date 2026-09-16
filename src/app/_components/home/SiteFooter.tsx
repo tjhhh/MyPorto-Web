@@ -1,20 +1,65 @@
+"use client";
+
 import type { SocialLink } from "@/app/_types/home";
+import { ArrowUp } from "lucide-react";
 
 type SiteFooterProps = {
   socialLinks: SocialLink[];
 };
 
 export function SiteFooter({ socialLinks }: Readonly<SiteFooterProps>) {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="bg-surface-container-lowest py-8">
-      <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-4 px-4 text-center md:flex-row md:items-center md:px-8 md:text-left">
-        <p className="font-space text-[10px] tracking-[0.16em] text-on-surface-variant uppercase">2026 Portfolio. Muhammad Fauzan.</p>
-        <div className="flex flex-wrap items-center justify-center gap-6 font-space text-[10px] tracking-[0.16em] text-on-surface-variant uppercase md:justify-end">
-          {socialLinks.map((link) => (
-            <a key={link.label} className="transition-colors hover:text-primary" href={link.href}>
-              {link.label}
-            </a>
-          ))}
+    <footer className="border-t border-milky-white/10 bg-obsidian text-cream-dark/70 py-10">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 md:px-8">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-milky-white/10 pb-6">
+          <div className="flex flex-col">
+            <span className="font-mono text-[11px] font-semibold tracking-[0.2em] uppercase text-milky-white">
+              MUHAMMAD FAUZAN
+            </span>
+            <span className="font-mono text-[9px] tracking-[0.14em] uppercase text-cream-dark/45">
+              SOFTWARE ENGINEERING MONOGRAPH · ARCHIVE VOL. 2026
+            </span>
+          </div>
+
+          {/* Social Links */}
+          <div className="flex flex-wrap items-center gap-6 font-mono text-[10px] tracking-[0.16em] uppercase">
+            {socialLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-cream-dark/65 hover:text-milky-white transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+
+            {/* Back to Top */}
+            <button
+              type="button"
+              onClick={scrollToTop}
+              className="inline-flex items-center gap-1.5 border border-milky-white/15 px-3 py-1 text-cream-dark hover:border-milky-white/50 hover:text-milky-white transition-colors"
+              aria-label="Scroll back to top"
+            >
+              <span>ASCEND</span>
+              <ArrowUp className="h-3 w-3" />
+            </button>
+          </div>
+        </div>
+
+        {/* Colophon Technical Imprint */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 font-mono text-[9px] tracking-[0.14em] text-cream-dark/40 uppercase">
+          <span>
+            COLOPHON: NEXT.JS 16 (TURBOPACK) · REACT 19 · TAILWIND CSS V4 · LATENCY &lt; 20MS
+          </span>
+          <span>
+            © {new Date().getFullYear()} MUHAMMAD FAUZAN. ALL RIGHTS RESERVED.
+          </span>
         </div>
       </div>
     </footer>

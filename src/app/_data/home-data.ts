@@ -95,7 +95,14 @@ export const allProjects: Project[] = [
   },
 ];
 
-export const featuredProjectTitles = ["FutsalPro", "RideAssist", "IDAMAN-TSL", "HikePass Mobile"];
+export const featuredProjectTitles = [
+  "FutsalPro",
+  "RideAssist",
+  "IDAMAN-TSL",
+  "HikePass Mobile",
+  "HikePass Website",
+  "HijauKu",
+];
 
 export const featuredProjects: Project[] = allProjects.filter((project) =>
   featuredProjectTitles.includes(project.title),
@@ -213,11 +220,11 @@ export const techStack: TechStackCategory[] = [
 ];
 
 export const navLinks: NavLink[] = [
-  { label: "About", href: "#about" },
-  { label: "Education", href: "#education" },
-  { label: "Tech", href: "#tech" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "Prologue", href: "#about" },
+  { label: "Works", href: "#projects" },
+  { label: "Systems", href: "#tech" },
+  { label: "Dossier", href: "#education" },
+  { label: "Dispatch", href: "#contact" },
 ];
 
 export const footerSocialLinks: SocialLink[] = [
@@ -225,3 +232,11 @@ export const footerSocialLinks: SocialLink[] = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/mffauzaannn/" },
   { label: "GitHub", href: "https://github.com/tjhhh" },
 ];
+
+export const heroProfile = {
+  name: "M. Fauzan",
+  role: "Software Engineer",
+  // Letakkan file foto diri di /public/profile.jpg (atau ganti path ini sesuai nama file foto kamu)
+  image: "/Profile2.jpg",
+  location: "Bandung, ID",
+};

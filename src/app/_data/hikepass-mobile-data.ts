@@ -1,7 +1,7 @@
 import type { ProjectDetailPageData } from "@/app/_types/project-detail";
 
 export const hikePassMobileProjectData: ProjectDetailPageData = {
-  sectionLabel: "Mobile App Case Study",
+  sectionLabel: "Mobile App Detail",
   projectName: "HikePass Mobile",
   backHref: "/projects",
   backLabel: "Back to Projects",
@@ -53,12 +53,36 @@ export const hikePassMobileProjectData: ProjectDetailPageData = {
       "Result: Menjamin keberhasilan transaksi perizinan dan laporan kondisi jalur hingga 99.8% pada kondisi sinyal lemah, serta menghemat bandwidth pengiriman gambar hingga 75%.",
   },
   techStack: [
-    "Frontend & Language: Flutter 3.0+, Dart, GetX State Management & Routing",
-    "Database & Backend: Supabase BaaS (Auth, Realtime Channels, Storage, PostgreSQL)",
-    "Security & Policies: Row Level Security (RLS) & OTP Authentication",
-    "AI Integration: Google Gemini API (gemini-2.5-flash) for Virtual Assistant Rimba",
-    "External APIs: OpenWeatherMap API for live mountain weather forecast",
-    "Utilities: flutter_image_compress, shared_preferences, google_maps_flutter",
+    {
+      category: "Cross-Platform Mobile",
+      name: "Flutter 3.0+ & Dart",
+      usage: "Membangun antarmuka mobile pendaki yang responsif dengan arsitektur GetX untuk manajemen dependency injection, navigasi multi-screen, dan reaktivitas status izin mendaki (SIMAKSI).",
+    },
+    {
+      category: "Backend-as-a-Service",
+      name: "Supabase BaaS & PostgreSQL",
+      usage: "Menyediakan autentikasi akun pendaki (email OTP), sinkronisasi data kuota jalur pendakian secara realtime via WebSocket channels, dan bucket storage untuk upload foto KTP/bukti medis.",
+    },
+    {
+      category: "Data Isolation & Security",
+      name: "Row Level Security (RLS)",
+      usage: "Menegakkan isolasi data di tingkat engine database, menjamin dokumen identitas pribadi dan e-ticket hanya dapat dibaca dan diperbarui oleh pendaki pemilik akun atau petugas pos resmi.",
+    },
+    {
+      category: "Generative AI Assistant",
+      name: "Google Gemini API (Assistant Rimba)",
+      usage: "Model AI interaktif yang memberikan panduan keselamatan pendakian, kalkulasi estimasi waktu tempuh antar pos, dan saran logistik ransel berdasarkan kondisi cuaca gunung terkini.",
+    },
+    {
+      category: "Meteorology API",
+      name: "OpenWeatherMap API",
+      usage: "Menyajikan data prakiraan cuaca, kecepatan angin, kelembapan, dan potensi badai secara berkala di tiap pos pendakian gunung aktif.",
+    },
+    {
+      category: "Bandwidth & Media Optimization",
+      name: "flutter_image_compress",
+      usage: "Melakukan kompresi cerdas pada foto bukti pembayaran dan foto laporan rintangan jalur hingga 75% lebih ringan sebelum diunggah di area dengan sinyal seluler terbatas.",
+    },
   ],
   capabilities: [
     {
@@ -96,7 +120,7 @@ export const hikePassMobileProjectData: ProjectDetailPageData = {
     visualDescription:
       "Antarmuka didesain dengan konsep Material Design yang bersih, modern, dan intuitif. Skema warna hijau alam dipadukan dengan aksen keselamatan (safety orange) guna memberikan tingkat keterbacaan yang tinggi saat pendaki berada di luar ruangan (outdoor usability).",
     primaryActionLabel: "Demo Aplikasi",
-    secondaryActionLabel: "GitHub Repo",
+    secondaryActionLabel: "",
     features: [
       {
         id: "home",

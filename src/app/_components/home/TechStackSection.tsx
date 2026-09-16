@@ -1,71 +1,165 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
+import { Server, Layout, Wrench, Layers, Terminal } from "lucide-react";
 import type { TechStackCategory } from "@/app/_types/home";
 
 type TechStackSectionProps = {
   categories: TechStackCategory[];
 };
 
+// Rich real-world production rationale per engineering tool
+const productionNotes: Record<string, string> = {
+  React: "Component state architecture & hooks for dynamic client dashboards.",
+  Vue: "Lightweight reactive frontend for HikePass web administrative portal.",
+  "Tailwind CSS": "Design-token driven styling systems & precise responsive layouts.",
+  TypeScript: "End-to-end type safety, strict interface contracts, and reduced runtime errors.",
+  HTML5: "Semantic document outline, WCAG accessible tags, and structured metadata.",
+  CSS3: "Custom keyframes, fluid typography clamping, and CSS Grid compositions.",
+  Bootstrap: "Rapid responsive layout scaffolding in legacy municipal portal (HijauKu).",
+  Flutter: "Cross-platform native companion with custom telemetry gauges and local caching in RideAssist.",
+  "Node.js": "Event-driven asynchronous services and API endpoints.",
+  PostgreSQL: "Relational database modeling, complex joins, indexing, and transactional integrity.",
+  "REST API": "Deterministic JSON contracts, status code disciplines, and webhook integrations.",
+  NestJS: "Enterprise modular backend architecture with dependency injection.",
+  Firebase: "Real-time document sync, authentication state observers, and Cloud Messaging.",
+  Figma: "Design system prototyping, wireframing, and component token drafting.",
+  Vercel: "Edge network continuous deployment, preview environments, and serverless compute.",
+  Supabase: "Postgres-backed Auth, Row-Level Security policies, and real-time subscription streams in FutsalPro.",
+  GitHub: "Version control workflows, issue tracking, and collaborative branch management.",
+  Git: "Atomic commit hygiene, rebase workflows, and repository governance.",
+};
+
 export function TechStackSection({ categories }: Readonly<TechStackSectionProps>) {
-  const getLabelClassName = (label: string) => {
-    if (label === "Frontend") {
-      return "border-red-500/35 bg-red-500/10 text-red-700";
+  const [activeCategory, setActiveCategory] = useState<string>("All");
+
+  const allItems = categories.flatMap((cat) =>
+    cat.items.map((item) => ({ ...item, category: cat.label }))
+  );
+
+  const displayedItems =
+    activeCategory === "All"
+      ? allItems
+      : allItems.filter((item) => item.category === activeCategory);
+
+  const getCategoryIcon = (label: string) => {
+    switch (label) {
+      case "Frontend":
+        return <Layout className="h-3.5 w-3.5" />;
+      case "Backend":
+        return <Server className="h-3.5 w-3.5" />;
+      case "Tools":
+        return <Wrench className="h-3.5 w-3.5" />;
+      default:
+        return <Layers className="h-3.5 w-3.5" />;
     }
-
-    if (label === "Backend") {
-      return "border-emerald-500/35 bg-emerald-500/10 text-emerald-700";
-    }
-
-    if (label === "Specializations") {
-      return "border-yellow-500/35 bg-yellow-500/10 text-yellow-800";
-    }
-
-    return "border-outline-variant bg-surface-container text-on-surface-variant";
-  };
-
-  const getMarqueeDirectionClassName = (label: string) => {
-    if (label === "Backend") {
-      return "tech-marquee-track-left";
-    }
-
-    return "tech-marquee-track-right";
   };
 
   return (
-    <section id="tech" className="scroll-mt-24 border-y border-surface-variant bg-surface-container-lowest py-14 md:py-20">
+    <section
+      id="tech"
+      className="scroll-mt-20 border-b border-beige/35 bg-background py-16 md:py-24"
+    >
       <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
-        <div className="mb-9 text-center md:mb-12">
-          <h2 className="text-[50px] leading-[1.08] font-bold tracking-[-0.02em] text-on-surface md:text-[44px]">Tech Stack</h2>
-          <p className="mx-auto mt-4 max-w-80 text-[17px] leading-[1.6] text-on-surface-variant">The tools and technologies I use to build my projects.</p>
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between border-b border-beige/35 pb-8">
+          <div>
+            <div className="flex items-center gap-2 font-mono text-[11px] tracking-[0.22em] uppercase text-maroon font-semibold">
+              <span>[ SECTION 03 // TAXONOMY ]</span>
+              <span className="h-[1px] w-6 bg-maroon/40" />
+              <span className="text-ink-muted">ENGINEERING CAPABILITIES</span>
+            </div>
+            <h2 className="mt-3 font-display text-[38px] leading-[1.08] font-bold tracking-[-0.02em] text-obsidian sm:text-[48px] md:text-[54px]">
+              Systems Matrix
+            </h2>
+          </div>
+          <p className="mt-4 max-w-md font-sans text-[15px] leading-[1.65] text-ink-secondary md:mt-0 md:text-right">
+            Technologies evaluated not as buzzwords, but as calibrated tools with verified production roles.
+          </p>
         </div>
 
-        <div className="space-y-6">
-          {categories.map((category) => (
-            <article key={category.label} className="border-b border-surface-variant pb-5">
-              <div className="flex flex-col gap-4">
-                <p
-                  className={`inline-flex w-fit self-center items-center border px-2.5 py-1 font-space text-[10px] tracking-[0.14em] uppercase ${getLabelClassName(category.label)}`}
-                >
-                  {category.label}
-                </p>
-                <div className="tech-marquee flex-1">
-                  <div className={`tech-marquee-track ${getMarqueeDirectionClassName(category.label)}`}>
-                    {[0, 1].map((copyIndex) => (
-                      <div key={`${category.label}-copy-${copyIndex}`} className="tech-marquee-content" aria-hidden={copyIndex === 1}>
-                        {category.items.map((tech) => (
-                          <div key={`${category.label}-${tech.name}-${copyIndex}`} className="group flex shrink-0 items-center gap-2">
-                            <div className="flex h-10 w-10 items-center justify-center rounded-md border border-surface-variant bg-surface-container transition-transform duration-300 ease-out group-hover:scale-110">
-                              <Image src={tech.logo} alt={`${tech.name} logo`} width={24} height={24} className="object-contain" />
-                            </div>
-                            <span className="text-[13px] text-on-surface-variant">{tech.name}</span>
-                          </div>
-                        ))}
+        {/* Filter Controls */}
+        <div className="mt-8 flex flex-wrap items-center gap-2 border-b border-beige/25 pb-6">
+          <span className="font-mono text-[10px] tracking-[0.16em] uppercase text-ink-muted mr-2">
+            FILTER DOMAIN:
+          </span>
+          {["All", "Frontend", "Backend", "Tools"].map((tab) => {
+            const isActive = activeCategory === tab;
+            return (
+              <button
+                key={tab}
+                type="button"
+                onClick={() => setActiveCategory(tab)}
+                className={`inline-flex items-center gap-2 px-3.5 py-1.5 font-mono text-[11px] tracking-[0.14em] uppercase transition-all duration-200 border ${
+                  isActive
+                    ? "border-maroon bg-maroon text-milky-white font-medium shadow-sm"
+                    : "border-beige/40 bg-surface-container-lowest text-ink hover:border-maroon/50"
+                }`}
+              >
+                {tab !== "All" && getCategoryIcon(tab)}
+                <span>{tab}</span>
+                <span className="text-[9px] opacity-70">
+                  {tab === "All"
+                    ? `[${allItems.length}]`
+                    : `[${allItems.filter((i) => i.category === tab).length}]`}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Matrix Grid: Crisp Architectural Cards */}
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {displayedItems.map((tech) => {
+            const note =
+              productionNotes[tech.name] ||
+              "Engineered with verified architectural discipline in deployed projects.";
+
+            return (
+              <div
+                key={`${tech.category}-${tech.name}`}
+                className="group relative flex flex-col justify-between border border-beige/35 bg-surface-container-lowest p-5 transition-all duration-300 hover:border-maroon/60 hover:shadow-md"
+              >
+                <div>
+                  {/* Card Header: Icon + Category Badge */}
+                  <div className="flex items-center justify-between border-b border-beige/20 pb-3">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-9 w-9 items-center justify-center border border-beige/30 bg-surface-container-low transition-transform duration-300 group-hover:scale-105">
+                        <Image
+                          src={tech.logo}
+                          alt={`${tech.name} logo`}
+                          width={20}
+                          height={20}
+                          className="h-5 w-5 object-contain"
+                        />
                       </div>
-                    ))}
+                      <span className="font-mono text-[14px] font-bold text-obsidian">
+                        {tech.name}
+                      </span>
+                    </div>
+
+                    <span className="font-mono text-[9px] tracking-[0.14em] uppercase border border-beige/40 bg-surface-container px-2 py-0.5 text-ink-muted">
+                      {tech.category}
+                    </span>
                   </div>
+
+                  {/* Production Rationale Note */}
+                  <p className="mt-3.5 font-sans text-[13px] leading-[1.6] text-ink-secondary">
+                    {note}
+                  </p>
+                </div>
+
+                {/* Card Footer Line */}
+                <div className="mt-4 flex items-center justify-between pt-3 border-t border-beige/15 font-mono text-[9px] tracking-[0.14em] text-ink-muted uppercase">
+                  <span>DEPLOYED</span>
+                  <span className="group-hover:text-maroon transition-colors">
+                    PROD_VERIFIED
+                  </span>
                 </div>
               </div>
-            </article>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

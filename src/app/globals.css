@@ -1,113 +1,227 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f9faf6;
-  --foreground: #1a1c1a;
-  --surface-container-lowest: #ffffff;
-  --surface-container-low: #f3f4f0;
-  --surface-container: #edeeea;
-  --surface-container-highest: #e2e3df;
-  --surface-variant: #e2e3df;
-  --outline: #717972;
-  --outline-variant: #c1c9c1;
-  --primary: #002514;
-  --primary-container: #0d3c26;
-  --on-primary: #ffffff;
-  --on-surface: #1a1c1a;
-  --on-surface-variant: #414943;
+  /* Canvas Base: Milky Off-White */
+  --background: #F7F4EE;
+  --foreground: #12100E;
+  --milky-white: #F7F4EE;
+  --cream-dark: #DDD6CB;  /* For secondary text on obsidian dark bg — not as orange as beige */
+  
+  /* Containers & Surfaces */
+  --surface-container-lowest: #FFFFFF;
+  --surface-container-low: #F2ECE1;
+  --surface-container: #EBE4D6;
+  --surface-container-highest: #DFD7C7;
+  --surface-variant: #D5CCBA;
+  
+  /* Character Identity: Deep Maroon & Burgundy */
+  --maroon-primary: #5A171F;
+  --maroon-dark: #351015;
+  --maroon-deep: #20070B;
+  --maroon-glow: #7B232E;
+  --maroon-tint: #4A121A;
+
+  /* Warm Architectural Accent: Warm Beige & Pale Champagne */
+  --beige-warm: #D8C5A5;
+  --beige-pale: #EDE2CE;
+  --beige-dark: #A8906E;
+  --beige-muted: #8E7858;
+
+  /* Near Black Obsidian */
+  --obsidian-black: #12100E;
+  --obsidian-surface: #181513;
+  --obsidian-card: #201C19;
+  --obsidian-border: #2C2622;
+
+  /* Typography Inks */
+  --ink-primary: #12100E;
+  --ink-secondary: #4A4440;
+  --ink-muted: #6E6660;
+  --ink-light: #9B9187;
+
+  /* Semantic Compatibility Tokens */
+  --outline: #C2B090;
+  --outline-variant: #D8C5A5;
+  --primary: #5A171F;
+  --primary-container: #351015;
+  --on-primary: #F7F4EE;
+  --on-surface: #12100E;
+  --on-surface-variant: #4A4440;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-surface-container-lowest: var(--surface-container-lowest);
-  --color-surface-container-low: var(--surface-container-low);
-  --color-surface-container: var(--surface-container);
-  --color-surface-container-highest: var(--surface-container-highest);
-  --color-surface-variant: var(--surface-variant);
-  --color-outline: var(--outline);
-  --color-outline-variant: var(--outline-variant);
-  --color-primary: var(--primary);
-  --color-primary-container: var(--primary-container);
-  --color-on-primary: var(--on-primary);
-  --color-on-surface: var(--on-surface);
-  --color-on-surface-variant: var(--on-surface-variant);
-  --font-sans: var(--font-inter);
-  --font-space: var(--font-space-grotesk);
+@theme {
+  /* Surfaces */
+  --color-background: #F7F4EE;
+  --color-foreground: #12100E;
+  --color-surface-container-lowest: #FFFFFF;
+  --color-surface-container-low: #F2ECE1;
+  --color-surface-container: #EBE4D6;
+  --color-surface-container-highest: #DFD7C7;
+  --color-surface-variant: #D5CCBA;
+
+  /* Maroon Identity */
+  --color-maroon: #5A171F;
+  --color-maroon-dark: #351015;
+  --color-maroon-deep: #20070B;
+  --color-maroon-glow: #7B232E;
+  --color-maroon-tint: #4A121A;
+
+  /* Beige Accent */
+  --color-beige: #D8C5A5;
+  --color-beige-pale: #EDE2CE;
+  --color-beige-dark: #A8906E;
+  --color-beige-muted: #8E7858;
+
+  /* Obsidian Dark */
+  --color-obsidian: #12100E;
+  --color-obsidian-surface: #181513;
+  --color-obsidian-card: #201C19;
+  --color-obsidian-border: #2C2622;
+
+  /* Typography Inks (on light bg) */
+  --color-ink: #12100E;
+  --color-ink-secondary: #4A4440;
+  --color-ink-muted: #6E6660;
+  --color-ink-light: #9B9187;
+
+  /* Semantic */
+  --color-outline: #C2B090;
+  --color-outline-variant: #D8C5A5;
+  --color-primary: #5A171F;
+  --color-primary-container: #351015;
+  --color-on-primary: #F7F4EE;
+  --color-on-surface: #12100E;
+  --color-on-surface-variant: #4A4440;
+
+  /* Light text on dark backgrounds */
+  --color-milky-white: #F7F4EE;
+  --color-cream-dark: #DDD6CB;
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 }
 
+/* Base resets & typography */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: clip;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-.ronin-polkadot {
-  background-color: var(--background);
-  background-image: radial-gradient(var(--outline-variant) 1px, transparent 1px);
-  background-size: 24px 24px;
+/* Custom Text Selection */
+::selection {
+  background: #5A171F;
+  color: #F7F4EE;
 }
 
-.reveal-card {
-  animation: card-reveal 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+::-moz-selection {
+  background: #5A171F;
+  color: #F7F4EE;
 }
 
-.tech-marquee {
-  overflow: hidden;
-  mask-image: linear-gradient(to right, transparent 0, black 6%, black 94%, transparent 100%);
+/* Custom Themed Scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
 }
 
-.tech-marquee-track {
-  display: flex;
-  width: max-content;
-  will-change: transform;
-  animation: tech-marquee 24s linear infinite;
+::-webkit-scrollbar-track {
+  background: #12100E;
 }
 
-.tech-marquee-content {
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  gap: 1.5rem;
-  padding-right: 1.5rem;
+::-webkit-scrollbar-thumb {
+  background: #5A171F;
+  border-radius: 0px;
+  border: 1px solid rgba(216, 197, 165, 0.2);
 }
 
-.tech-marquee-track-left {
-  animation-direction: normal;
+::-webkit-scrollbar-thumb:hover {
+  background: #7B232E;
 }
 
-.tech-marquee-track-right {
-  animation-direction: reverse;
+
+
+/* Subtle corner registration marks */
+.reg-mark {
+  position: relative;
 }
 
-@keyframes card-reveal {
+.reg-mark::before,
+.reg-mark::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-color: rgba(216, 197, 165, 0.4);
+  pointer-events: none;
+}
+
+/* Keyframe animations */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+
+/* ── Chapter Indicator Pill Transition Animations ── */
+@keyframes chapter-slide-in-right {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateX(14px) scale(0.96);
+    filter: blur(3px);
   }
-
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0) scale(1);
+    filter: blur(0px);
   }
 }
 
-@keyframes tech-marquee {
+@keyframes chapter-slide-in-left {
   from {
-    transform: translateX(0);
+    opacity: 0;
+    transform: translateX(-14px) scale(0.96);
+    filter: blur(3px);
   }
-
   to {
-    transform: translateX(-50%);
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: blur(0px);
   }
+}
+
+.animate-chapter-from-right {
+  animation: chapter-slide-in-right 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-chapter-from-left {
+  animation: chapter-slide-in-left 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tech-marquee-track {
-    animation: none;
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

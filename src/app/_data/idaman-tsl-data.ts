@@ -1,7 +1,7 @@
 import type { ProjectDetailPageData } from "@/app/_types/project-detail";
 
 export const idamanTslProjectData: ProjectDetailPageData = {
-  sectionLabel: "Case Study",
+  sectionLabel: "Detail",
   projectName: "IDAMAN-TSL",
   backHref: "/projects",
   backLabel: "Back to Projects",
@@ -28,7 +28,7 @@ export const idamanTslProjectData: ProjectDetailPageData = {
       { label: "Component Coverage", value: "95% Reusable" },
     ],
     primaryAction: { label: "Visit Live Site", href: "" },
-    secondaryAction: { label: "GitHub Repo", href: "" },
+    secondaryAction: { label: "", href: "" },
   },
   overview: {
     title: "Latar Belakang & Solusi Proyek",
@@ -52,10 +52,31 @@ export const idamanTslProjectData: ProjectDetailPageData = {
       "Result: Kecepatan filter data tabel meningkat hingga 90% (di bawah 50ms) dan mengurangi beban request API verifikasi ke server.",
   },
   techStack: [
-    "Framework & Language: Next.js, Express.js, TypeScript, React",
-    "Styling & UI Engine: Tailwind CSS, Material Symbols",
-    "Quality Tooling: ESLint, Prettier, Jest, PlayWright",
-    "Deployment: Azure Hosting",
+    {
+      category: "Frontend Architecture",
+      name: "Next.js & React (App Router)",
+      usage: "Membangun antarmuka portal data konservasi TSL BBKSDA Jawa Barat dengan struktur komponen modular yang menyajikan dashboard statistik interaktif dan katalog spesies terlindungi secara instan.",
+    },
+    {
+      category: "Backend API Layer",
+      name: "Express.js & Node.js REST API",
+      usage: "Layanan perantara yang memproses filter multi-kriteria data unit penangkaran, pengedar satwa DN/LN, dan rekapitulasi izin tahunan dengan optimasi caching response kueri.",
+    },
+    {
+      category: "Type Safety",
+      name: "TypeScript",
+      usage: "Menjaga konsistensi model data hukum izin konservasi, kuota penangkaran, dan taksonomi satwa liar agar tidak terjadi ketidakcocokan tipe data (type mismatch) antara frontend dan backend.",
+    },
+    {
+      category: "Design System",
+      name: "Tailwind CSS",
+      usage: "Menyusun tata letak tabel data berdensitas tinggi, kartu metrik ringkasan eksekutif, dan status verifikasi hukum dengan konsistensi visual serta kontras tinggi.",
+    },
+    {
+      category: "Automated QA & Testing",
+      name: "Playwright & Jest",
+      usage: "Menjalankan serangkaian pengujian otomatis end-to-end pada alur filter tabel dan validasi hak akses untuk menjamin keandalan sistem sebelum dideploy untuk operasional instansi.",
+    },
   ],
   capabilities: [
     {
@@ -93,7 +114,7 @@ export const idamanTslProjectData: ProjectDetailPageData = {
     visualDescription:
       "Tampilan antarmuka sistem informasi data pemanfaatan tumbuhan dan satwa liar Jawa Barat yang responsif dan modern.",
     primaryActionLabel: "Visit Live Hub",
-    secondaryActionLabel: "View GitHub Repo",
+    secondaryActionLabel: "",
     features: [
       {
         id: "portal-utama",
@@ -156,7 +177,7 @@ export const idamanTslProjectData: ProjectDetailPageData = {
     ],
   },
   footer: {
-    copyrightLabel: "© 2026 IDAMAN-TSL Case Study. Internal operations refined.",
+    copyrightLabel: "© 2026 IDAMAN-TSL Detail. Internal operations refined.",
     links: [
       { label: "Home", href: "/" },
       { label: "Projects", href: "/projects" },

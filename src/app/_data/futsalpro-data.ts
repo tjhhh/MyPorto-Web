@@ -1,7 +1,7 @@
 import type { ProjectDetailPageData } from "@/app/_types/project-detail";
 
 export const futsalProProjectData: ProjectDetailPageData = {
-  sectionLabel: "Case Study",
+  sectionLabel: "Detail",
   projectName: "FutsalPro",
   backHref: "/projects",
   backLabel: "Back to Projects",
@@ -49,10 +49,36 @@ export const futsalProProjectData: ProjectDetailPageData = {
     result: "Result: Booking conflicts reduced to zero, while ensuring unpaid locks were cleaned up automatically."
   },
   techStack: [
-    "Framework & Language: Next.js 16 (App Router), TypeScript 5, React 19",
-    "Styling & UI: Tailwind CSS v4, Material Symbols, Lexend Typography",
-    "Backend & Database: Supabase PostgreSQL, Drizzle ORM (Neon Migrate), RLS / Server Actions Check",
-    "Integrations & APIs: Midtrans Snap Payment, Resend Transactional Email, Cloudinary Storage",
+    {
+      category: "Fullstack Framework",
+      name: "Next.js 16 (App Router) & React 19",
+      usage: "Digunakan sebagai core runtime aplikasi. Memanfaatkan React Server Components (RSC) untuk streaming render jadwal lapangan, serta Server Actions untuk memproses mutasi transaksi booking instan tanpa jeda latensi API route eksternal.",
+    },
+    {
+      category: "Type System & Safety",
+      name: "TypeScript 5",
+      usage: "Menjamin integritas type-safety ketat dari database schema hingga payload callback Midtrans, memastikan model data slot jadwal, user booking, dan respon webhook tervalidasi secara deterministik.",
+    },
+    {
+      category: "Styling & UI Architecture",
+      name: "Tailwind CSS v4",
+      usage: "Membangun sistem desain antarmuka dashboard admin dan alur booking pemain dengan performa kompilasi ultra-cepat dan sistem token warna yang konsisten di seluruh breakpoint perangkat.",
+    },
+    {
+      category: "Database & ORM",
+      name: "Supabase PostgreSQL & Drizzle ORM",
+      usage: "Menyimpan seluruh data venue, slot jadwal, transaksi pembayaran, dan tim turnamen. Drizzle ORM digunakan untuk penulisan query SQL terstruktur dan migrasi skema, dipadukan Row-Level Security (RLS) untuk isolasi data venue.",
+    },
+    {
+      category: "Payment Gateway",
+      name: "Midtrans Snap API",
+      usage: "Memproses pembayaran digital otomatis (QRIS, VA, E-Wallet) dengan verifikasi signature key pada webhook callback HTTP untuk memperbarui status booking menjadi lunas secara real-time tanpa campur tangan admin.",
+    },
+    {
+      category: "Transactional Messaging",
+      name: "Resend Email API",
+      usage: "Mengirimkan invoice digital terformat, barcode tiket masuk venue, dan jadwal tanding turnamen secara otomatis langsung ke email pemain sesaat setelah konfirmasi pembayaran diterima.",
+    },
   ],
   capabilities: [
     {
@@ -161,7 +187,7 @@ export const futsalProProjectData: ProjectDetailPageData = {
   },
   footer: {
     copyrightLabel:
-      "© 2026 FutsalPro Case Study. Built with Next.js, Supabase, and Midtrans.",
+      "© 2026 FutsalPro Detail. Built with Next.js, Supabase, and Midtrans.",
     links: [
       { label: "Home", href: "/" },
       { label: "Explore Venues", href: "/explore" },

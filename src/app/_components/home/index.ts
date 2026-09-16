@@ -5,3 +5,8 @@ export { TechStackSection } from "./TechStackSection";
 export { ProjectsSection } from "./ProjectsSection";
 export { ContactSection } from "./ContactSection";
 export { SiteFooter } from "./SiteFooter";
+export { ScrollStrikerRail } from "./ScrollStrikerRail";
+export { HeroPortrait } from "./HeroPortrait";
+export { ProjectCarousel } from "./ProjectCarousel";
+export { ProjectCard } from "./ProjectCard";
+export { ProjectDetailModal } from "./ProjectDetailModal";

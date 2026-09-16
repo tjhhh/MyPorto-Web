@@ -1,7 +1,7 @@
 import type { ProjectDetailPageData } from "@/app/_types/project-detail";
 
 export const bankSampahProjectData: ProjectDetailPageData = {
-  sectionLabel: "Case Study",
+  sectionLabel: "Detail",
   projectName: "HijauKu",
   backHref: "/projects",
   backLabel: "Back to Projects",
@@ -49,11 +49,31 @@ export const bankSampahProjectData: ProjectDetailPageData = {
     result: "Result: Waktu pemuatan halaman di bawah 250ms dan fungsionalitas kalkulator berjalan 100% lancar dalam kondisi offline."
   },
   techStack: [
-    "HTML5 (Semantic Markup)",
-    "CSS3 (Custom Grid & Transitions)",
-    "Bootstrap (UI Grid System)",
-    "JavaScript (Client-Side Calculators)",
-    "GitHub Pages (Static Deployment)",
+    {
+      category: "Document Structure",
+      name: "HTML5 Semantic Markup",
+      usage: "Menyusun kerangka halaman web edukasi lingkungan dengan hierarki heading yang terstruktur rapi, atribut aksesibilitas formulir, dan struktur data yang mudah diindeks peramban.",
+    },
+    {
+      category: "Styling & Responsive Engine",
+      name: "CSS3 & Custom Animations",
+      usage: "Menerapkan tata letak visual berbasis flexbox/grid, efek transisi hover interaktif pada katalog kategori sampah, dan styling kartu edukasi tanpa menambah beban library pihak ketiga.",
+    },
+    {
+      category: "UI Grid & Layout System",
+      name: "Bootstrap 5",
+      usage: "Mengatur grid layout yang adaptif agar formulir pendaftaran jemput sampah dan tabel perbandingan nilai rupiah tampil rapi dan mudah dioperasikan di layar smartphone warga.",
+    },
+    {
+      category: "Client-Side Logic Engine",
+      name: "Vanilla JavaScript (ES6+)",
+      usage: "Mengeksekusi logika kalkulator konversi daur ulang secara instan di browser; menghitung bobot per kilogram dan mengalikan rasio rupiah secara real-time tanpa perlu memicu request jaringan ke server.",
+    },
+    {
+      category: "Static Cloud Hosting",
+      name: "GitHub Pages (Edge CDN)",
+      usage: "Infrastruktur hosting web statis berkecepatan tinggi dengan latensi rendah (<250ms) dan waktu aktif (uptime) tinggi melalui jaringan distribusi global untuk kemudahan akses warga.",
+    },
   ],
   capabilities: [
     {
@@ -90,7 +110,7 @@ export const bankSampahProjectData: ProjectDetailPageData = {
     visualTitle: "Landing & Calculator Portal",
     visualDescription: "Interactive client-side calculator running entirely on vanilla JavaScript.",
     primaryActionLabel: "Visit Live Site",
-    secondaryActionLabel: "View GitHub Repo",
+    secondaryActionLabel: "",
     features: [
       {
         id: "landing",

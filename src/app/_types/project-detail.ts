@@ -42,6 +42,12 @@ export type ProjectDetailFeature = {
   icon?: string;
 };
 
+export type ProjectDetailTechItem = {
+  name: string;
+  category: string;
+  usage: string;
+};
+
 export type ProjectDetailPageData = {
   sectionLabel: string;
   projectName: string;
@@ -73,7 +79,7 @@ export type ProjectDetailPageData = {
     paragraphs: string[];
   };
   challenge?: ProjectDetailChallenge;
-  techStack: string[];
+  techStack: (string | ProjectDetailTechItem)[];
   capabilities: ProjectDetailCapability[];
   showcase: {
     title: string;

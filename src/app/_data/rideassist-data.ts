@@ -1,7 +1,7 @@
 import type { ProjectDetailPageData } from "@/app/_types/project-detail";
 
 export const rideAssistProjectData: ProjectDetailPageData = {
-  sectionLabel: "Case Study",
+  sectionLabel: "Detail",
   projectName: "RideAssist",
   backHref: "/projects",
   backLabel: "Back to Projects",
@@ -49,12 +49,36 @@ export const rideAssistProjectData: ProjectDetailPageData = {
     result: "Result: Tingkat akurasi kalkulasi odometer meningkat hingga 98.4% dibandingkan dengan rute Google Maps fisik, dan konsumsi baterai berkurang signifikan karena pemrosesan berjalan sepenuhnya di sisi klien."
   },
   techStack: [
-    "Framework & Language: Flutter 3 (Material 3 & Glassmorphism UI), Dart SDK",
-    "State Management: Riverpod (flutter_riverpod & state_notifier)",
-    "Local Database & Storage: SQLite (sqflite) & Shared Preferences (shared_preferences)",
-    "Cloud Services & Auth: Firebase Authentication & Cloud Firestore (Cloud Sync)",
-    "Device API & Location: Geolocator (Background GPS Stream) & Permission Handler",
-    "Media & Image Processing: Image Picker & Image Cropper (Nota Servis Scan)",
+    {
+      category: "Mobile Engine & UI",
+      name: "Flutter 3 & Dart SDK",
+      usage: "Membangun antarmuka mobile speedometer digital dan pelacak log pemeliharaan motor dengan rendering 60fps yang mulus serta responsivitas tinggi di platform Android dan iOS.",
+    },
+    {
+      category: "State Management",
+      name: "Riverpod (StateNotifier)",
+      usage: "Mengelola aliran data reaktif global, menghubungkan stream koordinat GPS perangkat dengan algoritma kalkulasi odometer dan status degradasi masa pakai oli/busi secara terisolasi tanpa memory leak.",
+    },
+    {
+      category: "Offline-First Storage",
+      name: "SQLite (sqflite) & SharedPreferences",
+      usage: "Menyimpan seluruh catatan riwayat servis motor, jadwal penggantian sparepart, dan log jarak tempuh harian secara lokal di memori perangkat, sehingga aplikasi dapat beroperasi 100% tanpa jaringan internet.",
+    },
+    {
+      category: "Cloud Synchronization",
+      name: "Firebase Auth & Cloud Firestore",
+      usage: "Menangani autentikasi identitas pengendara dan sinkronisasi cadangan (cloud backup) profil motor serta bukti kuitansi bengkel ke database NoSQL Firestore saat koneksi internet terdeteksi.",
+    },
+    {
+      category: "Hardware GPS & Telemetry",
+      name: "Geolocator API & Background Stream",
+      usage: "Mengeksekusi pembacaan sensor GPS perangkat secara berkala di latar belakang dengan filter noise deviasi horizontal (<15m) untuk menghitung odometer aktual dengan tingkat presisi 98.4%.",
+    },
+    {
+      category: "Media Scanner",
+      name: "Image Picker & Cropper",
+      usage: "Memfasilitasi pengambilan foto kuitansi nota servis dari kamera atau galeri serta pemotongan rasio gambar sebelum diarsipkan ke log riwayat pemeliharaan kendaraan.",
+    },
   ],
   capabilities: [
     {
@@ -163,7 +187,7 @@ export const rideAssistProjectData: ProjectDetailPageData = {
     ],
   },
   footer: {
-    copyrightLabel: "© 2026 RideAssist Case Study. Offline-first vehicle management.",
+    copyrightLabel: "© 2026 RideAssist Detail. Offline-first vehicle management.",
     links: [
       { label: "Home", href: "/" },
       { label: "Projects", href: "/projects" },

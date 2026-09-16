@@ -1,7 +1,7 @@
 import type { ProjectDetailPageData } from "@/app/_types/project-detail";
 
 export const hikePassWebsiteProjectData: ProjectDetailPageData = {
-  sectionLabel: "Case Study",
+  sectionLabel: "Detail",
   projectName: "HikePass",
   backHref: "/projects",
   backLabel: "Back to Projects",
@@ -28,7 +28,7 @@ export const hikePassWebsiteProjectData: ProjectDetailPageData = {
       { label: "System Architecture", value: "Dual Backends" },
     ],
     primaryAction: { label: "Visit Local Hub", href: "http://localhost:5173" },
-    secondaryAction: { label: "GitHub Repo", href: "https://github.com/HikePass/hikepass-web" },
+    secondaryAction: { label: "", href: "" },
   },
   overview: {
     title: "Latar Belakang & Solusi Proyek",
@@ -49,11 +49,36 @@ export const hikePassWebsiteProjectData: ProjectDetailPageData = {
     result: "Result: Terwujudnya integritas data 100% pada pelacakan status pendaki aktif, menghilangkan potensi tabrakan data (race conditions) saat proses check-in massal di gerbang pendakian, serta memangkas waktu muat dashboard hingga di bawah 120ms."
   },
   techStack: [
-    "Frontend UI Engine: Vue 3 (Vite), Vue Router, Axios",
-    "Backend (Core Transactional): Laravel 11, PHP 8.2, Sanctum Auth",
-    "Backend (Content Management): Node.js, Express, MySQL",
-    "Database Engine: MySQL (Relational DB Schema)",
-    "Styling & UI Toolkit: Bootstrap 5, Bootstrap Icons, Chart.js",
+    {
+      category: "Frontend SPA Engine",
+      name: "Vue 3 (Vite) & Vue Router",
+      usage: "Membangun dashboard operasional gerbang pos pendakian berbasis Single Page Application (SPA) yang cepat, menangani navigasi antar modul kuota dan verifikasi SIMAKSI tanpa reload halaman.",
+    },
+    {
+      category: "Transactional Backend",
+      name: "Laravel 11 & PHP 8.2",
+      usage: "Core API engine yang memproses data sensitif seperti reservasi tiket, validasi check-in/check-out massal di pos masuk, dan pengiriman kode verifikasi OTP secara atomic.",
+    },
+    {
+      category: "API Authentication",
+      name: "Laravel Sanctum",
+      usage: "Menyediakan sistem autentikasi token stateless yang aman untuk memverifikasi hak akses staf gerbang pos dan membatasi izin pengubahan kuota gunung hanya untuk role administrator.",
+    },
+    {
+      category: "High-Throughput Content Service",
+      name: "Node.js & Express.js",
+      usage: "Microservice terpisah yang dirancang khusus untuk melayani permintaan konten statis ber-throughput tinggi seperti katalog paket wisata alam dan artikel panduan keselamatan.",
+    },
+    {
+      category: "Relational Database",
+      name: "MySQL Engine",
+      usage: "Menyimpan skema relasional kuota harian jalur gunung, riwayat check-in pendaki, dan daftar verifikasi barang bawaan plastik guna mengeliminasi sampah di kawasan konservasi.",
+    },
+    {
+      category: "Analytics & Charting",
+      name: "Chart.js",
+      usage: "Menyajikan grafik analitik tren kunjungan pendaki tahunan, sebaran provinsi asal pendaki, dan rekapitulasi PNBP tiket masuk secara visual dan interaktif bagi pengelola taman nasional.",
+    },
   ],
   capabilities: [
     {
@@ -90,7 +115,7 @@ export const hikePassWebsiteProjectData: ProjectDetailPageData = {
     visualTitle: "HikePass Management Hub",
     visualDescription: "Tampilan dashboard admin yang responsif untuk mengontrol kuota gunung, memverifikasi check-in/check-out, serta memantau status keamanan pendaki.",
     primaryActionLabel: "Launch Dashboard",
-    secondaryActionLabel: "View Repository",
+    secondaryActionLabel: "",
   },
   metadata: {
     role: "Frontend",
@@ -123,7 +148,7 @@ export const hikePassWebsiteProjectData: ProjectDetailPageData = {
     ],
   },
   footer: {
-    copyrightLabel: "© 2026 HikePass Case Study. Adventure safely, tracked reliably.",
+    copyrightLabel: "© 2026 HikePass Detail. Adventure safely, tracked reliably.",
     links: [
       { label: "Home", href: "/" },
       { label: "Projects", href: "/projects" },

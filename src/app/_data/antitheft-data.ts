@@ -1,7 +1,7 @@
 import type { ProjectDetailPageData } from "@/app/_types/project-detail";
 
 export const antitheftProjectData: ProjectDetailPageData = {
-  sectionLabel: "Case Study",
+  sectionLabel: "Detail",
   projectName: "Antitheft",
   backHref: "/projects",
   backLabel: "Back to Projects",
@@ -27,8 +27,8 @@ export const antitheftProjectData: ProjectDetailPageData = {
       { label: "Alert Latency", value: "< 150ms" },
       { label: "Data Encryption", value: "AES-256" },
     ],
-    primaryAction: { label: "GitHub Repo", href: "https://github.com/tjhhh/ji_antitheft" },
-    secondaryAction: { label: "Read Sensor Guide", href: "https://github.com/tjhhh/ji_antitheft" },
+    primaryAction: { label: "", href: "" },
+    secondaryAction: { label: "", href: "" },
   },
   overview: {
     title: "The Problem & Solution",
@@ -90,8 +90,8 @@ export const antitheftProjectData: ProjectDetailPageData = {
     title: "Securing Devices Globally",
     visualTitle: "Security Dashboard",
     visualDescription: "Web interface monitoring paired device statuses and sensor alarms in real-time.",
-    primaryActionLabel: "View GitHub Repo",
-    secondaryActionLabel: "Read Architecture",
+    primaryActionLabel: "",
+    secondaryActionLabel: "",
   },
   metadata: {
     role: "Lead Mobile Developer & Backend Engineer",
@@ -124,7 +124,7 @@ export const antitheftProjectData: ProjectDetailPageData = {
     ],
   },
   footer: {
-    copyrightLabel: "© 2026 Antitheft Case Study. Secure your hardware.",
+    copyrightLabel: "© 2026 Antitheft Detail. Secure your hardware.",
     links: [
       { label: "Home", href: "/" },
       { label: "Projects", href: "/projects" },

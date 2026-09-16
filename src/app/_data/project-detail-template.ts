@@ -93,7 +93,7 @@ export const projectDetailTemplate: ProjectDetailPageData = {
     ],
   },
   footer: {
-    copyrightLabel: "© [Year] [Project Name] Case Study",
+    copyrightLabel: "© [Year] [Project Name] Detail",
     links: [
       { label: "Home", href: "/" },
       { label: "Projects", href: "/projects" },
