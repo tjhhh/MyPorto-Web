@@ -29,13 +29,7 @@ export function HeroPortrait({
 
       {/* Header Telemetry Label */}
       <div className="flex items-center justify-between border-b border-beige/15 px-3 py-2 font-mono text-[9px] tracking-[0.18em] uppercase text-beige/70">
-        <span className="flex items-center gap-1.5">
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-maroon-glow opacity-75" />
-            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-maroon" />
-          </span>
-          OPERATOR DOSSIER // PORTRAIT
-        </span>
+        <span>OPERATOR DOSSIER // PORTRAIT</span>
         <span className="text-beige/40">{location} · 2026</span>
       </div>
 
@@ -75,17 +69,13 @@ export function HeroPortrait({
             </div>
 
             {/* Bottom Floating Identity Bar */}
-            <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between bg-obsidian-surface/85 backdrop-blur-md border border-beige/20 px-3 py-1.5 font-mono text-[10px] text-milky-white">
+            <div className="absolute bottom-3 left-3 right-3 flex items-center bg-obsidian-surface/85 backdrop-blur-md border border-beige/20 px-3 py-1.5 font-mono text-[10px] text-milky-white">
               <div className="flex items-center gap-2">
                 <span className="font-bold text-milky-white">{name}</span>
                 <span className="text-beige/30">/</span>
                 <span className="text-cream-dark/80 text-[9px] tracking-wide uppercase">
                   {role}
                 </span>
-              </div>
-              <div className="flex items-center gap-1.5 text-beige/50 text-[9px] font-mono uppercase tracking-wider">
-                <span className="h-1 w-1 rounded-full bg-emerald-400/80" />
-                <span>AUTHENTICATED</span>
               </div>
             </div>
           </div>
@@ -133,10 +123,6 @@ export function HeroPortrait({
       {/* Footer Telemetry */}
       <div className="flex items-center justify-between border-t border-beige/15 px-3 py-2 font-mono text-[9px] tracking-[0.14em] text-beige/60">
         <span>SUBJECT: {name.toUpperCase()}</span>
-        <span className="flex items-center gap-1.5 text-cream-dark/60">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-          STATE: READY
-        </span>
       </div>
     </div>
   );
