@@ -193,10 +193,10 @@ export default async function ProjectDetailPage({
           <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
             {/* Chapter Telemetry Ribbon */}
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-beige/35 pb-5 font-mono text-[11px] tracking-[0.2em] uppercase">
-              <div className="flex items-center gap-2 text-maroon font-semibold">
-                <span>[ CHAPTER {chapterNumber} OF {totalChapters} ]</span>
-                <span className="h-[1px] w-6 bg-maroon/40" />
-                <span className="text-ink-muted">{projectData.metadata.category}</span>
+              <div className="flex flex-wrap items-center gap-2 text-maroon font-semibold">
+                <span className="whitespace-nowrap">[ CHAPTER {chapterNumber} OF {totalChapters} ]</span>
+                <span className="hidden xs:inline-block h-[1px] w-4 sm:w-6 bg-maroon/40 shrink-0" />
+                <span className="whitespace-nowrap text-ink-muted">{projectData.metadata.category}</span>
               </div>
 
               <div className="flex items-center gap-4 text-ink-muted text-[10px]">
@@ -290,10 +290,10 @@ export default async function ProjectDetailPage({
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14">
               {/* Left Column: Project Overview & Abstract (7 cols) */}
               <div id="overview" className="scroll-mt-24 lg:col-span-7 flex flex-col gap-6">
-                <div className="flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] uppercase text-maroon font-semibold border-b border-beige/35 pb-3">
-                  <span>[ SECTION 01 // OVERVIEW ]</span>
-                  <span className="h-[1px] w-6 bg-maroon/40" />
-                  <span className="text-ink-muted">TECHNICAL DOSSIER</span>
+                <div className="flex flex-wrap items-center gap-2 font-mono text-[9px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.2em] uppercase text-maroon font-semibold border-b border-beige/35 pb-3">
+                  <span className="whitespace-nowrap">[ SECTION 01 // OVERVIEW ]</span>
+                  <span className="hidden xs:inline-block h-[1px] w-4 sm:w-6 bg-maroon/40 shrink-0" />
+                  <span className="whitespace-nowrap text-ink-muted">TECHNICAL DOSSIER</span>
                 </div>
 
                 <h3 className="font-display text-3xl sm:text-4xl font-normal tracking-[-0.02em] text-ink">
@@ -345,8 +345,8 @@ export default async function ProjectDetailPage({
                     id="challenge"
                     className="scroll-mt-24 border border-beige/40 bg-surface-container-low p-6 sm:p-8 flex flex-col gap-5 shadow-sm"
                   >
-                    <div className="flex items-center gap-2 font-mono text-[10px] tracking-[0.18em] uppercase text-maroon font-semibold border-b border-beige/35 pb-3">
-                      <span>[ SECTION 02 // CRITICAL HURDLE ]</span>
+                    <div className="flex items-center gap-2 font-mono text-[9px] sm:text-[10px] tracking-[0.14em] sm:tracking-[0.18em] uppercase text-maroon font-semibold border-b border-beige/35 pb-3">
+                      <span className="whitespace-nowrap">[ SECTION 02 // CRITICAL HURDLE ]</span>
                     </div>
 
                     <h4 className="font-display text-2xl font-normal text-ink leading-snug">
@@ -441,10 +441,10 @@ export default async function ProjectDetailPage({
           <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between border-b border-beige/35 pb-8">
               <div>
-                <div className="flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] uppercase text-maroon font-semibold">
-                  <span>[ SECTION 03 // EXECUTION PIPELINE ]</span>
-                  <span className="h-[1px] w-6 bg-maroon/40" />
-                  <span className="text-ink-muted">DATA FLOW BLUEPRINT</span>
+                <div className="flex flex-wrap items-center gap-2 font-mono text-[9px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.2em] uppercase text-maroon font-semibold">
+                  <span className="whitespace-nowrap">[ SECTION 03 // EXECUTION PIPELINE ]</span>
+                  <span className="hidden xs:inline-block h-[1px] w-4 sm:w-6 bg-maroon/40 shrink-0" />
+                  <span className="whitespace-nowrap text-ink-muted">DATA FLOW BLUEPRINT</span>
                 </div>
                 <h3 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] font-normal text-ink">
                   {architecture.title || "System Architecture"}
@@ -518,10 +518,10 @@ export default async function ProjectDetailPage({
           <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between border-b border-beige/35 pb-8">
               <div>
-                <div className="flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] uppercase text-maroon font-semibold">
-                  <span>[ SECTION 04 // SYSTEMS SPECIFICATION ]</span>
-                  <span className="h-[1px] w-6 bg-maroon/40" />
-                  <span className="text-ink-muted">PRODUCTION TOOLING</span>
+                <div className="flex flex-wrap items-center gap-2 font-mono text-[9px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.2em] uppercase text-maroon font-semibold">
+                  <span className="whitespace-nowrap">[ SECTION 04 // SYSTEMS SPECIFICATION ]</span>
+                  <span className="hidden xs:inline-block h-[1px] w-4 sm:w-6 bg-maroon/40 shrink-0" />
+                  <span className="whitespace-nowrap text-ink-muted">PRODUCTION TOOLING</span>
                 </div>
                 <h3 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] font-normal text-ink">
                   Tech Stack
@@ -596,10 +596,10 @@ export default async function ProjectDetailPage({
           <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between border-b border-beige/35 pb-8">
               <div>
-                <div className="flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] uppercase text-maroon font-semibold">
-                  <span>[ SECTION 05 // SYSTEM CAPABILITIES ]</span>
-                  <span className="h-[1px] w-6 bg-maroon/40" />
-                  <span className="text-ink-muted">FUNCTIONAL SCOPE</span>
+                <div className="flex flex-wrap items-center gap-2 font-mono text-[9px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.2em] uppercase text-maroon font-semibold">
+                  <span className="whitespace-nowrap">[ SECTION 05 // SYSTEM CAPABILITIES ]</span>
+                  <span className="hidden xs:inline-block h-[1px] w-4 sm:w-6 bg-maroon/40 shrink-0" />
+                  <span className="whitespace-nowrap text-ink-muted">FUNCTIONAL SCOPE</span>
                 </div>
                 <h3 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] font-normal text-ink">
                   Core Capabilities
@@ -646,10 +646,10 @@ export default async function ProjectDetailPage({
             <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
               <div className="flex flex-col md:flex-row md:items-end md:justify-between border-b border-beige/35 pb-8 mb-12">
                 <div>
-                  <div className="flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] uppercase text-maroon font-semibold">
-                    <span>[ SECTION 06 // PRODUCTION AUDIT ]</span>
-                    <span className="h-[1px] w-6 bg-maroon/40" />
-                    <span className="text-ink-muted">INTERFACE SHOWCASE</span>
+                  <div className="flex flex-wrap items-center gap-2 font-mono text-[9px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.2em] uppercase text-maroon font-semibold">
+                    <span className="whitespace-nowrap">[ SECTION 06 // PRODUCTION AUDIT ]</span>
+                    <span className="hidden xs:inline-block h-[1px] w-4 sm:w-6 bg-maroon/40 shrink-0" />
+                    <span className="whitespace-nowrap text-ink-muted">INTERFACE SHOWCASE</span>
                   </div>
                   <h3 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] font-normal text-ink">
                     {projectData.showcase.title || "Interface Showcase"}

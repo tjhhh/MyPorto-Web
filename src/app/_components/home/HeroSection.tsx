@@ -29,10 +29,10 @@ export function HeroSection() {
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-4 py-12 lg:grid-cols-12 lg:gap-12 lg:py-20 md:px-8">
         {/* Left Column: Monumental Editorial Statement */}
         <div className="flex flex-col lg:col-span-7">
-          <div className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.22em] uppercase text-maroon font-semibold">
-            <span>[ SYSTEM MONOGRAPH ]</span>
-            <span className="h-[1px] w-8 bg-maroon/40" />
-            <span className="text-ink-muted">2024 — 2026 ARCHIVE</span>
+          <div className="flex flex-wrap items-center gap-2 font-mono text-[9px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.22em] uppercase text-maroon font-semibold">
+            <span className="whitespace-nowrap">[ SYSTEM MONOGRAPH ]</span>
+            <span className="hidden xs:inline-block h-[1px] w-5 sm:w-8 bg-maroon/40 shrink-0" />
+            <span className="whitespace-nowrap text-ink-muted">2024 — 2026 ARCHIVE</span>
           </div>
 
           <h1 className="mt-5 font-display text-[44px] leading-[1.04] font-bold tracking-[-0.03em] text-obsidian sm:text-[58px] lg:text-[68px]">

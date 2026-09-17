@@ -105,11 +105,6 @@ export function ContactSection() {
                 From zero-to-one architecture to shipping resilient fullstack platforms — I&apos;m ready to contribute immediately. Drop an email and let&apos;s start the conversation.
               </p>
 
-              {/* Status Badge */}
-              <div className="mt-8 inline-flex items-center gap-3 border border-milky-white/15 bg-obsidian-card px-4 py-2 font-mono text-[11px] tracking-[0.14em] uppercase text-cream-dark">
-                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>STATUS: READY TO JOIN YOUR TEAM</span>
-              </div>
             </div>
 
             {/* Right Action Hub */}

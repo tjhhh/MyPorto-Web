@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Server, Layout, Wrench, Layers, Terminal } from "lucide-react";
+import { Server, Layout, Wrench, Layers, ChevronDown } from "lucide-react";
 import type { TechStackCategory } from "@/app/_types/home";
 
 type TechStackSectionProps = {
   categories: TechStackCategory[];
 };
+
+const INITIAL_LIMIT = 6;
 
 // Rich real-world production rationale per engineering tool
 const productionNotes: Record<string, string> = {
@@ -33,6 +35,7 @@ const productionNotes: Record<string, string> = {
 
 export function TechStackSection({ categories }: Readonly<TechStackSectionProps>) {
   const [activeCategory, setActiveCategory] = useState<string>("All");
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   const allItems = categories.flatMap((cat) =>
     cat.items.map((item) => ({ ...item, category: cat.label }))
@@ -42,6 +45,18 @@ export function TechStackSection({ categories }: Readonly<TechStackSectionProps>
     activeCategory === "All"
       ? allItems
       : allItems.filter((item) => item.category === activeCategory);
+
+  const visibleItems = isExpanded
+    ? displayedItems
+    : displayedItems.slice(0, INITIAL_LIMIT);
+
+  const hasMore = displayedItems.length > INITIAL_LIMIT;
+  const remainingCount = displayedItems.length - INITIAL_LIMIT;
+
+  const handleCategoryChange = (tab: string) => {
+    setActiveCategory(tab);
+    setIsExpanded(false);
+  };
 
   const getCategoryIcon = (label: string) => {
     switch (label) {
@@ -65,10 +80,10 @@ export function TechStackSection({ categories }: Readonly<TechStackSectionProps>
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between border-b border-beige/35 pb-8">
           <div>
-            <div className="flex items-center gap-2 font-mono text-[11px] tracking-[0.22em] uppercase text-maroon font-semibold">
-              <span>[ SECTION 03 // TAXONOMY ]</span>
-              <span className="h-[1px] w-6 bg-maroon/40" />
-              <span className="text-ink-muted">ENGINEERING CAPABILITIES</span>
+            <div className="flex flex-wrap items-center gap-2 font-mono text-[9px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.22em] uppercase text-maroon font-semibold">
+              <span className="whitespace-nowrap">[ SECTION 03 // TAXONOMY ]</span>
+              <span className="hidden xs:inline-block h-[1px] w-4 sm:w-6 bg-maroon/40 shrink-0" />
+              <span className="whitespace-nowrap text-ink-muted">ENGINEERING CAPABILITIES</span>
             </div>
             <h2 className="mt-3 font-display text-[38px] leading-[1.08] font-bold tracking-[-0.02em] text-obsidian sm:text-[48px] md:text-[54px]">
               Systems Matrix
@@ -90,7 +105,7 @@ export function TechStackSection({ categories }: Readonly<TechStackSectionProps>
               <button
                 key={tab}
                 type="button"
-                onClick={() => setActiveCategory(tab)}
+                onClick={() => handleCategoryChange(tab)}
                 className={`inline-flex items-center gap-2 px-3.5 py-1.5 font-mono text-[11px] tracking-[0.14em] uppercase transition-all duration-200 border ${
                   isActive
                     ? "border-maroon bg-maroon text-milky-white font-medium shadow-sm"
@@ -111,7 +126,7 @@ export function TechStackSection({ categories }: Readonly<TechStackSectionProps>
 
         {/* Matrix Grid: Crisp Architectural Cards */}
         <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {displayedItems.map((tech) => {
+          {visibleItems.map((tech) => {
             const note =
               productionNotes[tech.name] ||
               "Engineered with verified architectural discipline in deployed projects.";
@@ -161,6 +176,28 @@ export function TechStackSection({ categories }: Readonly<TechStackSectionProps>
             );
           })}
         </div>
+
+        {/* Load More Button Trigger */}
+        {hasMore && (
+          <div className="mt-10 flex flex-col items-center justify-center border-t border-beige/30 pt-8">
+            <button
+              type="button"
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="group inline-flex items-center gap-3 border border-maroon bg-transparent px-8 py-3 font-mono text-[11px] tracking-[0.18em] uppercase text-maroon transition-all duration-300 hover:bg-maroon hover:text-milky-white shadow-sm cursor-pointer"
+            >
+              <span>
+                {isExpanded
+                  ? "Collapse Tech Matrix"
+                  : `Load More Technologies [ +${remainingCount} ]`}
+              </span>
+              <ChevronDown
+                className={`h-3.5 w-3.5 transition-transform duration-300 ${
+                  isExpanded ? "rotate-180" : "group-hover:translate-y-0.5"
+                }`}
+              />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -35,10 +35,10 @@ export function ProjectsSection({
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between border-b border-beige/35 pb-8">
           <div>
-            <div className="flex items-center gap-2 font-mono text-[11px] tracking-[0.22em] uppercase text-maroon font-semibold">
-              <span>[ CHAPTERS 01 — {totalChaptersFormatted} ]</span>
-              <span className="h-[1px] w-6 bg-maroon/40" />
-              <span className="text-ink-muted">ENGINEERING MONOGRAPHS</span>
+            <div className="flex flex-wrap items-center gap-2 font-mono text-[9px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.22em] uppercase text-maroon font-semibold">
+              <span className="whitespace-nowrap">[ CHAPTERS 01 — {totalChaptersFormatted} ]</span>
+              <span className="hidden xs:inline-block h-[1px] w-4 sm:w-6 bg-maroon/40 shrink-0" />
+              <span className="whitespace-nowrap text-ink-muted">ENGINEERING MONOGRAPHS</span>
             </div>
             <h2 className="mt-3 font-display text-[38px] leading-[1.08] font-bold tracking-[-0.02em] text-obsidian sm:text-[48px] md:text-[54px]">
               {title}

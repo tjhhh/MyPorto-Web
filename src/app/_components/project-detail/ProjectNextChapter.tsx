@@ -18,10 +18,10 @@ export function ProjectNextChapter({
     <section className="border-t border-beige/35 bg-surface-container-low/70 py-16 md:py-20">
       <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
         <div className="flex items-center justify-between border-b border-beige/35 pb-6">
-          <div className="flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] uppercase text-maroon font-semibold">
-            <span>[ SEQUENTIAL ARCHIVE TRANSITION ]</span>
-            <span className="h-[1px] w-6 bg-maroon/40" />
-            <span className="text-ink-muted">NEXT CHAPTER DOSSIER</span>
+          <div className="flex flex-wrap items-center gap-2 font-mono text-[9px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.2em] uppercase text-maroon font-semibold">
+            <span className="whitespace-nowrap">[ SEQUENTIAL ARCHIVE TRANSITION ]</span>
+            <span className="hidden xs:inline-block h-[1px] w-4 sm:w-6 bg-maroon/40 shrink-0" />
+            <span className="whitespace-nowrap text-ink-muted">NEXT CHAPTER DOSSIER</span>
           </div>
 
           <Link

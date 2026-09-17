@@ -429,24 +429,25 @@ export function ProjectDetailModal({
             </div>
 
             {/* Action Buttons — sticky at bottom of right panel */}
-            <div className="shrink-0 flex flex-wrap items-center gap-2.5 border-t border-beige/30 bg-surface-container-lowest px-5 sm:px-6 lg:px-7 py-4">
+            <div className="shrink-0 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 border-t border-beige/30 bg-surface-container-lowest px-4 sm:px-6 lg:px-7 py-3 sm:py-4">
               {project.liveUrl && (
                 <a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border border-maroon bg-maroon px-4 py-2.5 font-mono text-[10px] tracking-[0.16em] uppercase text-milky-white transition-all duration-300 hover:bg-maroon-dark shadow-sm"
+                  className="inline-flex w-full sm:w-auto items-center justify-center gap-2 border border-maroon bg-maroon px-4 py-2.5 font-mono text-[10px] tracking-[0.16em] uppercase text-milky-white transition-all duration-300 hover:bg-maroon-dark shadow-sm"
                 >
                   <span>Launch Live System</span>
                   <ExternalLink className="h-3.5 w-3.5" />
                 </a>
               )}
 
-
               <Link
                 href={project.detailHref}
                 onClick={handleClose}
-                className="inline-flex items-center gap-2 border border-beige/60 bg-surface-container-lowest px-4 py-2.5 font-mono text-[10px] tracking-[0.16em] uppercase text-ink transition-all duration-300 hover:border-maroon hover:text-maroon ml-auto"
+                className={`inline-flex w-full sm:w-auto items-center justify-center gap-2 border border-beige/60 bg-surface-container-lowest px-4 py-2.5 font-mono text-[10px] tracking-[0.16em] uppercase text-ink transition-all duration-300 hover:border-maroon hover:text-maroon ${
+                  project.liveUrl ? "sm:ml-auto" : "w-full"
+                }`}
               >
                 <span>Full Monograph</span>
                 <ArrowRight className="h-3.5 w-3.5 text-maroon" />

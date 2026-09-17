@@ -267,7 +267,8 @@ export function ProjectCarousel({ projects, techIcons }: ProjectCarouselProps) {
       </div>
 
       {/* Orbital Navigation Controls Bar — Unified Glassmorphism Panel */}
-      <div className="mt-8 px-4">
+      {/* Orbital Navigation Controls Bar — Unified Glassmorphism Panel */}
+      <div className="mt-8 px-2 sm:px-4">
         {/* Frosted glass panel wrapping all controls */}
         <div
           className="relative mx-auto max-w-3xl rounded-2xl border border-white/30 backdrop-blur-xl"
@@ -287,14 +288,14 @@ export function ProjectCarousel({ projects, techIcons }: ProjectCarouselProps) {
             }}
           />
 
-          <div className="flex items-center gap-0 p-1.5">
+          <div className="flex items-center justify-between gap-1 sm:gap-2 p-1 sm:p-1.5">
             {/* ── PREVIOUS Button ── */}
             <button
               type="button"
               onClick={handlePrev}
               disabled={isAnimating}
               aria-label="Orbit to previous project"
-              className="group relative flex items-center gap-2 rounded-xl px-4 sm:px-5 py-3 font-mono text-[10px] sm:text-[11px] tracking-[0.18em] uppercase text-ink-secondary transition-all duration-300 hover:text-maroon disabled:opacity-40 cursor-pointer overflow-hidden"
+              className="group relative flex shrink-0 items-center justify-center gap-1 sm:gap-2 rounded-xl px-2.5 sm:px-5 py-2.5 sm:py-3 font-mono text-[9px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.18em] uppercase text-ink-secondary transition-all duration-300 hover:text-maroon disabled:opacity-40 cursor-pointer select-none"
               style={{
                 background: "rgba(255,255,255,0)",
               }}
@@ -309,18 +310,18 @@ export function ProjectCarousel({ projects, techIcons }: ProjectCarouselProps) {
                 (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
               }}
             >
-              <ChevronLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
-              <span>PREV</span>
+              <ChevronLeft className="h-3.5 w-3.5 sm:h-4 w-4 shrink-0 transition-transform duration-300 group-hover:-translate-x-0.5" />
+              <span className="font-semibold">PREV</span>
             </button>
 
             {/* ── Divider ── */}
-            <div className="h-8 w-px bg-gradient-to-b from-transparent via-maroon/15 to-transparent shrink-0" />
+            <div className="h-6 sm:h-8 w-px bg-gradient-to-b from-transparent via-maroon/20 to-transparent shrink-0" />
 
             {/* ── Active Chapter Indicator (center, flex-grow) ── */}
-            <div className="flex-1 flex items-center justify-center px-3 sm:px-5 py-2">
+            <div className="flex-1 min-w-0 flex items-center justify-center px-1 sm:px-4 py-1 sm:py-2">
               {/* Inner glass pill — static shell */}
               <div
-                className="relative flex items-center overflow-hidden rounded-xl px-4 sm:px-5 py-2.5 font-mono tracking-[0.16em] uppercase whitespace-nowrap"
+                className="relative flex items-center justify-center overflow-hidden rounded-xl px-2 sm:px-5 py-2 sm:py-2.5 font-mono tracking-[0.1em] sm:tracking-[0.16em] uppercase whitespace-nowrap min-w-0 max-w-full"
                 style={{
                   background:
                     "linear-gradient(135deg, rgba(90,23,31,0.78) 0%, rgba(53,16,21,0.88) 60%, rgba(32,7,11,0.82) 100%)",
@@ -341,7 +342,7 @@ export function ProjectCarousel({ projects, techIcons }: ProjectCarouselProps) {
                 {/* Animated content — re-mounts on every index change to trigger CSS keyframe */}
                 <div
                   key={activeIndex}
-                  className={`flex items-center gap-2 sm:gap-3 text-[9px] sm:text-[10px] ${
+                  className={`flex items-center gap-1.5 sm:gap-3 text-[9px] sm:text-[10px] min-w-0 ${
                     navDirection === 1
                       ? "animate-chapter-from-right"
                       : "animate-chapter-from-left"
@@ -349,7 +350,7 @@ export function ProjectCarousel({ projects, techIcons }: ProjectCarouselProps) {
                 >
                   {/* Chapter badge */}
                   <span
-                    className="shrink-0 rounded-md px-2 py-0.5 font-semibold text-[8px] sm:text-[9px] tracking-[0.14em] text-beige"
+                    className="shrink-0 rounded-md px-1.5 sm:px-2 py-0.5 font-semibold text-[8px] sm:text-[9px] tracking-[0.1em] text-beige"
                     style={{
                       background: "rgba(255,255,255,0.08)",
                       border: "1px solid rgba(255,255,255,0.1)",
@@ -359,10 +360,10 @@ export function ProjectCarousel({ projects, techIcons }: ProjectCarouselProps) {
                   </span>
 
                   {/* Separator */}
-                  <span className="text-white/20 font-thin shrink-0 text-base leading-none">/</span>
+                  <span className="text-white/20 font-thin shrink-0 text-sm leading-none">/</span>
 
                   {/* Project title */}
-                  <span className="truncate max-w-[100px] sm:max-w-[200px] md:max-w-[260px] font-bold text-milky-white tracking-wider drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)] text-[10px] sm:text-[12px]">
+                  <span className="truncate min-w-0 max-w-[75px] xs:max-w-[130px] sm:max-w-[200px] md:max-w-[260px] font-bold text-milky-white tracking-wider drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)] text-[10px] sm:text-[12px]">
                     {activeProject.title}
                   </span>
                 </div>
@@ -378,7 +379,7 @@ export function ProjectCarousel({ projects, techIcons }: ProjectCarouselProps) {
             </div>
 
             {/* ── Divider ── */}
-            <div className="h-8 w-px bg-gradient-to-b from-transparent via-maroon/15 to-transparent shrink-0" />
+            <div className="h-6 sm:h-8 w-px bg-gradient-to-b from-transparent via-maroon/20 to-transparent shrink-0" />
 
             {/* ── NEXT Button ── */}
             <button
@@ -386,7 +387,7 @@ export function ProjectCarousel({ projects, techIcons }: ProjectCarouselProps) {
               onClick={handleNext}
               disabled={isAnimating}
               aria-label="Orbit to next project"
-              className="group relative flex items-center gap-2 rounded-xl px-4 sm:px-5 py-3 font-mono text-[10px] sm:text-[11px] tracking-[0.18em] uppercase text-ink-secondary transition-all duration-300 hover:text-maroon disabled:opacity-40 cursor-pointer"
+              className="group relative flex shrink-0 items-center justify-center gap-1 sm:gap-2 rounded-xl px-2.5 sm:px-5 py-2.5 sm:py-3 font-mono text-[9px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.18em] uppercase text-ink-secondary transition-all duration-300 hover:text-maroon disabled:opacity-40 cursor-pointer select-none"
               style={{ background: "rgba(255,255,255,0)" }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLButtonElement).style.background =
@@ -399,8 +400,8 @@ export function ProjectCarousel({ projects, techIcons }: ProjectCarouselProps) {
                 (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
               }}
             >
-              <span>NEXT</span>
-              <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+              <span className="font-semibold">NEXT</span>
+              <ChevronRight className="h-3.5 w-3.5 sm:h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" />
             </button>
           </div>
         </div>
