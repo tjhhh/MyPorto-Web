@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { Camera, ImagePlus, User, RefreshCw } from "lucide-react";
+import { User } from "lucide-react";
 
 interface HeroPortraitProps {
   imageSrc?: string;
@@ -17,27 +17,7 @@ export function HeroPortrait({
   role = "Software Engineer",
   location = "Bandung, ID",
 }: HeroPortraitProps) {
-  const [activeSrc, setActiveSrc] = useState<string>(imageSrc);
   const [hasError, setHasError] = useState(false);
-  const [isPreview, setIsPreview] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const previewUrl = URL.createObjectURL(file);
-      setActiveSrc(previewUrl);
-      setHasError(false);
-      setIsPreview(true);
-    }
-  };
-
-  const handleResetPreview = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setActiveSrc(imageSrc);
-    setIsPreview(false);
-    setHasError(false);
-  };
 
   return (
     <div className="relative w-full border border-beige/40 bg-obsidian-surface shadow-xl p-2 sm:p-4 overflow-hidden group">
@@ -46,15 +26,6 @@ export function HeroPortrait({
       <div className="absolute top-2 right-2 h-3 w-3 border-t-2 border-r-2 border-beige/50 pointer-events-none z-20" />
       <div className="absolute bottom-2 left-2 h-3 w-3 border-b-2 border-l-2 border-beige/50 pointer-events-none z-20" />
       <div className="absolute bottom-2 right-2 h-3 w-3 border-b-2 border-r-2 border-beige/50 pointer-events-none z-20" />
-
-      {/* Hidden file input for direct interactive preview */}
-      <input
-        ref={fileInputRef}
-        type="file"
-        accept="image/*"
-        className="hidden"
-        onChange={handleFileChange}
-      />
 
       {/* Header Telemetry Label */}
       <div className="flex items-center justify-between border-b border-beige/15 px-3 py-2 font-mono text-[9px] tracking-[0.18em] uppercase text-beige/70">
@@ -83,7 +54,7 @@ export function HeroPortrait({
           /* Actual Photo Display */
           <div className="relative h-full w-full">
             <Image
-              src={activeSrc}
+              src={imageSrc}
               alt={`${name} — ${role}`}
               fill
               sizes="(max-width: 768px) 100vw, 450px"
@@ -92,7 +63,7 @@ export function HeroPortrait({
               onError={() => setHasError(true)}
             />
 
-            {/* Editorial Vignette & Shading - subtle so fingers remain crisp */}
+            {/* Editorial Vignette & Shading */}
             <div className="absolute inset-0 bg-gradient-to-t from-obsidian-black/60 via-transparent to-transparent pointer-events-none" />
 
             {/* Technical Viewfinder Reticle Overlays */}
@@ -103,21 +74,6 @@ export function HeroPortrait({
               [REC // 60FPS] +
             </div>
 
-            {/* Interactive Preview Badge or Reset Button */}
-            {isPreview && (
-              <div className="absolute top-10 left-3 right-3 flex items-center justify-between bg-maroon/90 backdrop-blur-md border border-beige/30 px-3 py-1.5 font-mono text-[9px] text-milky-white z-10">
-                <span>MODE PREVIEW SEMENTARA</span>
-                <button
-                  type="button"
-                  onClick={handleResetPreview}
-                  className="flex items-center gap-1 underline hover:text-beige"
-                >
-                  <RefreshCw className="h-2.5 w-2.5" />
-                  Reset
-                </button>
-              </div>
-            )}
-
             {/* Bottom Floating Identity Bar */}
             <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between bg-obsidian-surface/85 backdrop-blur-md border border-beige/20 px-3 py-1.5 font-mono text-[10px] text-milky-white">
               <div className="flex items-center gap-2">
@@ -127,30 +83,15 @@ export function HeroPortrait({
                   {role}
                 </span>
               </div>
-              <button
-                type="button"
-                onClick={() => fileInputRef.current?.click()}
-                className="flex items-center gap-1 text-[9px] text-beige/60 hover:text-milky-white hover:underline transition-colors"
-                title="Ganti foto preview"
-              >
-                <Camera className="h-3 w-3" />
-                <span>Ubah</span>
-              </button>
+              <div className="flex items-center gap-1.5 text-beige/50 text-[9px] font-mono uppercase tracking-wider">
+                <span className="h-1 w-1 rounded-full bg-emerald-400/80" />
+                <span>AUTHENTICATED</span>
+              </div>
             </div>
           </div>
         ) : (
-          /* Editorial Blueprint Placeholder (when profile.jpg is not yet uploaded) */
-          <div
-            onClick={() => fileInputRef.current?.click()}
-            className="relative flex h-full w-full flex-col items-center justify-center p-6 text-center cursor-pointer transition-colors duration-300 hover:bg-obsidian-surface/60"
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                fileInputRef.current?.click();
-              }
-            }}
-          >
+          /* Editorial Blueprint Placeholder */
+          <div className="relative flex h-full w-full flex-col items-center justify-center p-6 text-center select-none">
             {/* Viewfinder crosshairs */}
             <div className="absolute top-4 left-4 text-beige/30 font-mono text-xs select-none">
               +
@@ -174,27 +115,17 @@ export function HeroPortrait({
               <User className="h-8 w-8 text-beige/70" />
             </div>
 
-            {/* Instruction Badges */}
-            <div className="inline-flex items-center gap-1.5 border border-maroon/40 bg-maroon/25 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-beige">
-              <ImagePlus className="h-3 w-3 text-maroon-glow" />
-              <span>SLOT FOTO PROFIL</span>
+            <div className="inline-flex items-center gap-1.5 border border-beige/20 bg-beige/5 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-beige/70">
+              <span>PORTRAIT DOSSIER</span>
             </div>
 
             <p className="mt-3 font-display text-[18px] font-bold text-milky-white">
-              Siap Menampilkan Foto Diri
+              {name}
             </p>
 
-            <p className="mt-1.5 max-w-xs font-sans text-[12px] leading-relaxed text-cream-dark/80">
-              Klik untuk uji coba pratinjau langsung dari perangkat, atau letakkan foto permanen di:
+            <p className="mt-1 font-mono text-[11px] uppercase tracking-wider text-cream-dark/60">
+              {role}
             </p>
-
-            <div className="mt-3 border border-beige/30 bg-obsidian-card px-3.5 py-1.5 font-mono text-[12px] font-semibold text-beige tracking-wider">
-              public/profile.jpg
-            </div>
-
-            <span className="mt-4 font-mono text-[9px] tracking-widest text-beige/50 uppercase">
-              [ KLIK UNTUK PILIH FOTO DARI KOMPUTER ]
-            </span>
           </div>
         )}
       </div>
