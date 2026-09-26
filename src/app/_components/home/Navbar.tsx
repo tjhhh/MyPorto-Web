@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import type { NavLink } from "@/app/_types/home";
+import { ScrambleText, MagneticWrapper } from "@/app/_components/motion";
+import { BrandMonogram } from "@/app/_components/ui/BrandMonogram";
 
 type NavbarProps = {
   links: NavLink[];
@@ -82,9 +84,7 @@ export function Navbar({ links }: Readonly<NavbarProps>) {
           className="group flex items-center gap-3.5 focus:outline-none"
           aria-label="Go to prologue"
         >
-          <div className="relative flex h-8 w-8 items-center justify-center border border-beige/30 bg-maroon-dark transition-all duration-300 group-hover:border-beige group-hover:bg-maroon">
-            <span className="font-display font-bold text-[14px] text-milky-white">F</span>
-          </div>
+          <BrandMonogram size={34} className="transition-transform duration-300 group-hover:scale-105" />
           <div className="flex flex-col">
             <span className="font-mono text-[11px] font-semibold tracking-[0.18em] uppercase text-milky-white group-hover:text-beige transition-colors">
               M. FAUZAN
@@ -123,22 +123,29 @@ export function Navbar({ links }: Readonly<NavbarProps>) {
         <div className="hidden md:flex items-center gap-5">
           {/* Time & Telemetry */}
           <div className="flex items-center gap-2 border-r border-milky-white/10 pr-5 font-mono text-[10px] tracking-[0.14em] text-cream-dark/70">
-            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>BDG, ID</span>
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+            </span>
+            <ScrambleText text="BDG, ID" speed={30} delay={100} />
             {currentTime && (
-              <span className="text-milky-white font-medium">{currentTime} WIB</span>
+              <span className="text-milky-white font-medium">
+                <ScrambleText text={`${currentTime} WIB`} speed={20} delay={250} />
+              </span>
             )}
           </div>
 
           {/* Resume / Dispatch Link */}
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center border border-cream-dark/25 bg-transparent px-4 py-1.5 font-mono text-[10px] tracking-[0.16em] uppercase text-cream-dark transition-all duration-300 hover:border-maroon hover:bg-maroon hover:text-milky-white"
-          >
-            Curriculum Vitae
-          </a>
+          <MagneticWrapper strength={0.22}>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center border border-cream-dark/25 bg-transparent px-4 py-1.5 font-mono text-[10px] tracking-[0.16em] uppercase text-cream-dark transition-all duration-300 hover:border-maroon hover:bg-maroon hover:text-milky-white"
+            >
+              Curriculum Vitae
+            </a>
+          </MagneticWrapper>
         </div>
 
         {/* Mobile Menu Toggle */}

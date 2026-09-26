@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { BookOpen, Layers } from "lucide-react";
 import type { Project, ProjectTechIconMap } from "@/app/_types/home";
@@ -27,14 +28,50 @@ export function ProjectCard({
   const isSide = Math.abs(visualPosition) === 1;
   const isTeaser = Math.abs(visualPosition) === 2;
 
+  const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0, glareX: 50, glareY: 50 });
+  const [isHovered, setIsHovered] = useState(false);
+  const cardRef = useRef<HTMLElement>(null);
+
   const handleClick = (e: React.MouseEvent) => {
     if (isAnimating) return;
     onCardClick(project);
   };
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (!isActive || !cardRef.current || isAnimating) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    // Subtle 3D tilt (max 5.5 degrees)
+    const rotateX = ((centerY - y) / centerY) * 5.5;
+    const rotateY = ((x - centerX) / centerX) * 5.5;
+
+    // Specular glare coords in %
+    const glareX = (x / rect.width) * 100;
+    const glareY = (y / rect.height) * 100;
+
+    setTilt({ rotateX, rotateY, glareX, glareY });
+  };
+
+  const handleMouseEnter = () => {
+    if (isActive && !isAnimating) setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setTilt({ rotateX: 0, rotateY: 0, glareX: 50, glareY: 50 });
+  };
+
   return (
     <article
+      ref={cardRef}
       onClick={handleClick}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       tabIndex={isActive ? 0 : -1}
       role="button"
       aria-label={`${project.title} - Chapter ${chapterNumber}. ${
@@ -46,6 +83,16 @@ export function ProjectCard({
           onCardClick(project);
         }
       }}
+      style={{
+        transform:
+          isActive && isHovered
+            ? `perspective(900px) rotateX(${tilt.rotateX.toFixed(2)}deg) rotateY(${tilt.rotateY.toFixed(2)}deg) translateZ(8px)`
+            : "perspective(900px) rotateX(0deg) rotateY(0deg) translateZ(0px)",
+        transition: isHovered
+          ? "transform 0.12s ease-out, border-color 0.3s, box-shadow 0.3s"
+          : "transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, box-shadow 0.3s",
+        transformStyle: "preserve-3d",
+      }}
       className={`w-full relative cursor-pointer select-none border transition-colors duration-300 ${
         isActive
           ? "border-maroon/70 bg-surface-container-lowest shadow-2xl hover:border-maroon"
@@ -54,6 +101,17 @@ export function ProjectCard({
           : "border-beige/30 bg-surface-container-low/80 shadow-sm"
       }`}
     >
+      {/* Dynamic Specular Glare Reflection */}
+      {isActive && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-30 transition-opacity duration-300 rounded-[inherit] overflow-hidden"
+          style={{
+            opacity: isHovered ? 0.32 : 0,
+            background: `radial-gradient(circle 350px at ${tilt.glareX}% ${tilt.glareY}%, rgba(255,255,255,0.18), transparent 70%)`,
+          }}
+        />
+      )}
       {/* Precision Corner Brackets for active and side cards */}
       <div className="absolute top-1.5 left-1.5 z-20 h-2.5 w-2.5 border-t-2 border-l-2 border-maroon/70 pointer-events-none" />
       <div className="absolute top-1.5 right-1.5 z-20 h-2.5 w-2.5 border-t-2 border-r-2 border-maroon/70 pointer-events-none" />

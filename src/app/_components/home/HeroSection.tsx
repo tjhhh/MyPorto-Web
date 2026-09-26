@@ -1,6 +1,7 @@
 import { HeroPortrait } from "./HeroPortrait";
 import { heroProfile } from "@/app/_data/home-data";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
+import { ScrambleText, MagneticWrapper, AnimatedCounter } from "@/app/_components/motion";
 
 export function HeroSection() {
   return (
@@ -12,13 +13,20 @@ export function HeroSection() {
       <div className="border-b border-beige/30 bg-surface-container-low/60 px-4 py-2 md:px-8">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between font-mono text-[10px] tracking-[0.16em] uppercase text-ink-muted">
           <div className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-maroon shrink-0" />
-            <span className="text-ink font-medium">MUHAMMAD FAUZAN</span>
+            <span className="relative flex h-2 w-2 shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-maroon opacity-60" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-maroon" />
+            </span>
+            <span className="text-ink font-medium">
+              <ScrambleText text="MUHAMMAD FAUZAN" speed={25} delay={100} />
+            </span>
             <span className="text-beige/60">/</span>
-            <span>SOFTWARE ENGINEER</span>
+            <span>
+              <ScrambleText text="SOFTWARE ENGINEER" speed={22} delay={200} />
+            </span>
           </div>
           <div className="hidden sm:block text-ink-light">
-            TELKOM UNIVERSITY · BANDUNG, ID
+            <ScrambleText text="TELKOM UNIVERSITY · BANDUNG, ID" speed={20} delay={350} />
           </div>
         </div>
       </div>
@@ -41,28 +49,32 @@ export function HeroSection() {
 
           {/* Action Trigger Buttons */}
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2.5 border border-maroon bg-maroon px-6 py-3 font-sans text-[11px] font-semibold tracking-[0.14em] uppercase text-milky-white transition-all duration-300 hover:bg-maroon-dark hover:border-maroon-dark shadow-xs"
-            >
-              <span>Let&apos;s Hire Me</span>
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </a>
+            <MagneticWrapper strength={0.24}>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2.5 border border-maroon bg-maroon px-6 py-3 font-sans text-[11px] font-semibold tracking-[0.14em] uppercase text-milky-white transition-all duration-300 hover:bg-maroon-dark hover:border-maroon-dark shadow-xs"
+              >
+                <span>Initiate Collaboration</span>
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </a>
+            </MagneticWrapper>
 
-            <a
-              href="#projects"
-              className="inline-flex items-center gap-2 border border-beige/60 bg-surface-container-lowest px-5 py-3 font-sans text-[11px] font-semibold tracking-[0.14em] uppercase text-ink transition-all duration-300 hover:border-maroon hover:text-maroon"
-            >
-              <span>View Portfolio</span>
-              <ArrowDownRight className="h-3.5 w-3.5" />
-            </a>
+            <MagneticWrapper strength={0.24}>
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 border border-beige/60 bg-surface-container-lowest px-5 py-3 font-sans text-[11px] font-semibold tracking-[0.14em] uppercase text-ink transition-all duration-300 hover:border-maroon hover:text-maroon"
+              >
+                <span>View Portfolio</span>
+                <ArrowDownRight className="h-3.5 w-3.5" />
+              </a>
+            </MagneticWrapper>
           </div>
 
           {/* Clean Foundations Bar */}
           <div className="mt-12 grid grid-cols-3 border-t border-beige/35 pt-6 font-sans">
             <div>
               <p className="font-sans text-[26px] font-bold text-maroon sm:text-[32px] tracking-tight">
-                06+
+                <AnimatedCounter value="06+" duration={1000} delay={400} />
               </p>
               <p className="mt-0.5 font-mono text-[10px] tracking-[0.14em] text-ink-muted uppercase">
                 Works Shipped

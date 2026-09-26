@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ArrowUpRight, Copy, Check, MapPin, Radio } from "lucide-react";
+import { MagneticWrapper } from "@/app/_components/motion";
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -64,7 +65,11 @@ export function ContactSection() {
           {/* Section Header */}
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-milky-white/15 pb-6 font-mono text-[10px] tracking-[0.2em] uppercase text-cream-dark/70">
             <div className="flex items-center gap-2">
-              <Radio className="h-3.5 w-3.5 text-maroon-glow animate-pulse" />
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-maroon-glow opacity-80" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-maroon-glow shadow-[0_0_8px_rgba(123,35,46,0.8)]" />
+              </span>
+              <Radio className="h-3.5 w-3.5 text-maroon-glow" />
               <span>COMMUNICATION TERMINAL // ACTIVE</span>
             </div>
             <div className="flex items-center gap-2 text-cream-dark/50">
@@ -79,7 +84,7 @@ export function ContactSection() {
               <h2 className="font-display text-[40px] leading-[1.04] font-bold text-milky-white sm:text-[54px] lg:text-[62px]">
                 Have ambitious problems to solve?{" "}
                 <span className="italic text-beige font-normal">
-                  Let&apos;s hire me.
+                  Initiate Collaboration.
                 </span>
               </h2>
 
@@ -103,14 +108,20 @@ export function ContactSection() {
                   <button
                     type="button"
                     onClick={handleCopy}
-                    className="inline-flex items-center gap-1.5 border border-milky-white/20 px-2.5 py-1 font-mono text-[9px] tracking-[0.12em] uppercase text-cream-dark hover:border-milky-white hover:text-milky-white transition-colors shrink-0"
+                    className={`inline-flex items-center gap-1.5 border px-2.5 py-1 font-mono text-[9px] tracking-[0.12em] uppercase transition-all duration-300 shrink-0 cursor-pointer ${
+                      copied
+                        ? "border-emerald-400 bg-emerald-950/70 text-emerald-300 shadow-[0_0_12px_rgba(52,211,153,0.35)] scale-[1.02]"
+                        : "border-milky-white/20 text-cream-dark hover:border-milky-white hover:text-milky-white"
+                    }`}
                     aria-label="Copy email address"
                   >
                     {copied ? (
-                      <>
-                        <Check className="h-3 w-3 text-emerald-400" />
-                        <span>COPIED</span>
-                      </>
+                      <span className="inline-flex items-center gap-1.5">
+                        <Check className="h-3 w-3 text-emerald-400 shrink-0 animate-pulse" />
+                        <span className="font-semibold text-emerald-300 tracking-wider">
+                          COPIED TO CLIPBOARD // OK
+                        </span>
+                      </span>
                     ) : (
                       <>
                         <Copy className="h-3 w-3" />
@@ -121,37 +132,43 @@ export function ContactSection() {
                 </div>
 
                 <div className="mt-5">
-                  <a
-                    href={`mailto:${email}?subject=Hiring%20Inquiry%20%E2%80%94%20Let%27s%20Work%20Together`}
-                    className="inline-flex w-full items-center justify-center gap-2 border border-maroon bg-maroon py-3.5 font-mono text-[11px] tracking-[0.18em] uppercase text-milky-white transition-all duration-300 hover:bg-maroon-glow hover:border-maroon-glow shadow-md"
-                  >
-                    <span>Let&apos;s Hire Me</span>
-                    <ArrowUpRight className="h-3.5 w-3.5" />
-                  </a>
+                  <MagneticWrapper strength={0.2} className="w-full">
+                    <a
+                      href={`mailto:${email}?subject=Hiring%20Inquiry%20%E2%80%94%20Let%27s%20Work%20Together`}
+                      className="inline-flex w-full items-center justify-center gap-2 border border-maroon bg-maroon py-3.5 font-mono text-[11px] tracking-[0.18em] uppercase text-milky-white transition-all duration-300 hover:bg-maroon-glow hover:border-maroon-glow shadow-md"
+                    >
+                      <span>Initiate Collaboration</span>
+                      <ArrowUpRight className="h-3.5 w-3.5" />
+                    </a>
+                  </MagneticWrapper>
                 </div>
               </div>
 
               {/* Direct Social Channels */}
               <div className="grid grid-cols-2 gap-3 font-mono text-[10px] tracking-[0.16em] uppercase">
-                <a
-                  href="https://github.com/tjhhh"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex flex-col items-center justify-center gap-2 border border-milky-white/15 bg-obsidian-card p-3.5 text-cream-dark hover:border-milky-white/50 hover:text-milky-white transition-all duration-200"
-                >
-                  <GithubIcon className="h-4 w-4" />
-                  <span>GITHUB</span>
-                </a>
+                <MagneticWrapper strength={0.18} className="w-full">
+                  <a
+                    href="https://github.com/tjhhh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center justify-center gap-2 border border-milky-white/15 bg-obsidian-card p-3.5 text-cream-dark hover:border-milky-white/50 hover:text-milky-white transition-all duration-200 w-full"
+                  >
+                    <GithubIcon className="h-4 w-4" />
+                    <span>GITHUB</span>
+                  </a>
+                </MagneticWrapper>
 
-                <a
-                  href="https://www.linkedin.com/in/mffauzaannn/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex flex-col items-center justify-center gap-2 border border-milky-white/15 bg-obsidian-card p-3.5 text-cream-dark hover:border-milky-white/50 hover:text-milky-white transition-all duration-200"
-                >
-                  <LinkedinIcon className="h-4 w-4" />
-                  <span>LINKEDIN</span>
-                </a>
+                <MagneticWrapper strength={0.18} className="w-full">
+                  <a
+                    href="https://www.linkedin.com/in/mffauzaannn/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center justify-center gap-2 border border-milky-white/15 bg-obsidian-card p-3.5 text-cream-dark hover:border-milky-white/50 hover:text-milky-white transition-all duration-200 w-full"
+                  >
+                    <LinkedinIcon className="h-4 w-4" />
+                    <span>LINKEDIN</span>
+                  </a>
+                </MagneticWrapper>
               </div>
             </div>
           </div>

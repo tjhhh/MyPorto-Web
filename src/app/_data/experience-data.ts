@@ -12,13 +12,13 @@ export const professionalExperiences: ExperienceItem[] = [
     location: "Surabaya, ID",
     status: "active",
     statusLabel: "ACTIVE // PRODUCTION",
-    headline: "Smart Kandang Multi-Platform IoT & Edge Ingestion Ecosystem",
+    headline: "Smart Kandang Multi-Platform Software & Telemetry Ingestion Ecosystem",
     summary:
-      "Mengembangkan platform pemantauan dan otomasi iklim mikro kandang ayam modern (closed-house broiler) berbasis IoT dan Cloud yang mengintegrasikan Web Dashboard, Mobile App (Android/iOS), dan IoT Gateway ESP32.",
+      "Mengembangkan ekosistem software multi-platform (Web Dashboard Next.js, Mobile App Flutter, dan Backend NestJS) untuk pemantauan closed-house broiler, berfokus pada arsitektur perangkat lunak dan integrasi penyerapan (ingestion) data telemetri dari IoT gateway ESP32 ke sistem cloud.",
     subsystems: [
       {
-        title: "Smart Kandang Multi-Platform IoT System",
-        desc: "Mengembangkan platform pemantauan dan otomasi iklim mikro kandang ayam modern berbasis IoT dan Cloud yang mengintegrasikan Web Dashboard, Mobile App (Android/iOS), dan IoT Gateway ESP32.",
+        title: "Smart Kandang Multi-Platform Software Ecosystem",
+        desc: "Mengembangkan platform pemantauan dan otomasi iklim mikro kandang ayam modern berbasis cloud yang mengintegrasikan Web Dashboard, Mobile App (Flutter), dan pipeline penyerapan data telemetri dari gateway ESP32.",
         badge: "Multi-Platform",
       },
       {
@@ -44,7 +44,7 @@ export const professionalExperiences: ExperienceItem[] = [
     ],
     workflows: [
       "Agile/Scrum 2-week sprint cycle berkolaborasi bersama IoT/Hardware Engineer, Software Engineer, dan Peternak Lapangan.",
-      "Dokumentasi teknis korporat berstandar SRS, pemodelan ERD database relasional, dan diagram use case UML.",
+      "Standardisasi kontrak skema payload telemetri bersama tim hardware, dokumentasi SRS, dan pemodelan ERD.",
       "Code review berbasis Git Pull Request dan pipeline penjaminan mutu (QA) Black Box, White Box, dan Unit Testing otomatis.",
     ],
     metrics: [
@@ -93,8 +93,8 @@ export const professionalExperiences: ExperienceItem[] = [
         items: ["NestJS", "TypeScript", "Prisma ORM", "PostgreSQL", "JWT RBAC", "Swagger OpenAPI", "Class-Validator"],
       },
       {
-        category: "IoT & Hardware",
-        items: ["ESP32 Microcontroller", "C++ / Arduino Core", "DHT11 / SHT31", "MQ-137 / MQ-135", "HTTP Ingestion"],
+        category: "IoT & Integration",
+        items: ["ESP32 Gateway", "HTTP Ingestion", "Telemetry API", "JSON Schema"],
       },
       {
         category: "DevOps & Tools",

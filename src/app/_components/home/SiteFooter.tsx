@@ -2,6 +2,7 @@
 
 import type { SocialLink } from "@/app/_types/home";
 import { ArrowUp } from "lucide-react";
+import { BrandMonogram } from "@/app/_components/ui/BrandMonogram";
 
 type SiteFooterProps = {
   socialLinks: SocialLink[];
@@ -16,13 +17,16 @@ export function SiteFooter({ socialLinks }: Readonly<SiteFooterProps>) {
     <footer className="border-t border-milky-white/10 bg-obsidian text-cream-dark/70 py-10">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 md:px-8">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-milky-white/10 pb-6">
-          <div className="flex flex-col">
-            <span className="font-mono text-[11px] font-semibold tracking-[0.2em] uppercase text-milky-white">
-              MUHAMMAD FAUZAN
-            </span>
-            <span className="font-mono text-[9px] tracking-[0.14em] uppercase text-cream-dark/45">
-              SOFTWARE ENGINEERING MONOGRAPH · ARCHIVE VOL. 2026
-            </span>
+          <div className="flex items-center gap-3">
+            <BrandMonogram size={30} />
+            <div className="flex flex-col">
+              <span className="font-mono text-[11px] font-semibold tracking-[0.2em] uppercase text-milky-white">
+                MUHAMMAD FAUZAN
+              </span>
+              <span className="font-mono text-[9px] tracking-[0.14em] uppercase text-cream-dark/45">
+                SOFTWARE ENGINEERING MONOGRAPH · ARCHIVE VOL. 2026
+              </span>
+            </div>
           </div>
 
           {/* Social Links */}
@@ -52,11 +56,8 @@ export function SiteFooter({ socialLinks }: Readonly<SiteFooterProps>) {
           </div>
         </div>
 
-        {/* Colophon Technical Imprint */}
+        {/* Copyright */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 font-mono text-[9px] tracking-[0.14em] text-cream-dark/40 uppercase">
-          <span>
-            COLOPHON: NEXT.JS 16 (TURBOPACK) · REACT 19 · TAILWIND CSS V4 · LATENCY &lt; 20MS
-          </span>
           <span>
             © {new Date().getFullYear()} MUHAMMAD FAUZAN. ALL RIGHTS RESERVED.
           </span>

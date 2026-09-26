@@ -12,6 +12,7 @@ import {
   MapPin,
   Zap,
 } from "lucide-react";
+import { AnimatedCounter } from "@/app/_components/motion";
 
 /* ─────────────────────────────────────────────────────────
    SECTION DATA
@@ -27,10 +28,10 @@ const experiences = [
     type: "Internship",
     period: "Agustus 2026 — Present",
     location: "Surabaya, ID",
-    headline: "Smart Kandang Multi-Platform IoT System",
-    tagline: "IoT · Cloud · Edge Computing · Mobile",
+    headline: "Smart Kandang Multi-Platform Software Ecosystem",
+    tagline: "Software Ecosystem · Ingestion Pipeline · Cloud · Mobile",
     summary:
-      "Mengembangkan platform pemantauan dan otomasi iklim mikro kandang ayam modern (closed-house broiler) berbasis IoT dan Cloud yang mengintegrasikan Web Dashboard, Mobile App, dan IoT Gateway ESP32.",
+      "Mengembangkan ekosistem software multi-platform (Web Dashboard Next.js, Mobile App Flutter, dan Backend NestJS) untuk pemantauan closed-house broiler, berfokus pada arsitektur perangkat lunak dan integrasi penyerapan (ingestion) data telemetri dari IoT gateway ESP32 ke sistem cloud.",
     metrics: [
       { value: "< 500ms", label: "Telemetry Latency", desc: "Sensor edge → UI" },
       { value: "> 95%", label: "Triage Efficiency", desc: "Bulk acknowledge" },
@@ -42,20 +43,20 @@ const experiences = [
     deliverables: [
       { title: "Web Monitoring & Admin Dashboard", tech: "Next.js 14+ · TypeScript · Tailwind · Recharts" },
       { title: "Peternak Mobile App", tech: "Flutter · Dart · Provider · FCM · Offline-first" },
-      { title: "Backend API & IoT Ingestion", tech: "NestJS · Prisma · PostgreSQL · JWT RBAC · Swagger" },
-      { title: "IoT Edge Gateway", tech: "ESP32 · C++/Arduino · DHT11 · MQ-137 · HTTP Ingestion" },
+      { title: "Backend API & Data Ingestion", tech: "NestJS · Prisma · PostgreSQL · JWT RBAC · Swagger" },
+      { title: "IoT Telemetry Ingestion Pipeline", tech: "HTTP Ingestion API · JSON Payload Parsing · Sensor Normalization · Schema Contract" },
       { title: "DevOps & Infrastructure", tech: "Docker · Cloudflare Tunnel · Nginx · Ubuntu Linux" },
     ],
     workflows: [
-      "Agile/Scrum dengan siklus sprint 2 minggu bersama IoT/HW Engineers & Stakeholder",
-      "Dokumentasi SRS korporat, pemodelan ERD relasional, diagram UML use-case",
+      "Agile/Scrum dengan siklus sprint 2 minggu bersama IoT/Hardware Engineer & Stakeholder peternak",
+      "Standardisasi kontrak skema payload telemetri bersama tim hardware, dokumentasi SRS, dan pemodelan ERD",
       "Code review via Git PR · Black Box, White Box & Unit Testing pipeline (Jest / Flutter Test)",
     ],
     techStack: [
       { cat: "Frontend", items: ["Next.js 14+", "TypeScript", "Tailwind CSS", "Recharts", "ExcelJS"] },
       { cat: "Mobile", items: ["Flutter", "Dart", "Provider", "Dio", "FCM"] },
       { cat: "Backend", items: ["NestJS", "Prisma", "PostgreSQL", "JWT", "Swagger"] },
-      { cat: "IoT", items: ["ESP32", "C++", "DHT11", "MQ-137"] },
+      { cat: "IoT", items: ["ESP32 Gateway", "HTTP Ingestion", "Telemetry API", "JSON Schema"] },
       { cat: "DevOps", items: ["Docker", "Cloudflare Tunnel", "Nginx", "Ubuntu"] },
     ],
   },
@@ -120,7 +121,7 @@ function MetricCard({
       }}
     >
       <span className="font-display text-[26px] sm:text-[30px] font-bold text-maroon leading-none">
-        {value}
+        <AnimatedCounter value={value} trigger={shown} delay={delay} />
       </span>
       <span className="font-mono text-[9.5px] tracking-[0.18em] uppercase text-obsidian font-bold">
         {label}
@@ -344,8 +345,18 @@ export function ExperienceSection() {
                   <div className="flex items-center gap-2 font-mono text-[9px] tracking-[0.2em] uppercase text-beige/60 mb-2">
                     <Activity className="h-3.5 w-3.5 text-beige/60 shrink-0" />
                     <span>RECORD // {active.type.toUpperCase()} · {active.index}</span>
-                    <span className="ml-auto border border-milky-white/20 bg-milky-white/5 px-2 py-0.5 text-beige/70 whitespace-nowrap">
-                      {active.status === "active" ? "● ACTIVE" : "✓ SHIPPED"}
+                    <span className="ml-auto border border-milky-white/20 bg-milky-white/5 px-2 py-0.5 text-beige/70 whitespace-nowrap inline-flex items-center gap-1.5">
+                      {active.status === "active" ? (
+                        <>
+                          <span className="relative flex h-1.5 w-1.5">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-maroon-glow opacity-80" />
+                            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-maroon-glow" />
+                          </span>
+                          <span>ACTIVE</span>
+                        </>
+                      ) : (
+                        "✓ SHIPPED"
+                      )}
                     </span>
                   </div>
                   <h3 className="font-display text-[24px] sm:text-[30px] font-bold text-milky-white leading-[1.1]">
@@ -398,7 +409,7 @@ export function ExperienceSection() {
                     }}
                   >
                     <span className="font-display text-[22px] sm:text-[26px] font-bold text-milky-white leading-none">
-                      {m.value}
+                      <AnimatedCounter value={m.value} trigger={shown} delay={i * 55 + 100} />
                     </span>
                     <span className="font-mono text-[9px] tracking-widest uppercase text-beige font-semibold">
                       {m.label}

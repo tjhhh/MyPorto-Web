@@ -59,9 +59,6 @@ export function ProjectDetailFooter({
 
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 font-mono text-[9px] tracking-[0.14em] text-cream-dark/40 uppercase">
           <span>
-            COLOPHON: NEXT.JS 16 (TURBOPACK) · REACT 19 · TAILWIND CSS V4 · EDITORIAL SYSTEMS MONOGRAPH
-          </span>
-          <span>
             © {new Date().getFullYear()} MUHAMMAD FAUZAN. ALL RIGHTS RESERVED.
           </span>
         </div>

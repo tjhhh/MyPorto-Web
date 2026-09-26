@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat, JetBrains_Mono } from "next/font/google";
+import { AmbientSpotlight } from "@/app/_components/motion";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -28,9 +29,12 @@ export const metadata: Metadata = {
     "Monograph and selected engineering works of Muhammad Fauzan. Full-stack distributed architectures, real-time vehicle telemetry, and high-performance mobile systems.",
   authors: [{ name: "Muhammad Fauzan" }],
   icons: {
-    icon: "/icon.png",
-    shortcut: "/icon.png",
-    apple: "/icon.png",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
   },
   openGraph: {
     title: "Muhammad Fauzan — Software Engineer",
@@ -50,7 +54,8 @@ export default function RootLayout({
       lang="en"
       className={`${montserrat.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-maroon selection:text-milky-white">
+      <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-maroon selection:text-milky-white relative">
+        <AmbientSpotlight />
         {children}
       </body>
     </html>
