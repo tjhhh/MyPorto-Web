@@ -57,26 +57,15 @@ export function HeroPortrait({
               onError={() => setHasError(true)}
             />
 
-            {/* Editorial Vignette & Shading */}
-            <div className="absolute inset-0 bg-gradient-to-t from-obsidian-black/60 via-transparent to-transparent pointer-events-none" />
+            {/* Subtle Vignette */}
+            <div className="absolute inset-0 bg-gradient-to-t from-obsidian-black/70 via-transparent to-transparent pointer-events-none" />
 
-            {/* Technical Viewfinder Reticle Overlays */}
-            <div className="absolute top-3 left-3 text-[10px] font-mono text-beige/40 pointer-events-none">
-              + [X: 042 // Y: 108]
-            </div>
-            <div className="absolute top-3 right-3 text-[10px] font-mono text-beige/40 pointer-events-none">
-              [REC // 60FPS] +
-            </div>
-
-            {/* Bottom Floating Identity Bar */}
-            <div className="absolute bottom-3 left-3 right-3 flex items-center bg-obsidian-surface/85 backdrop-blur-md border border-beige/20 px-3 py-1.5 font-mono text-[10px] text-milky-white">
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-milky-white">{name}</span>
-                <span className="text-beige/30">/</span>
-                <span className="text-cream-dark/80 text-[9px] tracking-wide uppercase">
-                  {role}
-                </span>
-              </div>
+            {/* Clean Identity Badge */}
+            <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between bg-obsidian-surface/90 backdrop-blur-md border border-beige/20 px-3.5 py-2 font-mono text-[10px] text-milky-white">
+              <span className="font-semibold text-milky-white tracking-wide">{name}</span>
+              <span className="text-cream-dark/70 text-[9px] tracking-wider uppercase">
+                {role}
+              </span>
             </div>
           </div>
         ) : (
@@ -118,11 +107,6 @@ export function HeroPortrait({
             </p>
           </div>
         )}
-      </div>
-
-      {/* Footer Telemetry */}
-      <div className="flex items-center justify-between border-t border-beige/15 px-3 py-2 font-mono text-[9px] tracking-[0.14em] text-beige/60">
-        <span>SUBJECT: {name.toUpperCase()}</span>
       </div>
     </div>
   );

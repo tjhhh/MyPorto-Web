@@ -38,24 +38,6 @@ function LinkedinIcon({ className }: { className?: string }) {
   );
 }
 
-function InstagramIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-    </svg>
-  );
-}
-
 export function ContactSection() {
   const [copied, setCopied] = useState(false);
   const email = "muhfauzann040@gmail.com";
@@ -150,7 +132,7 @@ export function ContactSection() {
               </div>
 
               {/* Direct Social Channels */}
-              <div className="grid grid-cols-3 gap-3 font-mono text-[10px] tracking-[0.16em] uppercase">
+              <div className="grid grid-cols-2 gap-3 font-mono text-[10px] tracking-[0.16em] uppercase">
                 <a
                   href="https://github.com/tjhhh"
                   target="_blank"
@@ -169,16 +151,6 @@ export function ContactSection() {
                 >
                   <LinkedinIcon className="h-4 w-4" />
                   <span>LINKEDIN</span>
-                </a>
-
-                <a
-                  href="https://instagram.com/mffauzaannn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex flex-col items-center justify-center gap-2 border border-milky-white/15 bg-obsidian-card p-3.5 text-cream-dark hover:border-milky-white/50 hover:text-milky-white transition-all duration-200"
-                >
-                  <InstagramIcon className="h-4 w-4" />
-                  <span>INSTAGRAM</span>
                 </a>
               </div>
             </div>

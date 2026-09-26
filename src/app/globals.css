@@ -97,7 +97,7 @@
   --color-milky-white: #F7F4EE;
   --color-cream-dark: #DDD6CB;
 
-  --font-display: var(--font-display);
+  --font-display: var(--font-sans);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
 }

@@ -223,12 +223,11 @@ export const navLinks: NavLink[] = [
   { label: "Prologue", href: "#about" },
   { label: "Works", href: "#projects" },
   { label: "Systems", href: "#tech" },
-  { label: "Dossier", href: "#education" },
+  { label: "Dossier", href: "#experience" },
   { label: "Dispatch", href: "#contact" },
 ];
 
 export const footerSocialLinks: SocialLink[] = [
-  { label: "Instagram", href: "https://instagram.com/mffauzaannn" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/mffauzaannn/" },
   { label: "GitHub", href: "https://github.com/tjhhh" },
 ];

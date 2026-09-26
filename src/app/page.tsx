@@ -1,6 +1,6 @@
 import {
   ContactSection,
-  EducationSection,
+  ExperienceSection,
   HeroSection,
   Navbar,
   ProjectsSection,
@@ -28,7 +28,7 @@ export default function Home() {
         <HeroSection />
         <ProjectsSection projects={featuredProjects} techIcons={projectTechIcons} />
         <TechStackSection categories={techStack} />
-        <EducationSection />
+        <ExperienceSection />
         <ContactSection />
       </main>
 
