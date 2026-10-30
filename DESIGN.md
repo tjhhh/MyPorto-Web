@@ -21,6 +21,13 @@
 - **Ink Primary**: `#12100E` — High-contrast display type and headings.
 - **Ink Secondary**: `#4A4440` — Body copy, reading measure (65–75ch).
 
+## Brand Monogram
+
+- **Selected mark**: MF Cut-Grotesk — upright, bold letterforms with diagonal terminal cuts. Keep the M and F distinct.
+- **Palette**: `#FAFAFA` lettering on a `#171717` rounded-square field, independent of the site's maroon and beige palette. No gradients, glow, shadows, or extra ornaments.
+- **Master**: `public/icon.svg`, shared by the navbar and footer through `BrandMonogram`. Preserve adjacent identity text and navigation behavior.
+- **Exports**: Run `node scripts/generate-brand-icons.mjs` after editing the master. This regenerates `src/app/icon.svg`, `public/favicon.svg`, the 16/32/48px ICO, and the opaque 180px Apple touch PNG.
+
 ## Typography
 
 - **Display**: `Playfair Display` (`--font-display`, serif) — Monumental headlines, sculptural chapter numerals, and authoritative editorial statements.

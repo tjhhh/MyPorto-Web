@@ -212,7 +212,7 @@ export function TalismanCanvas() {
     window.addEventListener("resize", onResize);
 
     // 9. Animation Loop
-    let clock = new THREE.Clock();
+    const clock = new THREE.Clock();
     let frameCounter = 0;
 
     const animate = () => {

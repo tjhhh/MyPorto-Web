@@ -9,7 +9,7 @@ export function AmbientSpotlight() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setMounted(true);
+    const timer = setTimeout(() => setMounted(true), 0);
 
     // Only enable on pointer-fine devices
     if (
@@ -58,6 +58,7 @@ export function AmbientSpotlight() {
     rafId = requestAnimationFrame(updatePosition);
 
     return () => {
+      clearTimeout(timer);
       window.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
       cancelAnimationFrame(rafId);

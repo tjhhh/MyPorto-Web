@@ -165,10 +165,14 @@ export const techStack: TechStackCategory[] = [
         name: "Flutter",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
       },
+      {
+        name: "Next.js",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+      },
     ],
   },
   {
-    label: "Backend",
+    label: "Backend & Database",
     items: [
       {
         name: "Node.js",
@@ -189,6 +193,14 @@ export const techStack: TechStackCategory[] = [
       {
         name: "Firebase",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
+      },
+      {
+        name: "Laravel",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg",
+      },
+      {
+        name: "MySQL",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
       },
     ],
   },
@@ -215,16 +227,20 @@ export const techStack: TechStackCategory[] = [
         name: "Git",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
       },
+      {
+        name: "Docker",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+      },
     ],
   },
 ];
 
 export const navLinks: NavLink[] = [
-  { label: "Prologue", href: "#about" },
-  { label: "Works", href: "#projects" },
-  { label: "Systems", href: "#tech" },
-  { label: "Dossier", href: "#experience" },
-  { label: "Dispatch", href: "#contact" },
+  { label: "About", href: "#about" },
+  { label: "Work", href: "#projects" },
+  { label: "Stack", href: "#tech" },
+  { label: "Experience", href: "#experience" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export const footerSocialLinks: SocialLink[] = [

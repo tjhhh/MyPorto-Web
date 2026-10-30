@@ -1,0 +1,350 @@
+{
+  "passed": true,
+  "results": [
+    "Default All: exactly two technologies from each of three categories",
+    {
+      "viewport": 1440,
+      "pageOverflow": false,
+      "sectionWidth": 1440,
+      "minimumControlHeight": 48,
+      "resultColumns": "373.328px 373.328px 373.344px",
+      "filterScrollable": false,
+      "description": {
+        "size": "15px",
+        "lineHeight": "28px",
+        "color": "rgb(74, 68, 64)"
+      },
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/vercel.svg",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "viewport": 1567,
+      "pageOverflow": false,
+      "sectionWidth": 1567,
+      "minimumControlHeight": 48,
+      "resultColumns": "373.328px 373.328px 373.344px",
+      "filterScrollable": false,
+      "description": {
+        "size": "15px",
+        "lineHeight": "28px",
+        "color": "rgb(74, 68, 64)"
+      },
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/vercel.svg",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "viewport": 768,
+      "pageOverflow": false,
+      "sectionWidth": 768,
+      "minimumControlHeight": 48,
+      "resultColumns": "332px 332px",
+      "filterScrollable": false,
+      "description": {
+        "size": "15px",
+        "lineHeight": "28px",
+        "color": "rgb(74, 68, 64)"
+      },
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/vercel.svg",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "viewport": 390,
+      "pageOverflow": false,
+      "sectionWidth": 390,
+      "minimumControlHeight": 48,
+      "resultColumns": "358px",
+      "filterScrollable": true,
+      "description": {
+        "size": "14px",
+        "lineHeight": "28px",
+        "color": "rgb(74, 68, 64)"
+      },
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/vercel.svg",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "viewport": 360,
+      "pageOverflow": false,
+      "sectionWidth": 360,
+      "minimumControlHeight": 48,
+      "resultColumns": "328px",
+      "filterScrollable": true,
+      "description": {
+        "size": "14px",
+        "lineHeight": "28px",
+        "color": "rgb(74, 68, 64)"
+      },
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/vercel.svg",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "viewport": 1440,
+      "pageOverflow": false,
+      "sectionWidth": 1440,
+      "minimumControlHeight": 48,
+      "resultColumns": "373.328px 373.328px 373.344px",
+      "filterScrollable": false,
+      "description": {
+        "size": "15px",
+        "lineHeight": "28px",
+        "color": "rgb(74, 68, 64)"
+      },
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/vercel.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+          "loaded": true
+        }
+      ]
+    },
+    "All expansion: 6 -> 18 -> 6; toggle retains keyboard focus",
+    {
+      "viewport": 1440,
+      "pageOverflow": false,
+      "sectionWidth": 1440,
+      "minimumControlHeight": 48,
+      "resultColumns": "none",
+      "filterScrollable": false,
+      "description": {
+        "size": "15px",
+        "lineHeight": "28px",
+        "color": "rgb(74, 68, 64)"
+      },
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
+          "loaded": true
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
+          "loaded": true
+        }
+      ]
+    },
+    "Frontend: 6-item preview, expands to 8; active filter preserves expansion",
+    "Backend and Tools: correct five entries, selected states and no unnecessary expand control",
+    {
+      "keyboard": "Tab/Enter filtering works, visible focus, reduced motion respected",
+      "focusStyle": {
+        "width": "2px",
+        "style": "solid",
+        "color": "rgb(90, 23, 31)",
+        "transitionDuration": "1e-05s"
+      }
+    },
+    "Image error: accessible text remains with a neutral icon fallback"
+  ],
+  "pageErrors": [],
+  "failures": []
+}

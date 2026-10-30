@@ -30,11 +30,19 @@ export const metadata: Metadata = {
   authors: [{ name: "Muhammad Fauzan" }],
   icons: {
     icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon.svg?v=mf-cut-grotesk", type: "image/svg+xml" },
+      {
+        url: "/favicon.ico?v=mf-cut-grotesk",
+        type: "image/x-icon",
+        sizes: "16x16 32x32 48x48",
+      },
     ],
-    shortcut: "/icon.svg",
-    apple: "/icon.svg",
+    shortcut: "/favicon.ico?v=mf-cut-grotesk",
+    apple: {
+      url: "/apple-touch-icon.png?v=mf-cut-grotesk",
+      type: "image/png",
+      sizes: "180x180",
+    },
   },
   openGraph: {
     title: "Muhammad Fauzan — Software Engineer",

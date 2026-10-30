@@ -64,17 +64,21 @@ export function ProjectDetailModal({
 
   // Handle body scroll lock
   useEffect(() => {
+    let timer: NodeJS.Timeout;
     if (isOpen) {
       document.body.style.overflow = "hidden";
-      setMounted(true);
-      setSelectedImageIdx(0);
-      setIsZoomed(false);
-      setIsClosing(false);
+      timer = setTimeout(() => {
+        setMounted(true);
+        setSelectedImageIdx(0);
+        setIsZoomed(false);
+        setIsClosing(false);
+      }, 0);
     } else {
       document.body.style.overflow = "";
-      setMounted(false);
+      timer = setTimeout(() => setMounted(false), 0);
     }
     return () => {
+      clearTimeout(timer);
       document.body.style.overflow = "";
     };
   }, [isOpen]);

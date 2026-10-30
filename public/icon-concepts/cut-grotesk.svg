@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="title desc">
+  <title id="title">MF — Cut-Grotesk</title>
+  <desc id="desc">Monogram MF tebal dengan potongan diagonal pada terminal M dan F, putih di atas charcoal.</desc>
+  <rect width="128" height="128" rx="24" fill="#171717"/>
+  <g fill="#FAFAFA">
+    <path d="M18 96V40L26 32H33L44 54L55 32H69V96H55V60L44 81L32 60V96Z"/>
+    <path d="M77 32H111V40L103 46H91V59H109V73H91V96H77Z"/>
+  </g>
+</svg>

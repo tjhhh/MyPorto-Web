@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "total": 22,
+  "categories": {
+    "Frontend": 9,
+    "Backend & Database": 7,
+    "Tools": 6
+  },
+  "newItems": [
+    "Next.js",
+    "Laravel",
+    "MySQL",
+    "Docker"
+  ],
+  "checks": [
+    "All four descriptions and original logos loaded",
+    "Category counts, preview, expansion and reset correct",
+    "No horizontal overflow at 1440px and 390px"
+  ]
+}

@@ -78,16 +78,16 @@ export function AnimatedCounter({
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     ) {
-      setDisplayValue(value);
+      const timer = setTimeout(() => setDisplayValue(value), 0);
       hasAnimatedRef.current = true;
-      return;
+      return () => clearTimeout(timer);
     }
 
     const parsed = parseMetricValue(value);
     if (!parsed.isNumeric || parsed.targetNumber === null) {
-      setDisplayValue(value);
+      const timer = setTimeout(() => setDisplayValue(value), 0);
       hasAnimatedRef.current = true;
-      return;
+      return () => clearTimeout(timer);
     }
 
     let animationFrameId: number;

@@ -4,7 +4,6 @@ import {
   HeroSection,
   Navbar,
   ProjectsSection,
-  ScrollStrikerRail,
   SiteFooter,
   TechStackSection,
 } from "@/app/_components/home";
@@ -20,9 +19,6 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-on-background relative">
       <Navbar links={navLinks} />
-
-      {/* Kinetic Interactive Striker & Goal Rail (Right Margin) */}
-      <ScrollStrikerRail />
 
       <main className="flex flex-col">
         <HeroSection />

@@ -25,7 +25,8 @@ export function MagneticWrapper({
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     ) {
-      setPrefersReducedMotion(true);
+      const timer = setTimeout(() => setPrefersReducedMotion(true), 0);
+      return () => clearTimeout(timer);
     }
   }, []);
 

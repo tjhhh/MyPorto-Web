@@ -181,7 +181,7 @@ export function ProjectCarousel({ projects, techIcons }: ProjectCarouselProps) {
           <span className="text-ink-secondary tracking-[0.16em]">
             ORBITING SHOWCASE
           </span>
-          <span className="text-maroon/40 mx-0.5">//</span>
+          <span className="text-maroon/40 mx-0.5">{"//"}</span>
           <span className="text-maroon font-bold tracking-[0.12em]">
             {activeChapterNumber} <span className="text-ink-muted font-normal">OF</span> {totalChaptersFormatted}
           </span>

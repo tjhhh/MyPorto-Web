@@ -1,201 +1,192 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import Image from "next/image";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { ArrowDownRight, ArrowUpRight, Menu, X } from "lucide-react";
 import type { NavLink } from "@/app/_types/home";
-import { ScrambleText, MagneticWrapper } from "@/app/_components/motion";
 import { BrandMonogram } from "@/app/_components/ui/BrandMonogram";
+import styles from "./Navbar.module.css";
 
 type NavbarProps = {
   links: NavLink[];
 };
 
 export function Navbar({ links }: Readonly<NavbarProps>) {
-  const [activeHref, setActiveHref] = useState<string>(links[0]?.href ?? "");
+  const [activeHref, setActiveHref] = useState(links[0]?.href ?? "");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [currentTime, setCurrentTime] = useState<string>("");
+  const [isFloating, setIsFloating] = useState(false);
+  const floatingRef = useRef(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileNavId = useId();
 
   const sectionIds = useMemo(
     () => links.map((link) => link.href.replace("#", "")).filter(Boolean),
-    [links]
+    [links],
   );
 
   useEffect(() => {
-    // Live Bandung time clock (WIB / UTC+7)
-    const updateTime = () => {
-      const now = new Date();
-      const options: Intl.DateTimeFormatOptions = {
-        timeZone: "Asia/Jakarta",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: false,
-      };
-      setCurrentTime(new Intl.DateTimeFormat("en-GB", options).format(now));
+    const updateFloating = () => {
+      // Separate thresholds prevent flicker when scrolling near the boundary.
+      const next = floatingRef.current ? window.scrollY > 16 : window.scrollY >= 64;
+      if (next !== floatingRef.current) {
+        floatingRef.current = next;
+        setIsFloating(next);
+      }
     };
 
-    updateTime();
-    const timer = setInterval(updateTime, 1000);
-    return () => clearInterval(timer);
+    const frame = requestAnimationFrame(updateFloating);
+    window.addEventListener("scroll", updateFloating, { passive: true });
+    window.addEventListener("pageshow", updateFloating);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateFloating);
+      window.removeEventListener("pageshow", updateFloating);
+    };
   }, []);
 
   useEffect(() => {
     if (!sectionIds.length) return;
 
     const updateFromHash = () => {
-      const hash = globalThis.location.hash;
-      if (hash) setActiveHref(hash);
+      const hash = window.location.hash;
+      if (sectionIds.includes(hash.slice(1))) setActiveHref(hash);
     };
 
-    updateFromHash();
-    globalThis.addEventListener("hashchange", updateFromHash);
-
-    const sections = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => el instanceof HTMLElement);
-
+    const frame = requestAnimationFrame(updateFromHash);
+    window.addEventListener("hashchange", updateFromHash);
     const observer = new IntersectionObserver(
       (entries) => {
-        const visibleEntries = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-        if (visibleEntries.length) {
-          setActiveHref(`#${visibleEntries[0].target.id}`);
-        }
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => Math.abs(a.boundingClientRect.top - 96) - Math.abs(b.boundingClientRect.top - 96));
+        if (visible.length) setActiveHref(`#${visible[0].target.id}`);
       },
-      { rootMargin: "-20% 0px -55% 0px", threshold: [0.1, 0.3, 0.6] }
+      { rootMargin: "-96px 0px -55% 0px", threshold: 0 },
     );
 
-    sections.forEach((s) => observer.observe(s));
+    sectionIds.forEach((id) => {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
 
     return () => {
+      cancelAnimationFrame(frame);
       observer.disconnect();
-      globalThis.removeEventListener("hashchange", updateFromHash);
+      window.removeEventListener("hashchange", updateFromHash);
     };
   }, [sectionIds]);
 
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setIsMobileMenuOpen(false);
+    };
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => desktop.removeEventListener("change", closeOnDesktop);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMobileMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    const handleOutsidePress = (event: PointerEvent) => {
+      if (event.target instanceof Node && !headerRef.current?.contains(event.target)) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("pointerdown", handleOutsidePress);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("pointerdown", handleOutsidePress);
+    };
+  }, [isMobileMenuOpen]);
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-milky-white/10 bg-obsidian/95 backdrop-blur-md text-cream-dark transition-all duration-300">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3.5 md:px-8">
-        {/* Left: Authorial Monogram & Identity */}
-        <a
-          href="#about"
-          className="group flex items-center gap-3.5 focus:outline-none"
-          aria-label="Go to prologue"
-        >
-          <BrandMonogram size={34} className="transition-transform duration-300 group-hover:scale-105" />
-          <div className="flex flex-col">
-            <span className="font-mono text-[11px] font-semibold tracking-[0.18em] uppercase text-milky-white group-hover:text-beige transition-colors">
-              M. FAUZAN
-            </span>
-            <span className="font-mono text-[9px] tracking-[0.14em] uppercase text-cream-dark/50">
-              SOFTWARE ENGINEER
-            </span>
-          </div>
-        </a>
+    <header
+      ref={headerRef}
+      className={`${styles.header} ${isFloating ? styles.floating : ""}`}
+      data-floating={isFloating}
+    >
+      <div className={styles.shell}>
+        <div className={styles.content}>
+          <a
+            href="#about"
+            className={styles.brand}
+            aria-label="Muhammad Fauzan — back to About"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            <BrandMonogram size={34} />
+            <span>M. Fauzan</span>
+          </a>
 
-        {/* Center: Editorial Wayfinding Links */}
-        <nav className="hidden lg:flex items-center gap-8 font-mono text-[10px] tracking-[0.18em] uppercase">
-          {links.map((link, idx) => {
-            const isActive = activeHref === link.href;
-            return (
+          <nav aria-label="Main navigation" className={styles.desktopNav}>
+            {links.map((link) => (
               <a
-                key={link.label}
+                key={link.href}
                 href={link.href}
-                className={`relative py-1 transition-colors duration-200 ${
-                  isActive
-                    ? "text-milky-white font-medium"
-                    : "text-cream-dark/65 hover:text-milky-white"
-                }`}
+                aria-current={activeHref === link.href ? "location" : undefined}
+                className={styles.navLink}
               >
-                <span className="text-cream-dark/35 mr-1.5">{`0${idx + 1}.`}</span>
                 {link.label}
-                {isActive && (
-                  <span className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-maroon-glow" />
-                )}
               </a>
-            );
-          })}
-        </nav>
+            ))}
+          </nav>
 
-        {/* Right: Operational Status & Dispatch */}
-        <div className="hidden md:flex items-center gap-5">
-          {/* Time & Telemetry */}
-          <div className="flex items-center gap-2 border-r border-milky-white/10 pr-5 font-mono text-[10px] tracking-[0.14em] text-cream-dark/70">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
-            </span>
-            <ScrambleText text="BDG, ID" speed={30} delay={100} />
-            {currentTime && (
-              <span className="text-milky-white font-medium">
-                <ScrambleText text={`${currentTime} WIB`} speed={20} delay={250} />
-              </span>
-            )}
-          </div>
-
-          {/* Resume / Dispatch Link */}
-          <MagneticWrapper strength={0.22}>
+          <div className={styles.actions}>
             <a
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center border border-cream-dark/25 bg-transparent px-4 py-1.5 font-mono text-[10px] tracking-[0.16em] uppercase text-cream-dark transition-all duration-300 hover:border-maroon hover:bg-maroon hover:text-milky-white"
+              aria-label="Resume (opens in a new tab)"
+              className={styles.resume}
             >
-              Curriculum Vitae
+              <span>Resume</span>
+              <ArrowUpRight aria-hidden="true" size={15} />
             </a>
-          </MagneticWrapper>
+            <button
+              ref={menuButtonRef}
+              type="button"
+              aria-expanded={isMobileMenuOpen}
+              aria-controls={mobileNavId}
+              aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              onClick={() => setIsMobileMenuOpen((open) => !open)}
+              className={styles.menuButton}
+            >
+              <span>{isMobileMenuOpen ? "Close" : "Menu"}</span>
+              {isMobileMenuOpen ? <X aria-hidden="true" size={15} /> : <Menu aria-hidden="true" size={15} />}
+            </button>
+          </div>
         </div>
 
-        {/* Mobile Menu Toggle */}
-        <div className="flex items-center gap-2 lg:hidden">
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border border-cream-dark/25 px-3 py-1.5 font-mono text-[10px] tracking-[0.14em] uppercase text-cream-dark"
-          >
-            CV
-          </a>
-          <button
-            type="button"
-            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="mobile-nav"
-            className="flex items-center justify-center border border-beige/35 px-3 py-1.5 font-mono text-[10px] tracking-[0.16em] uppercase text-milky-white"
-          >
-            {isMobileMenuOpen ? "CLOSE" : "INDEX"}
-          </button>
+        <div
+          id={mobileNavId}
+          inert={!isMobileMenuOpen}
+          className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.menuOpen : ""}`}
+        >
+          <div className={styles.menuClip}>
+            <nav aria-label="Mobile navigation" className={styles.mobileNav}>
+              {links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  aria-current={activeHref === link.href ? "location" : undefined}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={styles.mobileLink}
+                >
+                  <span>{link.label}</span>
+                  <ArrowDownRight aria-hidden="true" size={16} />
+                </a>
+              ))}
+            </nav>
+          </div>
         </div>
       </div>
-
-      {/* Mobile Drawer */}
-      {isMobileMenuOpen && (
-        <div
-          id="mobile-nav"
-          className="border-t border-beige/20 bg-obsidian-surface px-6 py-6 lg:hidden"
-        >
-          <div className="flex flex-col gap-4 font-mono text-[11px] tracking-[0.2em] uppercase">
-            {links.map((link, idx) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center justify-between border-b border-milky-white/10 pb-2 text-cream-dark hover:text-milky-white"
-              >
-                <span>{link.label}</span>
-                <span className="text-beige/40">{`[0${idx + 1}]`}</span>
-              </a>
-            ))}
-          </div>
-
-          <div className="mt-6 flex items-center justify-between border-t border-beige/15 pt-4 font-mono text-[10px] text-beige/60">
-            <span>BANDUNG, INDONESIA</span>
-            <span>{currentTime} WIB</span>
-          </div>
-        </div>
-      )}
     </header>
   );
 }

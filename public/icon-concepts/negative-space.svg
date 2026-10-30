@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="title desc">
+  <title id="title">MF — Negative Space</title>
+  <desc id="desc">Huruf MF dipotong dari satu bidang charcoal, dengan batang vertikal bersama pada sambungan M dan F.</desc>
+  <rect width="128" height="128" rx="12" fill="#FAFAFA"/>
+  <path fill="#171717" fill-rule="evenodd" d="M12 0H116Q128 0 128 12V116Q128 128 116 128H12Q0 128 0 116V12Q0 0 12 0Z M20 96V32H34L49 56L64 32H108V46H78V58H104V72H78V96H64V58L49 81L34 58V96Z"/>
+</svg>

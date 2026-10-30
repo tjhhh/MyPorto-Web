@@ -1,203 +1,224 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import Image from "next/image";
-import { Server, Layout, Wrench, Layers, ChevronDown } from "lucide-react";
-import type { TechStackCategory } from "@/app/_types/home";
+import { ChevronDown, Code2 } from "lucide-react";
+import type { TechStackCategory, TechStackItem } from "@/app/_types/home";
 
 type TechStackSectionProps = {
   categories: TechStackCategory[];
 };
 
-const INITIAL_LIMIT = 6;
+const CATEGORY_PREVIEW_LIMIT = 6;
+const GROUP_PREVIEW_LIMIT = 2;
 
-// Rich real-world production rationale per engineering tool
 const productionNotes: Record<string, string> = {
-  React: "Component state architecture & hooks for dynamic client dashboards.",
-  Vue: "Lightweight reactive frontend for HikePass web administrative portal.",
-  "Tailwind CSS": "Design-token driven styling systems & precise responsive layouts.",
-  TypeScript: "End-to-end type safety, strict interface contracts, and reduced runtime errors.",
-  HTML5: "Semantic document outline, WCAG accessible tags, and structured metadata.",
-  CSS3: "Custom keyframes, fluid typography clamping, and CSS Grid compositions.",
-  Bootstrap: "Rapid responsive layout scaffolding in legacy municipal portal (HijauKu).",
-  Flutter: "Cross-platform native companion with custom telemetry gauges and local caching in RideAssist.",
-  "Node.js": "Event-driven asynchronous services and API endpoints.",
-  PostgreSQL: "Relational database modeling, complex joins, indexing, and transactional integrity.",
-  "REST API": "Deterministic JSON contracts, status code disciplines, and webhook integrations.",
-  NestJS: "Enterprise modular backend architecture with dependency injection.",
-  Firebase: "Real-time document sync, authentication state observers, and Cloud Messaging.",
-  Figma: "Design system prototyping, wireframing, and component token drafting.",
-  Vercel: "Edge network continuous deployment, preview environments, and serverless compute.",
-  Supabase: "Postgres-backed Auth, Row-Level Security policies, and real-time subscription streams in FutsalPro.",
-  GitHub: "Version control workflows, issue tracking, and collaborative branch management.",
-  Git: "Atomic commit hygiene, rebase workflows, and repository governance.",
+  React: "Component architecture and state management for interactive dashboards.",
+  Vue: "Reactive interfaces for the HikePass web administration portal.",
+  "Tailwind CSS": "Design tokens and responsive layouts across screen sizes.",
+  TypeScript: "Typed interfaces and data contracts from client to server.",
+  HTML5: "Semantic page structure, accessible markup, and metadata.",
+  CSS3: "Grid layouts, fluid typography, and custom animations.",
+  Bootstrap: "Responsive layout scaffolding for the HijauKu municipal portal.",
+  Flutter: "Cross-platform interfaces and telemetry gauges for RideAssist.",
+  "Next.js": "Server-rendered React interfaces and booking workflows for FutsalPro.",
+  "Node.js": "Asynchronous services, API endpoints, and content delivery.",
+  PostgreSQL: "Relational data models, indexed queries, and reliable transactions.",
+  "REST API": "JSON contracts, HTTP status handling, and webhook integrations.",
+  NestJS: "Modular backend services with dependency injection.",
+  Firebase: "Real-time data sync, authentication, and push notifications.",
+  Laravel: "Transactional APIs, authentication, and booking workflows for HikePass.",
+  MySQL: "Relational storage for HikePass reservations and check-in records.",
+  Figma: "Interface prototyping, component libraries, and design system planning.",
+  Vercel: "Automated deployments, preview environments, and serverless hosting.",
+  Supabase: "PostgreSQL, authentication, and row-level security for FutsalPro.",
+  GitHub: "Code collaboration, issue tracking, and repository workflows.",
+  Git: "Version control, focused commits, and branch management.",
+  Docker: "Containerized services and local orchestration with Docker Compose.",
 };
 
-export function TechStackSection({ categories }: Readonly<TechStackSectionProps>) {
-  const [activeCategory, setActiveCategory] = useState<string>("All");
-  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+const categoryDescriptions: Record<string, string> = {
+  Frontend: "Interfaces & interaction",
+  "Backend & Database": "Services & data",
+  Tools: "Design & delivery",
+};
 
-  const allItems = categories.flatMap((cat) =>
-    cat.items.map((item) => ({ ...item, category: cat.label }))
+function TechnologyEntry({ item }: Readonly<{ item: TechStackItem }>) {
+  const [logoFailed, setLogoFailed] = useState(false);
+
+  return (
+    <li className="min-w-0 border-b border-beige/70 py-6">
+      <div className="flex min-h-8 items-center gap-3">
+        <span aria-hidden="true" className="flex h-8 w-8 shrink-0 items-center justify-center">
+          {logoFailed ? (
+            <Code2 className="h-6 w-6 text-ink-muted" strokeWidth={1.5} />
+          ) : (
+            <Image
+              src={item.logo}
+              alt=""
+              width={28}
+              height={28}
+              onError={() => setLogoFailed(true)}
+              className="h-7 w-7 object-contain"
+            />
+          )}
+        </span>
+        <h4 className="min-w-0 font-sans text-[17px] leading-snug font-semibold tracking-[-0.02em] text-obsidian">
+          {item.name}
+        </h4>
+      </div>
+      {productionNotes[item.name] && (
+        <p className="mt-3 max-w-[38ch] font-sans text-[14px] leading-7 text-ink-secondary sm:text-[15px]">
+          {productionNotes[item.name]}
+        </p>
+      )}
+    </li>
   );
+}
 
-  const displayedItems =
-    activeCategory === "All"
-      ? allItems
-      : allItems.filter((item) => item.category === activeCategory);
+export function TechStackSection({ categories }: Readonly<TechStackSectionProps>) {
+  const id = useId();
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  const visibleItems = isExpanded
-    ? displayedItems
-    : displayedItems.slice(0, INITIAL_LIMIT);
+  const isAll = activeCategory === "All";
+  const availableCategories = categories.filter((category) => category.items.length > 0);
+  const matchingCategories = isAll
+    ? availableCategories
+    : availableCategories.filter((category) => category.label === activeCategory);
+  const previewLimit = isAll ? GROUP_PREVIEW_LIMIT : CATEGORY_PREVIEW_LIMIT;
+  const groups = matchingCategories.map((category) => ({
+    ...category,
+    visibleItems: isExpanded ? category.items : category.items.slice(0, previewLimit),
+  }));
+  const totalCount = availableCategories.reduce((total, category) => total + category.items.length, 0);
+  const matchingCount = matchingCategories.reduce((total, category) => total + category.items.length, 0);
+  const previewCount = matchingCategories.reduce(
+    (total, category) => total + Math.min(category.items.length, previewLimit),
+    0,
+  );
+  const visibleCount = groups.reduce((total, category) => total + category.visibleItems.length, 0);
+  const hasMore = matchingCount > previewCount;
+  const filters = [
+    { label: "All", count: totalCount },
+    ...availableCategories.map((category) => ({ label: category.label, count: category.items.length })),
+  ];
+  const resultsId = `${id}-results`;
+  const headingId = `${id}-heading`;
 
-  const hasMore = displayedItems.length > INITIAL_LIMIT;
-  const remainingCount = displayedItems.length - INITIAL_LIMIT;
-
-  const handleCategoryChange = (tab: string) => {
-    setActiveCategory(tab);
+  const handleCategoryChange = (category: string) => {
+    if (category === activeCategory) return;
+    setActiveCategory(category);
     setIsExpanded(false);
-  };
-
-  const getCategoryIcon = (label: string) => {
-    switch (label) {
-      case "Frontend":
-        return <Layout className="h-3.5 w-3.5" />;
-      case "Backend":
-        return <Server className="h-3.5 w-3.5" />;
-      case "Tools":
-        return <Wrench className="h-3.5 w-3.5" />;
-      default:
-        return <Layers className="h-3.5 w-3.5" />;
-    }
   };
 
   return (
     <section
       id="tech"
+      aria-labelledby={headingId}
       className="scroll-mt-20 border-b border-beige/35 bg-background py-16 md:py-24"
     >
       <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between border-b border-beige/35 pb-8">
-          <div>
-            <div className="flex flex-wrap items-center gap-2 font-mono text-[9px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.22em] uppercase text-maroon font-semibold">
-              <span className="whitespace-nowrap">[ SECTION 03 // TAXONOMY ]</span>
-              <span className="hidden xs:inline-block h-[1px] w-4 sm:w-6 bg-maroon/40 shrink-0" />
-              <span className="whitespace-nowrap text-ink-muted">ENGINEERING CAPABILITIES</span>
-            </div>
-            <h2 className="mt-3 font-display text-[38px] leading-[1.08] font-bold tracking-[-0.02em] text-obsidian sm:text-[48px] md:text-[54px]">
-              Systems Matrix
-            </h2>
-          </div>
-          <p className="mt-4 max-w-md font-sans text-[15px] leading-[1.65] text-ink-secondary md:mt-0 md:text-right">
-            Technologies evaluated not as buzzwords, but as calibrated tools with verified production roles.
+        <header className="max-w-3xl">
+          <p className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] leading-5 text-ink-secondary">
+            <span className="font-mono text-maroon">03 /</span>
+            <span className="font-sans font-medium">Engineering capabilities</span>
           </p>
-        </div>
+          <h2
+            id={headingId}
+            className="font-display text-[38px] leading-[1.08] font-bold tracking-[-0.03em] text-obsidian sm:text-[48px] md:text-[54px]"
+          >
+            Systems Matrix
+          </h2>
+          <p className="mt-4 max-w-xl font-sans text-[15px] leading-7 text-ink-secondary sm:text-[16px]">
+            The technologies I build with, and what I use them for.
+          </p>
+        </header>
 
-        {/* Filter Controls */}
-        <div className="mt-8 flex flex-wrap items-center gap-2 border-b border-beige/25 pb-6">
-          <span className="font-mono text-[10px] tracking-[0.16em] uppercase text-ink-muted mr-2">
-            FILTER DOMAIN:
-          </span>
-          {["All", "Frontend", "Backend", "Tools"].map((tab) => {
-            const isActive = activeCategory === tab;
-            return (
-              <button
-                key={tab}
-                type="button"
-                onClick={() => handleCategoryChange(tab)}
-                className={`inline-flex items-center gap-2 px-3.5 py-1.5 font-mono text-[11px] tracking-[0.14em] uppercase transition-all duration-200 border ${
-                  isActive
-                    ? "border-maroon bg-maroon text-milky-white font-medium shadow-sm"
-                    : "border-beige/40 bg-surface-container-lowest text-ink hover:border-maroon/50"
-                }`}
-              >
-                {tab !== "All" && getCategoryIcon(tab)}
-                <span>{tab}</span>
-                <span className="text-[9px] opacity-70">
-                  {tab === "All"
-                    ? `[${allItems.length}]`
-                    : `[${allItems.filter((i) => i.category === tab).length}]`}
-                </span>
-              </button>
-            );
-          })}
-        </div>
+        <div className="mt-8 border-b border-beige/70 md:mt-10">
+          <div className="-mx-1 overflow-x-auto px-1 pt-1 [scrollbar-color:var(--beige-warm)_transparent] [scrollbar-width:thin]">
+            <div role="group" aria-label="Filter technologies by category" className="flex w-max min-w-full gap-1">
+              {filters.map((filter) => {
+                const isActive = activeCategory === filter.label;
 
-        {/* Matrix Grid: Crisp Architectural Cards */}
-        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {visibleItems.map((tech) => {
-            const note =
-              productionNotes[tech.name] ||
-              "Engineered with verified architectural discipline in deployed projects.";
-
-            return (
-              <div
-                key={`${tech.category}-${tech.name}`}
-                className="group relative flex flex-col justify-between border border-beige/35 bg-surface-container-lowest p-5 transition-all duration-300 hover:border-maroon/60 hover:shadow-md"
-              >
-                <div>
-                  {/* Card Header: Icon + Category Badge */}
-                  <div className="flex items-center justify-between border-b border-beige/20 pb-3">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-9 w-9 items-center justify-center border border-beige/30 bg-surface-container-low transition-transform duration-300 group-hover:scale-105">
-                        <Image
-                          src={tech.logo}
-                          alt={`${tech.name} logo`}
-                          width={20}
-                          height={20}
-                          className="h-5 w-5 object-contain"
-                        />
-                      </div>
-                      <span className="font-mono text-[14px] font-bold text-obsidian">
-                        {tech.name}
-                      </span>
-                    </div>
-
-                    <span className="font-mono text-[9px] tracking-[0.14em] uppercase border border-beige/40 bg-surface-container px-2 py-0.5 text-ink-muted">
-                      {tech.category}
+                return (
+                  <button
+                    key={filter.label}
+                    type="button"
+                    aria-pressed={isActive}
+                    aria-controls={resultsId}
+                    aria-label={`${filter.label}, ${filter.count} technologies`}
+                    onClick={() => handleCategoryChange(filter.label)}
+                    className={`inline-flex min-h-12 shrink-0 cursor-pointer items-center gap-2.5 border-b-2 px-4 py-3 font-sans text-[14px] font-medium transition-colors duration-200 focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-maroon motion-reduce:transition-none sm:px-5 ${
+                      isActive
+                        ? "border-maroon text-maroon"
+                        : "border-transparent text-ink-secondary hover:border-beige-dark hover:text-obsidian"
+                    }`}
+                  >
+                    <span>{filter.label}</span>
+                    <span className="font-mono text-[12px] font-normal tabular-nums">
+                      {filter.count}
                     </span>
-                  </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
 
-                  {/* Production Rationale Note */}
-                  <p className="mt-3.5 font-sans text-[13px] leading-[1.6] text-ink-secondary">
-                    {note}
-                  </p>
-                </div>
-
-                {/* Card Footer Line */}
-                <div className="mt-4 flex items-center justify-between pt-3 border-t border-beige/15 font-mono text-[9px] tracking-[0.14em] text-ink-muted uppercase">
-                  <span>DEPLOYED</span>
-                  <span className="group-hover:text-maroon transition-colors">
-                    PROD_VERIFIED
+        <div
+          id={resultsId}
+          className={`mt-8 md:mt-10 ${isAll ? "grid gap-x-10 gap-y-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-12" : ""}`}
+        >
+          {groups.length > 0 ? (
+            groups.map((category, index) => (
+              <section key={category.label} aria-labelledby={`${id}-category-${index}`} className="min-w-0">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                  <h3 id={`${id}-category-${index}`} className="font-sans text-[16px] leading-6 font-semibold text-obsidian">
+                    {category.label}
+                  </h3>
+                  <span className="font-sans text-[12px] leading-5 text-ink-muted">
+                    {categoryDescriptions[category.label]}
                   </span>
                 </div>
-              </div>
-            );
-          })}
+                <ul className={`mt-4 border-t border-beige/70 ${isAll ? "" : "grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-12"}`}>
+                  {category.visibleItems.map((item) => (
+                    <TechnologyEntry key={item.name} item={item} />
+                  ))}
+                </ul>
+              </section>
+            ))
+          ) : (
+            <p className="py-8 font-sans text-[15px] leading-7 text-ink-secondary">
+              No technologies listed yet.
+            </p>
+          )}
         </div>
 
-        {/* Load More Button Trigger */}
-        {hasMore && (
-          <div className="mt-10 flex flex-col items-center justify-center border-t border-beige/30 pt-8">
+        <div className="mt-7 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center md:mt-8">
+          <p role="status" aria-live="polite" aria-atomic="true" className="font-sans text-[13px] leading-6 text-ink-muted">
+            Showing <span className="font-medium tabular-nums text-ink-secondary">{visibleCount}</span> of{" "}
+            <span className="tabular-nums">{matchingCount}</span> technologies
+            {!isAll && ` in ${activeCategory}`}
+          </p>
+          {hasMore && (
             <button
               type="button"
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="group inline-flex items-center gap-3 border border-maroon bg-transparent px-8 py-3 font-mono text-[11px] tracking-[0.18em] uppercase text-maroon transition-all duration-300 hover:bg-maroon hover:text-milky-white shadow-sm cursor-pointer"
+              aria-expanded={isExpanded}
+              aria-controls={resultsId}
+              onClick={() => setIsExpanded((expanded) => !expanded)}
+              className="inline-flex min-h-12 w-full cursor-pointer items-center justify-center gap-3 border border-maroon px-5 py-3 font-sans text-[14px] font-semibold text-maroon transition-colors duration-200 hover:bg-maroon hover:text-milky-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-maroon motion-reduce:transition-none sm:w-auto"
             >
               <span>
-                {isExpanded
-                  ? "Collapse Tech Matrix"
-                  : `Load More Technologies [ +${remainingCount} ]`}
+                {isExpanded ? "Show less" : `View all ${matchingCount} technologies`}
               </span>
               <ChevronDown
-                className={`h-3.5 w-3.5 transition-transform duration-300 ${
-                  isExpanded ? "rotate-180" : "group-hover:translate-y-0.5"
-                }`}
+                aria-hidden="true"
+                className={`h-4 w-4 transition-transform duration-200 motion-reduce:transition-none ${isExpanded ? "rotate-180" : ""}`}
               />
             </button>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </section>
   );

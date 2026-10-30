@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="title desc">
+  <title id="title">MF — Forward Italic</title>
+  <desc id="desc">Monogram MF tebal dengan kemiringan ke depan dan terminal bersih, putih di atas charcoal.</desc>
+  <rect width="128" height="128" rx="24" fill="#171717"/>
+  <g fill="#FAFAFA" transform="matrix(1 0 -.18 1 11.52 0)">
+    <path d="M16 96V32H31L43 56L55 32H70V96H56V61L43 84L30 61V96Z"/>
+    <path d="M78 32H112V46H92V59H108V73H92V96H78Z"/>
+  </g>
+</svg>
